@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -63,21 +64,35 @@ const BookingForm = () => {
 
   // Calculate total price based on formula and people count
   useEffect(() => {
-    let pricePerPerson = 0;
+    let basePrice = 0;
+    let pricePerAdditionalPerson = 0;
     let minimumPeople = 1;
 
     if (bookingData.formula === 'half-day') {
-      pricePerPerson = 1200;
+      basePrice = 5000; // Minimum price for up to 5 people
+      pricePerAdditionalPerson = 1200;
       minimumPeople = 5;
+      
+      if (bookingData.people <= 5) {
+        setTotalPrice(basePrice);
+      } else {
+        const additionalPeople = bookingData.people - 5;
+        setTotalPrice(basePrice + (additionalPeople * pricePerAdditionalPerson));
+      }
     } else if (bookingData.formula === 'full-day') {
-      pricePerPerson = 1000;
+      basePrice = 8000; // Minimum price for 1 person
+      pricePerAdditionalPerson = 1000;
       minimumPeople = 1;
+      
+      if (bookingData.people <= 1) {
+        setTotalPrice(basePrice);
+      } else {
+        const additionalPeople = bookingData.people - 1;
+        setTotalPrice(basePrice + (additionalPeople * pricePerAdditionalPerson));
+      }
+    } else {
+      setTotalPrice(0);
     }
-
-    const actualPeople = Math.max(bookingData.people, minimumPeople);
-    const basePrice = pricePerPerson * actualPeople;
-
-    setTotalPrice(basePrice);
   }, [bookingData.people, bookingData.formula]);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -133,23 +148,33 @@ const BookingForm = () => {
     return bookingData.formula === 'half-day' ? 5 : 1;
   };
 
-  const getPricePerPerson = () => {
-    if (bookingData.formula === 'half-day') return 1200;
-    if (bookingData.formula === 'full-day') return 1000;
-    return 0;
+  const getPriceBreakdown = () => {
+    if (bookingData.formula === 'half-day') {
+      if (bookingData.people <= 5) {
+        return '5,000 THB (up to 5 people)';
+      } else {
+        const additionalPeople = bookingData.people - 5;
+        return `5,000 THB (base) + ${additionalPeople} × 1,200 THB`;
+      }
+    } else if (bookingData.formula === 'full-day') {
+      if (bookingData.people <= 1) {
+        return '8,000 THB (1 person)';
+      } else {
+        const additionalPeople = bookingData.people - 1;
+        return `8,000 THB (base) + ${additionalPeople} × 1,000 THB`;
+      }
+    }
+    return '';
   };
 
-  const actualPeople = Math.max(bookingData.people, getMinimumPeople());
-  const pricePerPerson = getPricePerPerson();
   const dollarTotal = Math.round(totalPrice / 33);
-  const dollarPerPerson = pricePerPerson > 0 ? Math.round(pricePerPerson / 33) : 0;
 
   return (
     <div className="max-w-4xl mx-auto">
       <Card className="shadow-2xl border-2 border-blue-100">
         <CardHeader className="bg-gradient-to-r from-blue-50 to-orange-50">
           <CardTitle className="text-2xl text-center text-gray-800">
-            🛥️ Book Your Private Long Tail Boat - From 1,000 THB per person with hotel transfer included
+            🛥️ Book Your Private Long Tail Boat - From 5,000 THB with hotel transfer included
           </CardTitle>
           <div className="text-center space-y-2 mt-4">
             <div className="flex justify-center items-center space-x-6 text-sm">
@@ -184,13 +209,13 @@ const BookingForm = () => {
                     <SelectItem value="half-day">
                       <div className="flex flex-col">
                         <span className="font-semibold">Half Day (4 hours)</span>
-                        <span className="text-sm text-gray-600">1,200 THB per person - Minimum 5 people</span>
+                        <span className="text-sm text-gray-600">5,000 THB (up to 5 people) + 1,200 THB/extra person</span>
                       </div>
                     </SelectItem>
                     <SelectItem value="full-day">
                       <div className="flex flex-col">
                         <span className="font-semibold">Full Day (6-8 hours)</span>
-                        <span className="text-sm text-gray-600">1,000 THB per person - No minimum</span>
+                        <span className="text-sm text-gray-600">8,000 THB (base) + 1,000 THB/extra person</span>
                       </div>
                     </SelectItem>
                   </SelectContent>
@@ -348,10 +373,7 @@ const BookingForm = () => {
                 </div>
                 {bookingData.formula && (
                   <div className="text-lg text-gray-700">
-                    <strong>${dollarPerPerson}/person</strong> - 
-                    {bookingData.formula === 'half-day' && actualPeople !== bookingData.people && (
-                      <span className="text-orange-600"> (Billed for minimum {actualPeople} people)</span>
-                    )}
+                    <strong>{getPriceBreakdown()}</strong>
                   </div>
                 )}
                 <div className="grid grid-cols-3 gap-4 text-sm">

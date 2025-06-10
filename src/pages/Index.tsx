@@ -192,23 +192,23 @@ const Index = () => {
                 <thead className="bg-blue-600 text-white">
                   <tr>
                     <th className="px-6 py-4 text-left">Long Tail Boat Package</th>
-                    <th className="px-6 py-4 text-left">Price per Person</th>
+                    <th className="px-6 py-4 text-left">Base Price</th>
+                    <th className="px-6 py-4 text-left">Extra Person</th>
                     <th className="px-6 py-4 text-left">Duration</th>
-                    <th className="px-6 py-4 text-left">Minimum</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr className="border-b">
                     <td className="px-6 py-4 font-semibold">Half Day Tour</td>
-                    <td className="px-6 py-4 text-blue-600 font-bold">1,200 THB</td>
+                    <td className="px-6 py-4 text-blue-600 font-bold">5,000 THB<br/><span className="text-sm text-gray-600">(up to 5 people)</span></td>
+                    <td className="px-6 py-4 text-orange-600 font-semibold">+1,200 THB</td>
                     <td className="px-6 py-4">4 hours</td>
-                    <td className="px-6 py-4 text-orange-600 font-semibold">5 people</td>
                   </tr>
                   <tr>
                     <td className="px-6 py-4 font-semibold">Full Day Tour</td>
-                    <td className="px-6 py-4 text-blue-600 font-bold">1,000 THB</td>
+                    <td className="px-6 py-4 text-blue-600 font-bold">8,000 THB<br/><span className="text-sm text-gray-600">(base price)</span></td>
+                    <td className="px-6 py-4 text-green-600 font-semibold">+1,000 THB</td>
                     <td className="px-6 py-4">6-8 hours</td>
-                    <td className="px-6 py-4 text-green-600 font-semibold">No minimum</td>
                   </tr>
                 </tbody>
               </table>
