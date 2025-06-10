@@ -23,6 +23,7 @@ interface BookingData {
   phoneType: 'whatsapp' | 'line' | 'normal' | '';
   hotelName: string;
   hotelAddress: string;
+  pickupTime: string;
   comment: string;
   options: {
     cooler: boolean;
@@ -47,6 +48,7 @@ const BookingForm = () => {
     phoneType: '',
     hotelName: '',
     hotelAddress: '',
+    pickupTime: '',
     comment: '',
     options: {
       cooler: false,
@@ -70,32 +72,22 @@ const BookingForm = () => {
     if (bookingData.formula === 'half-day') {
       basePrice = 5000;
     } else if (bookingData.formula === 'full-day') {
-      basePrice = 6500;
+      basePrice = 8000;
     }
 
     // Extra people (after 5 people)
     if (bookingData.people > 5) {
-      basePrice += (bookingData.people - 5) * 1000;
+      const extraPeoplePrice = bookingData.formula === 'full-day' ? 1400 : 1200;
+      basePrice += (bookingData.people - 5) * extraPeoplePrice;
     }
 
-    // À la carte options
-    let optionsPrice = 0;
-    if (bookingData.options.cooler) optionsPrice += 1000;
-    if (bookingData.options.fishing) optionsPrice += 300;
-    if (bookingData.options.lunch) optionsPrice += 450 * bookingData.people;
-    if (bookingData.options.fruits) optionsPrice += 350 * bookingData.people; // Updated price
-    if (bookingData.options.champagne) optionsPrice += 1800;
-    if (bookingData.options.birthday) optionsPrice += 600;
-    if (bookingData.options.speaker) optionsPrice += 100;
-    if (bookingData.options.extraHour) optionsPrice += 1500;
-
-    setTotalPrice(basePrice + optionsPrice);
-  }, [bookingData]);
+    setTotalPrice(basePrice);
+  }, [bookingData.formula, bookingData.people]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!bookingData.formula || !bookingData.date || !bookingData.name || !bookingData.email || !bookingData.hotelName || !bookingData.hotelAddress) {
+    if (!bookingData.formula || !bookingData.date || !bookingData.name || !bookingData.email || !bookingData.hotelName || !bookingData.hotelAddress || !bookingData.pickupTime) {
       alert('Please fill in all required fields');
       return;
     }
@@ -112,27 +104,6 @@ const BookingForm = () => {
     // Simulation of opening Stripe Checkout
     alert(`Redirecting to Stripe payment for ${totalPrice} THB ($${Math.round(totalPrice / 33)})`);
   };
-
-  const updateOption = (option: keyof BookingData['options'], checked: boolean) => {
-    setBookingData(prev => ({
-      ...prev,
-      options: {
-        ...prev.options,
-        [option]: checked
-      }
-    }));
-  };
-
-  const optionsData = [
-    { key: 'cooler', label: 'Cooler with fresh drinks', price: 1000, type: 'fixed' },
-    { key: 'fishing', label: 'Fishing equipment', price: 300, type: 'fixed' },
-    { key: 'lunch', label: 'Thai homemade lunch', price: 450, type: 'per_person' },
-    { key: 'fruits', label: 'Tropical fruits + drink', price: 350, type: 'per_person' },
-    { key: 'champagne', label: 'Champagne bottle', price: 1800, type: 'fixed' },
-    { key: 'birthday', label: 'Birthday package', price: 600, type: 'fixed' },
-    { key: 'speaker', label: 'Bluetooth speaker + playlist', price: 100, type: 'fixed' },
-    { key: 'extraHour', label: 'Extra hour (1 hour)', price: 1500, type: 'fixed' },
-  ];
 
   const pricePerPerson = totalPrice / bookingData.people;
   const dollarTotal = Math.round(totalPrice / 33);
@@ -184,7 +155,7 @@ const BookingForm = () => {
                     <SelectItem value="full-day">
                       <div className="flex flex-col">
                         <span className="font-semibold">Full Day (6-8 hours)</span>
-                        <span className="text-sm text-gray-600">6,500 THB for up to 5 people</span>
+                        <span className="text-sm text-gray-600">8,000 THB for up to 5 people</span>
                       </div>
                     </SelectItem>
                   </SelectContent>
@@ -218,7 +189,7 @@ const BookingForm = () => {
 
               {/* Number of people */}
               <div className="space-y-2">
-                <Label htmlFor="people" className="text-lg font-semibold">Number of guests *</Label>
+                <Label htmlFor="people" className="text-lg font-semibold">Number of guests (total) *</Label>
                 <Select value={bookingData.people.toString()} onValueChange={(value) => 
                   setBookingData(prev => ({ ...prev, people: parseInt(value) }))
                 }>
@@ -235,9 +206,35 @@ const BookingForm = () => {
                 </Select>
                 {bookingData.people > 5 && (
                   <p className="text-sm text-blue-600 font-semibold">
-                    +{(bookingData.people - 5) * 1000} THB for {bookingData.people - 5} extra guest{bookingData.people - 5 > 1 ? 's' : ''}
+                    +{(bookingData.people - 5) * (bookingData.formula === 'full-day' ? 1400 : 1200)} THB for {bookingData.people - 5} extra guest{bookingData.people - 5 > 1 ? 's' : ''}
                   </p>
                 )}
+              </div>
+
+              {/* Pickup Time */}
+              <div className="space-y-2">
+                <Label htmlFor="pickupTime" className="text-lg font-semibold">Preferred Pickup Time *</Label>
+                <Select value={bookingData.pickupTime} onValueChange={(value) => 
+                  setBookingData(prev => ({ ...prev, pickupTime: value }))
+                }>
+                  <SelectTrigger className="h-12 text-lg">
+                    <SelectValue placeholder="Select pickup time" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="08:00">08:00 AM</SelectItem>
+                    <SelectItem value="08:30">08:30 AM</SelectItem>
+                    <SelectItem value="09:00">09:00 AM</SelectItem>
+                    <SelectItem value="09:30">09:30 AM</SelectItem>
+                    <SelectItem value="10:00">10:00 AM</SelectItem>
+                    <SelectItem value="10:30">10:30 AM</SelectItem>
+                    <SelectItem value="11:00">11:00 AM</SelectItem>
+                    <SelectItem value="13:00">01:00 PM</SelectItem>
+                    <SelectItem value="13:30">01:30 PM</SelectItem>
+                    <SelectItem value="14:00">02:00 PM</SelectItem>
+                    <SelectItem value="14:30">02:30 PM</SelectItem>
+                    <SelectItem value="15:00">03:00 PM</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
 
               {/* Name */}
@@ -331,29 +328,6 @@ const BookingForm = () => {
               />
             </div>
 
-            {/* À la carte options */}
-            <div className="space-y-6">
-              <h3 className="text-xl font-bold text-gray-800">🎒 Premium Add-ons (Optional)</h3>
-              <div className="grid md:grid-cols-2 gap-4">
-                {optionsData.map((option) => (
-                  <div key={option.key} className="flex items-center space-x-3 p-4 border-2 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-all">
-                    <Checkbox
-                      id={option.key}
-                      checked={bookingData.options[option.key as keyof BookingData['options']]}
-                      onCheckedChange={(checked) => updateOption(option.key as keyof BookingData['options'], checked as boolean)}
-                    />
-                    <Label htmlFor={option.key} className="flex-1 cursor-pointer">
-                      <span className="font-semibold text-base">{option.label}</span>
-                      <span className="block text-sm text-gray-600">
-                        {option.price} THB {option.type === 'per_person' ? '/ person' : ''}
-                        {option.type === 'per_person' && ` - Total: ${option.price * bookingData.people} THB`}
-                      </span>
-                    </Label>
-                  </div>
-                ))}
-              </div>
-            </div>
-
             {/* Total price with marketing elements */}
             <div className="bg-gradient-to-r from-green-50 to-blue-50 p-8 rounded-xl border-2 border-green-200">
               <div className="text-center space-y-4">
@@ -377,6 +351,11 @@ const BookingForm = () => {
                     <span className="font-semibold">Safety Equipment</span>
                   </div>
                 </div>
+                <div className="bg-white p-4 rounded-lg border border-blue-200">
+                  <p className="text-sm text-gray-700 font-medium">
+                    ℹ️ After payment, you will be contacted by email or phone to arrange the exact pickup time and location at your hotel.
+                  </p>
+                </div>
                 <p className="text-sm text-gray-600 italic">
                   🔥 Limited spots available - Book now to secure your date!
                 </p>
@@ -387,7 +366,7 @@ const BookingForm = () => {
             <Button 
               type="submit" 
               className="w-full bg-orange-500 hover:bg-orange-600 text-white py-6 text-base md:text-xl font-bold rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300"
-              disabled={!bookingData.formula || !bookingData.date || !bookingData.name || !bookingData.email || !bookingData.hotelName || !bookingData.hotelAddress}
+              disabled={!bookingData.formula || !bookingData.date || !bookingData.name || !bookingData.email || !bookingData.hotelName || !bookingData.hotelAddress || !bookingData.pickupTime}
             >
               <span className="break-words text-center leading-tight">
                 🛥️ Book Now - {totalPrice.toLocaleString()} THB (${dollarTotal})

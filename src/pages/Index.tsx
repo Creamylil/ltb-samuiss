@@ -193,25 +193,34 @@ const Index = () => {
                   <tr>
                     <th className="px-6 py-4 text-left">Long Tail Boat Package</th>
                     <th className="px-6 py-4 text-left">Price (1-5 people)</th>
-                    <th className="px-6 py-4 text-left">Extra Person (1,000 THB each)</th>
+                    <th className="px-6 py-4 text-left">Extra Person</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr className="border-b">
                     <td className="px-6 py-4 font-semibold">Half Day (4 hours)</td>
                     <td className="px-6 py-4 text-blue-600 font-bold">5,000 THB</td>
-                    <td className="px-6 py-4">+1,000 THB / person</td>
+                    <td className="px-6 py-4">+1,200 THB / person</td>
                   </tr>
                   <tr>
                     <td className="px-6 py-4 font-semibold">Full Day (6-8 hours)</td>
-                    <td className="px-6 py-4 text-blue-600 font-bold">6,500 THB</td>
-                    <td className="px-6 py-4">+1,000 THB / person</td>
+                    <td className="px-6 py-4 text-blue-600 font-bold">8,000 THB</td>
+                    <td className="px-6 py-4">+1,400 THB / person</td>
                   </tr>
                 </tbody>
               </table>
             </div>
             
             <div className="mt-8 text-center space-y-4">
+              <div className="bg-white p-6 rounded-lg shadow-md border border-blue-200">
+                <p className="text-base text-gray-700 font-medium mb-2">
+                  💡 <strong>Important:</strong> The total price shown is for a private boat for up to 5 people.
+                </p>
+                <p className="text-sm text-gray-600">
+                  You can come with fewer than 5 people, but the minimum price remains as indicated. 
+                  For groups larger than 5 people, additional charges apply per extra person.
+                </p>
+              </div>
               <p className="flex items-center justify-center text-lg">
                 <Users className="mr-2 text-blue-600" />
                 Maximum 10 people per long tail boat
@@ -221,70 +230,6 @@ const Index = () => {
                 Hotel transfer, safety equipment & skipper included
               </p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Customization Options */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800">
-            Enhance Your Long Tail Boat Koh Samui Adventure
-          </h2>
-          <p className="text-center text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
-            Make your private long tail boat tour even more special with these premium add-ons. 
-            Pricing updates automatically in the booking form below.
-          </p>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-            {[{
-            icon: "🧊",
-            title: "Cooler with Fresh Drinks",
-            desc: "Water, sodas, local beers",
-            price: "1,000 THB"
-          }, {
-            icon: "🎣",
-            title: "Fishing Equipment",
-            desc: "Rods, bait and dedicated fishing spots",
-            price: "300 THB"
-          }, {
-            icon: "🥗",
-            title: "Thai Homemade Lunch",
-            desc: "Authentic local meal on board",
-            price: "450 THB / person"
-          }, {
-            icon: "🧋",
-            title: "Tropical Fruits + Drink",
-            desc: "Fresh fruit platter + soft drink",
-            price: "350 THB / person"
-          }, {
-            icon: "🍾",
-            title: "Champagne Bottle",
-            desc: "Chilled champagne served on board",
-            price: "1,800 THB"
-          }, {
-            icon: "🎂",
-            title: "Birthday Package",
-            desc: "Local cake + decorative balloons",
-            price: "600 THB"
-          }, {
-            icon: "🎶",
-            title: "Bluetooth Speaker + Playlist",
-            desc: "Connect your phone for music",
-            price: "100 THB"
-          }, {
-            icon: "🕓",
-            title: "Extra Hour",
-            desc: "Extend your long tail boat tour (1 hour)",
-            price: "1,500 THB / hour"
-          }].map((option, index) => <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
-                <CardContent className="p-4 text-center">
-                  <div className="text-3xl mb-3">{option.icon}</div>
-                  <h4 className="font-semibold text-sm mb-2">{option.title}</h4>
-                  <p className="text-xs text-gray-600 mb-3">{option.desc}</p>
-                  <p className="font-bold text-blue-600">{option.price}</p>
-                </CardContent>
-              </Card>)}
           </div>
         </div>
       </section>
