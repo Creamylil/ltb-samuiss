@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -70,14 +69,14 @@ const BookingForm = () => {
     
     // Base price according to formula
     if (bookingData.formula === 'half-day') {
-      basePrice = 5000;
+      basePrice = 6000;
     } else if (bookingData.formula === 'full-day') {
-      basePrice = 8000;
+      basePrice = 9000;
     }
 
     // Extra people (after 5 people)
     if (bookingData.people > 5) {
-      const extraPeoplePrice = bookingData.formula === 'full-day' ? 1400 : 1000;
+      const extraPeoplePrice = bookingData.formula === 'full-day' ? 1400 : 1200;
       basePrice += (bookingData.people - 5) * extraPeoplePrice;
     }
 
@@ -114,7 +113,7 @@ const BookingForm = () => {
       <Card className="shadow-2xl border-2 border-blue-100">
         <CardHeader className="bg-gradient-to-r from-blue-50 to-orange-50">
           <CardTitle className="text-2xl text-center text-gray-800">
-            🛥️ Book Your Private Long Tail Boat - From 1,000 THB per person with hotel transfer included
+            🛥️ Book Your Private Long Tail Boat - From 1,200 THB per person with hotel transfer included
           </CardTitle>
           <div className="text-center space-y-2 mt-4">
             <div className="flex justify-center items-center space-x-6 text-sm">
@@ -149,13 +148,13 @@ const BookingForm = () => {
                     <SelectItem value="half-day">
                       <div className="flex flex-col">
                         <span className="font-semibold">Half Day (4 hours)</span>
-                        <span className="text-sm text-gray-600">5,000 THB for up to 5 people</span>
+                        <span className="text-sm text-gray-600">6,000 THB for up to 5 people</span>
                       </div>
                     </SelectItem>
                     <SelectItem value="full-day">
                       <div className="flex flex-col">
                         <span className="font-semibold">Full Day (6-8 hours)</span>
-                        <span className="text-sm text-gray-600">8,000 THB for up to 5 people</span>
+                        <span className="text-sm text-gray-600">9,000 THB for up to 5 people</span>
                       </div>
                     </SelectItem>
                   </SelectContent>
@@ -206,7 +205,7 @@ const BookingForm = () => {
                 </Select>
                 {bookingData.people > 5 && (
                   <p className="text-sm text-blue-600 font-semibold">
-                    +{(bookingData.people - 5) * (bookingData.formula === 'full-day' ? 1400 : 1000)} THB for {bookingData.people - 5} extra guest{bookingData.people - 5 > 1 ? 's' : ''}
+                    +{(bookingData.people - 5) * (bookingData.formula === 'full-day' ? 1400 : 1200)} THB for {bookingData.people - 5} extra guest{bookingData.people - 5 > 1 ? 's' : ''}
                   </p>
                 )}
               </div>
