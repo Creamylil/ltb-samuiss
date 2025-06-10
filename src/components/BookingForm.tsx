@@ -77,7 +77,7 @@ const BookingForm = () => {
 
     // Extra people (after 5 people)
     if (bookingData.people > 5) {
-      const extraPeoplePrice = bookingData.formula === 'full-day' ? 1400 : 1200;
+      const extraPeoplePrice = bookingData.formula === 'full-day' ? 1400 : 1000;
       basePrice += (bookingData.people - 5) * extraPeoplePrice;
     }
 
@@ -206,7 +206,7 @@ const BookingForm = () => {
                 </Select>
                 {bookingData.people > 5 && (
                   <p className="text-sm text-blue-600 font-semibold">
-                    +{(bookingData.people - 5) * (bookingData.formula === 'full-day' ? 1400 : 1200)} THB for {bookingData.people - 5} extra guest{bookingData.people - 5 > 1 ? 's' : ''}
+                    +{(bookingData.people - 5) * (bookingData.formula === 'full-day' ? 1400 : 1000)} THB for {bookingData.people - 5} extra guest{bookingData.people - 5 > 1 ? 's' : ''}
                   </p>
                 )}
               </div>
@@ -335,7 +335,7 @@ const BookingForm = () => {
                   Total: {totalPrice.toLocaleString()} THB (${dollarTotal})
                 </div>
                 <div className="text-lg text-gray-700">
-                  <strong>Only ${dollarPerPerson}/person</strong> - Best value in Koh Samui!
+                  <strong>Only ${dollarPerPerson}/person ({Math.round(pricePerPerson).toLocaleString()} THB)</strong> - Best value in Koh Samui!
                 </div>
                 <div className="grid grid-cols-3 gap-4 text-sm">
                   <div className="flex items-center justify-center text-green-600">

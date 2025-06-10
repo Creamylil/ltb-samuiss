@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -30,7 +31,7 @@ const Index = () => {
               Discover Koh Samui's hidden gems aboard your private long tail boat with hotel transfer included
             </p>
             <p className="text-base md:text-lg mb-8 max-w-2xl mx-auto text-white/90 drop-shadow-lg">
-              ✅ Private skipper ✅ Hotel pickup ✅ From $30 per person ✅ Maximum 10 guests
+              ✅ Private skipper ✅ Hotel pickup ✅ From 1000 THB per person ✅ Maximum 10 guests
             </p>
             <Button 
               size="lg" 
@@ -53,7 +54,7 @@ const Index = () => {
           <div className="max-w-4xl mx-auto text-lg leading-relaxed text-gray-700 space-y-6">
             <p>
               Experience the authentic charm of a <strong>long tail boat Koh Samui</strong> adventure with our completely private tours. 
-              Starting from just <strong>$30 per person with hotel transfer included</strong>.
+              Starting from just <strong>1000 THB per person with hotel transfer included</strong>.
             </p>
             <p>
               Navigate aboard a traditional Thai long tail boat to the pristine beaches of Pig Island (Koh Madsum), 
@@ -122,7 +123,7 @@ const Index = () => {
               
               <div className="lg:order-first">
                 <img 
-                  src="/lovable-uploads/28a952c5-8f7a-4d0b-98c2-f8655337bea6.png" 
+                  src="/lovable-uploads/0b294876-d661-419c-8182-094c604cfdce.png" 
                   alt="Long tail boat itinerary map showing Koh Madsum Pig Island, Koh Tan snorkeling, and Thong Krut pier departure point"
                   className="w-full rounded-lg shadow-xl"
                 />
@@ -138,7 +139,7 @@ const Index = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800">
             Best Long Tail Boat Koh Samui Tours - Unbeatable Value
           </h2>
-          <h3 className="text-xl text-center mb-12 text-gray-600">From $30 per person with everything included:</h3>
+          <h3 className="text-xl text-center mb-12 text-gray-600">From 1000 THB per person with everything included:</h3>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {[{
@@ -147,7 +148,7 @@ const Index = () => {
             desc: "Your own traditional Thai boat & skipper"
           }, {
             icon: "💰",
-            title: "Best Price: From $30/Person",
+            title: "Best Price: From 1000 THB/Person",
             desc: "Includes hotel transfer & equipment"
           }, {
             icon: "🐷",
@@ -183,7 +184,7 @@ const Index = () => {
             Long Tail Boat Koh Samui Pricing - All Inclusive
           </h2>
           <p className="text-center text-lg text-green-600 font-semibold mb-8">
-            🎉 Special Offer: Just $30 per person with hotel transfer included!
+            🎉 Special Offer: Just 1000 THB per person with hotel transfer included!
           </p>
           
           <div className="max-w-4xl mx-auto">
@@ -200,7 +201,7 @@ const Index = () => {
                   <tr className="border-b">
                     <td className="px-6 py-4 font-semibold">Half Day (4 hours)</td>
                     <td className="px-6 py-4 text-blue-600 font-bold">5,000 THB</td>
-                    <td className="px-6 py-4">+1,200 THB / person</td>
+                    <td className="px-6 py-4">+1,000 THB / person</td>
                   </tr>
                   <tr>
                     <td className="px-6 py-4 font-semibold">Full Day (6-8 hours)</td>
@@ -241,7 +242,7 @@ const Index = () => {
             Book Your Long Tail Boat Koh Samui Tour
           </h2>
           <p className="text-center text-lg text-green-600 font-semibold mb-8">
-            🔥 Best Price Guaranteed: From $30/person with private skipper & hotel transfer included
+            🔥 Best Price Guaranteed: From 1000 THB/person with private skipper & hotel transfer included
           </p>
           <BookingForm />
         </div>
