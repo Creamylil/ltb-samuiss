@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -7,6 +6,7 @@ import BookingForm from '../components/BookingForm';
 import ImageGallery from '../components/ImageGallery';
 import Testimonials from '../components/Testimonials';
 import FAQ from '../components/FAQ';
+import Footer from '../components/Footer';
 
 const Index = () => {
   const scrollToBooking = () => {
@@ -21,7 +21,7 @@ const Index = () => {
         <div className="relative z-10 flex items-center justify-center h-full">
           <div className="container mx-auto px-4 text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">
-              🏝️ Long Tail Boat Koh Samui - Private Tours from $30/person
+              🏝️ Long Tail Boat Koh Samui - Private Tours from 1,000 THB/person
             </h1>
             <p className="text-xl md:text-2xl mb-4 max-w-3xl mx-auto opacity-90">
               Discover Koh Samui's hidden gems aboard your private long tail boat with hotel transfer included
@@ -34,7 +34,7 @@ const Index = () => {
               className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg font-semibold rounded-full transform hover:scale-105 transition-all duration-300"
               onClick={scrollToBooking}
             >
-              Book Your Long Tail Boat Now - From $30
+              Book Your Long Tail Boat Now - From 1,000 THB
             </Button>
           </div>
         </div>
@@ -49,7 +49,7 @@ const Index = () => {
           <div className="max-w-4xl mx-auto text-lg leading-relaxed text-gray-700 space-y-6">
             <p>
               Experience the authentic charm of a <strong>long tail boat Koh Samui</strong> adventure with our completely private tours. 
-              Starting from just <strong>1,000 THB ($30) per person with hotel transfer included</strong>.
+              Starting from just <strong>1,000 THB per person with hotel transfer included</strong>.
             </p>
             <p>
               Navigate aboard a traditional Thai long tail boat to the pristine beaches of Pig Island (Koh Madsum), 
@@ -69,12 +69,12 @@ const Index = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800">
             Best Long Tail Boat Koh Samui Tours - Unbeatable Value
           </h2>
-          <h3 className="text-xl text-center mb-12 text-gray-600">From $30/person with everything included:</h3>
+          <h3 className="text-xl text-center mb-12 text-gray-600">From 1,000 THB per person with everything included:</h3>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {[
               { icon: "🛥️", title: "100% Private Long Tail Boat", desc: "Your own traditional Thai boat & skipper" },
-              { icon: "💰", title: "Best Price: From $30/Person", desc: "Includes hotel transfer & equipment" },
+              { icon: "💰", title: "Best Price: From 1,000 THB/Person", desc: "Includes hotel transfer & equipment" },
               { icon: "🐷", title: "Famous Pig Island Visit", desc: "Meet the swimming pigs of Koh Madsum" },
               { icon: "🏝️", title: "Secret Island Beaches", desc: "Pristine shores away from crowds" },
               { icon: "🚐", title: "Free Hotel Pickup Included", desc: "Chaweng, Lamai, Bophut areas" },
@@ -99,7 +99,7 @@ const Index = () => {
             Long Tail Boat Koh Samui Pricing - All Inclusive
           </h2>
           <p className="text-center text-lg text-green-600 font-semibold mb-8">
-            🎉 Special Offer: Just 1,000 THB ($30) per person with hotel transfer included!
+            🎉 Special Offer: Just 1,000 THB per person with hotel transfer included!
           </p>
           
           <div className="max-w-4xl mx-auto">
@@ -109,19 +109,19 @@ const Index = () => {
                   <tr>
                     <th className="px-6 py-4 text-left">Long Tail Boat Package</th>
                     <th className="px-6 py-4 text-left">Price (1-5 people)</th>
-                    <th className="px-6 py-4 text-left">Extra Person ($30 each)</th>
+                    <th className="px-6 py-4 text-left">Extra Person (1,000 THB each)</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr className="border-b">
                     <td className="px-6 py-4 font-semibold">Half Day (4 hours)</td>
-                    <td className="px-6 py-4 text-blue-600 font-bold">5,000 THB ($150)</td>
-                    <td className="px-6 py-4">+1,000 THB ($30) / person</td>
+                    <td className="px-6 py-4 text-blue-600 font-bold">5,000 THB</td>
+                    <td className="px-6 py-4">+1,000 THB / person</td>
                   </tr>
                   <tr>
                     <td className="px-6 py-4 font-semibold">Full Day (6-8 hours)</td>
-                    <td className="px-6 py-4 text-blue-600 font-bold">6,500 THB ($195)</td>
-                    <td className="px-6 py-4">+1,000 THB ($30) / person</td>
+                    <td className="px-6 py-4 text-blue-600 font-bold">6,500 THB</td>
+                    <td className="px-6 py-4">+1,000 THB / person</td>
                   </tr>
                 </tbody>
               </table>
@@ -154,14 +154,14 @@ const Index = () => {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {[
-              { icon: "🧊", title: "Cooler with Fresh Drinks", desc: "Water, sodas, local beers", price: "1,000 THB ($30)" },
-              { icon: "🎣", title: "Fishing Equipment", desc: "Rods, bait and dedicated fishing spots", price: "300 THB ($9)" },
-              { icon: "🥗", title: "Thai Homemade Lunch", desc: "Authentic local meal on board", price: "450 THB ($14) / person" },
-              { icon: "🧋", title: "Tropical Fruits + Drink", desc: "Fresh fruit platter + soft drink", price: "150 THB ($5) / person" },
-              { icon: "🍾", title: "Champagne Bottle", desc: "Chilled champagne served on board", price: "1,800 THB ($54)" },
-              { icon: "🎂", title: "Birthday Package", desc: "Local cake + decorative balloons", price: "600 THB ($18)" },
-              { icon: "🎶", title: "Bluetooth Speaker + Playlist", desc: "Connect your phone for music", price: "100 THB ($3)" },
-              { icon: "🕓", title: "Extra Hour", desc: "Extend your long tail boat tour", price: "1,500 THB ($45) / hour" }
+              { icon: "🧊", title: "Cooler with Fresh Drinks", desc: "Water, sodas, local beers", price: "1,000 THB" },
+              { icon: "🎣", title: "Fishing Equipment", desc: "Rods, bait and dedicated fishing spots", price: "300 THB" },
+              { icon: "🥗", title: "Thai Homemade Lunch", desc: "Authentic local meal on board", price: "450 THB / person" },
+              { icon: "🧋", title: "Tropical Fruits + Drink", desc: "Fresh fruit platter + soft drink", price: "350 THB / person" },
+              { icon: "🍾", title: "Champagne Bottle", desc: "Chilled champagne served on board", price: "1,800 THB" },
+              { icon: "🎂", title: "Birthday Package", desc: "Local cake + decorative balloons", price: "600 THB" },
+              { icon: "🎶", title: "Bluetooth Speaker + Playlist", desc: "Connect your phone for music", price: "100 THB" },
+              { icon: "🕓", title: "Extra Hour", desc: "Extend your long tail boat tour (1 hour)", price: "1,500 THB / hour" }
             ].map((option, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
                 <CardContent className="p-4 text-center">
@@ -183,7 +183,7 @@ const Index = () => {
             Book Your Long Tail Boat Koh Samui Tour
           </h2>
           <p className="text-center text-lg text-green-600 font-semibold mb-8">
-            🔥 Best Price Guaranteed: From $30/person with private skipper & hotel transfer included
+            🔥 Best Price Guaranteed: From 1,000 THB/person with private skipper & hotel transfer included
           </p>
           <BookingForm />
         </div>
@@ -241,10 +241,13 @@ const Index = () => {
             className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold rounded-full transform hover:scale-105 transition-all duration-300"
             onClick={scrollToBooking}
           >
-            👉 Book Your Long Tail Boat Now - From $30
+            👉 Book Your Long Tail Boat Now - From 1,000 THB
           </Button>
         </div>
       </section>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };
