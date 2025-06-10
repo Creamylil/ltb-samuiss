@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -8,34 +7,27 @@ import ImageGallery from '../components/ImageGallery';
 import Testimonials from '../components/Testimonials';
 import FAQ from '../components/FAQ';
 import Footer from '../components/Footer';
-
 const Index = () => {
   const scrollToBooking = () => {
-    document.getElementById('booking-form')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('booking-form')?.scrollIntoView({
+      behavior: 'smooth'
+    });
   };
-
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative h-screen text-white overflow-hidden">
         <div className="absolute inset-0 bg-[url('/lovable-uploads/e60a3dd9-abf1-4543-b894-4e29e24097b5.png')] bg-cover bg-center"></div>
         <div className="absolute inset-0 bg-black/50"></div>
         <div className="relative z-10 flex items-center justify-center h-full">
           <div className="container mx-auto px-4 text-center">
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in text-white drop-shadow-2xl">
-              🏝️ Long Tail Boat Koh Samui - Private Tours from $30/person
-            </h1>
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in text-white drop-shadow-2xl">Long Tail Boat Koh Samui - Private Tours</h1>
             <p className="text-lg md:text-xl lg:text-2xl mb-4 max-w-3xl mx-auto text-white/95 drop-shadow-xl">
               Discover Koh Samui's hidden gems aboard your private long tail boat with hotel transfer included
             </p>
             <p className="text-base md:text-lg mb-8 max-w-2xl mx-auto text-white/90 drop-shadow-lg">
               ✅ Private skipper ✅ Hotel pickup ✅ From $30 per person ✅ Maximum 10 guests
             </p>
-            <Button 
-              size="lg" 
-              className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 md:px-8 md:py-4 text-base md:text-lg font-semibold rounded-full transform hover:scale-105 transition-all duration-300 shadow-2xl"
-              onClick={scrollToBooking}
-            >
+            <Button size="lg" className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 md:px-8 md:py-4 text-base md:text-lg font-semibold rounded-full transform hover:scale-105 transition-all duration-300 shadow-2xl" onClick={scrollToBooking}>
               <span className="hidden md:inline">Book Your Long Tail Boat Now</span>
               <span className="md:hidden">Book Now</span>
             </Button>
@@ -75,22 +67,37 @@ const Index = () => {
           <h3 className="text-xl text-center mb-12 text-gray-600">From $30 per person with everything included:</h3>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {[
-              { icon: "🛥️", title: "100% Private Long Tail Boat", desc: "Your own traditional Thai boat & skipper" },
-              { icon: "💰", title: "Best Price: From $30/Person", desc: "Includes hotel transfer & equipment" },
-              { icon: "🐷", title: "Famous Pig Island Visit", desc: "Meet the swimming pigs of Koh Madsum" },
-              { icon: "🏝️", title: "Secret Island Beaches", desc: "Pristine shores away from crowds" },
-              { icon: "🚐", title: "Free Hotel Pickup Included", desc: "Chaweng, Lamai, Bophut areas" },
-              { icon: "👨‍✈️", title: "Expert Local Skipper", desc: "English-speaking guide & safety certified" }
-            ].map((feature, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow duration-300">
+            {[{
+            icon: "🛥️",
+            title: "100% Private Long Tail Boat",
+            desc: "Your own traditional Thai boat & skipper"
+          }, {
+            icon: "💰",
+            title: "Best Price: From $30/Person",
+            desc: "Includes hotel transfer & equipment"
+          }, {
+            icon: "🐷",
+            title: "Famous Pig Island Visit",
+            desc: "Meet the swimming pigs of Koh Madsum"
+          }, {
+            icon: "🏝️",
+            title: "Secret Island Beaches",
+            desc: "Pristine shores away from crowds"
+          }, {
+            icon: "🚐",
+            title: "Free Hotel Pickup Included",
+            desc: "Chaweng, Lamai, Bophut areas"
+          }, {
+            icon: "👨‍✈️",
+            title: "Expert Local Skipper",
+            desc: "English-speaking guide & safety certified"
+          }].map((feature, index) => <Card key={index} className="text-center hover:shadow-lg transition-shadow duration-300">
                 <CardContent className="p-6">
                   <div className="text-4xl mb-4">{feature.icon}</div>
                   <h4 className="font-semibold text-lg mb-2">{feature.title}</h4>
                   <p className="text-gray-600">{feature.desc}</p>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </section>
@@ -156,25 +163,54 @@ const Index = () => {
           </p>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-            {[
-              { icon: "🧊", title: "Cooler with Fresh Drinks", desc: "Water, sodas, local beers", price: "1,000 THB" },
-              { icon: "🎣", title: "Fishing Equipment", desc: "Rods, bait and dedicated fishing spots", price: "300 THB" },
-              { icon: "🥗", title: "Thai Homemade Lunch", desc: "Authentic local meal on board", price: "450 THB / person" },
-              { icon: "🧋", title: "Tropical Fruits + Drink", desc: "Fresh fruit platter + soft drink", price: "350 THB / person" },
-              { icon: "🍾", title: "Champagne Bottle", desc: "Chilled champagne served on board", price: "1,800 THB" },
-              { icon: "🎂", title: "Birthday Package", desc: "Local cake + decorative balloons", price: "600 THB" },
-              { icon: "🎶", title: "Bluetooth Speaker + Playlist", desc: "Connect your phone for music", price: "100 THB" },
-              { icon: "🕓", title: "Extra Hour", desc: "Extend your long tail boat tour (1 hour)", price: "1,500 THB / hour" }
-            ].map((option, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
+            {[{
+            icon: "🧊",
+            title: "Cooler with Fresh Drinks",
+            desc: "Water, sodas, local beers",
+            price: "1,000 THB"
+          }, {
+            icon: "🎣",
+            title: "Fishing Equipment",
+            desc: "Rods, bait and dedicated fishing spots",
+            price: "300 THB"
+          }, {
+            icon: "🥗",
+            title: "Thai Homemade Lunch",
+            desc: "Authentic local meal on board",
+            price: "450 THB / person"
+          }, {
+            icon: "🧋",
+            title: "Tropical Fruits + Drink",
+            desc: "Fresh fruit platter + soft drink",
+            price: "350 THB / person"
+          }, {
+            icon: "🍾",
+            title: "Champagne Bottle",
+            desc: "Chilled champagne served on board",
+            price: "1,800 THB"
+          }, {
+            icon: "🎂",
+            title: "Birthday Package",
+            desc: "Local cake + decorative balloons",
+            price: "600 THB"
+          }, {
+            icon: "🎶",
+            title: "Bluetooth Speaker + Playlist",
+            desc: "Connect your phone for music",
+            price: "100 THB"
+          }, {
+            icon: "🕓",
+            title: "Extra Hour",
+            desc: "Extend your long tail boat tour (1 hour)",
+            price: "1,500 THB / hour"
+          }].map((option, index) => <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
                 <CardContent className="p-4 text-center">
                   <div className="text-3xl mb-3">{option.icon}</div>
                   <h4 className="font-semibold text-sm mb-2">{option.title}</h4>
                   <p className="text-xs text-gray-600 mb-3">{option.desc}</p>
                   <p className="font-bold text-blue-600">{option.price}</p>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </section>
@@ -209,22 +245,37 @@ const Index = () => {
           </h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {[
-              { icon: <MapPin className="text-blue-600" />, title: "Departure Point", desc: "Southern Koh Samui pier" },
-              { icon: <Clock className="text-blue-600" />, title: "Flexible Timing", desc: "Morning or afternoon departure" },
-              { icon: <Car className="text-blue-600" />, title: "Hotel Transfer Included", desc: "Free pickup from main areas" },
-              { icon: <Users className="text-blue-600" />, title: "English-Speaking Skipper", desc: "Professional local guide" },
-              { icon: <CheckCircle className="text-blue-600" />, title: "All Equipment Provided", desc: "Safety gear & insurance included" },
-              { icon: <Phone className="text-blue-600" />, title: "24/7 Support", desc: "Complete customer assistance" }
-            ].map((info, index) => (
-              <div key={index} className="flex items-center space-x-4">
+            {[{
+            icon: <MapPin className="text-blue-600" />,
+            title: "Departure Point",
+            desc: "Southern Koh Samui pier"
+          }, {
+            icon: <Clock className="text-blue-600" />,
+            title: "Flexible Timing",
+            desc: "Morning or afternoon departure"
+          }, {
+            icon: <Car className="text-blue-600" />,
+            title: "Hotel Transfer Included",
+            desc: "Free pickup from main areas"
+          }, {
+            icon: <Users className="text-blue-600" />,
+            title: "English-Speaking Skipper",
+            desc: "Professional local guide"
+          }, {
+            icon: <CheckCircle className="text-blue-600" />,
+            title: "All Equipment Provided",
+            desc: "Safety gear & insurance included"
+          }, {
+            icon: <Phone className="text-blue-600" />,
+            title: "24/7 Support",
+            desc: "Complete customer assistance"
+          }].map((info, index) => <div key={index} className="flex items-center space-x-4">
                 <div className="flex-shrink-0">{info.icon}</div>
                 <div>
                   <h4 className="font-semibold">{info.title}</h4>
                   <p className="text-gray-600">{info.desc}</p>
                 </div>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -239,11 +290,7 @@ const Index = () => {
             Create unforgettable memories with your private long tail boat, dedicated skipper, and seamless hotel transfer. 
             From romantic getaways to family adventures - your perfect Koh Samui experience awaits.
           </p>
-          <Button 
-            size="lg" 
-            className="bg-white text-blue-600 hover:bg-gray-100 px-6 py-3 md:px-8 md:py-4 text-base md:text-lg font-semibold rounded-full transform hover:scale-105 transition-all duration-300"
-            onClick={scrollToBooking}
-          >
+          <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 px-6 py-3 md:px-8 md:py-4 text-base md:text-lg font-semibold rounded-full transform hover:scale-105 transition-all duration-300" onClick={scrollToBooking}>
             <span className="hidden md:inline">👉 Book Your Long Tail Boat Now</span>
             <span className="md:hidden">👉 Book Now</span>
           </Button>
@@ -252,17 +299,17 @@ const Index = () => {
 
       {/* Footer */}
       <Footer />
-    </div>
-  );
+    </div>;
 };
 
 // Car icon component
-const Car = ({ className }: { className?: string }) => (
-  <svg className={className} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M7 17a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM17 17a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M5 17H3l2-8h10l2 8h-2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M9 9h6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-);
-
+const Car = ({
+  className
+}: {
+  className?: string;
+}) => <svg className={className} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M7 17a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM17 17a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M5 17H3l2-8h10l2 8h-2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M9 9h6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>;
 export default Index;
