@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -16,25 +17,27 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative h-screen bg-gradient-to-b from-blue-600 to-blue-800 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center opacity-80"></div>
+      <section className="relative h-screen text-white overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/lovable-uploads/e60a3dd9-abf1-4543-b894-4e29e24097b5.png')] bg-cover bg-center"></div>
+        <div className="absolute inset-0 bg-black/50"></div>
         <div className="relative z-10 flex items-center justify-center h-full">
           <div className="container mx-auto px-4 text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">
-              🏝️ Long Tail Boat Koh Samui - Private Tours from 1,000 THB/person
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in text-white drop-shadow-2xl">
+              🏝️ Long Tail Boat Koh Samui - Private Tours from $30/person
             </h1>
-            <p className="text-xl md:text-2xl mb-4 max-w-3xl mx-auto opacity-90">
+            <p className="text-lg md:text-xl lg:text-2xl mb-4 max-w-3xl mx-auto text-white/95 drop-shadow-xl">
               Discover Koh Samui's hidden gems aboard your private long tail boat with hotel transfer included
             </p>
-            <p className="text-lg mb-8 max-w-2xl mx-auto opacity-80">
-              ✅ Private skipper ✅ Hotel pickup ✅ From 1,000 THB per person ✅ Maximum 10 guests
+            <p className="text-base md:text-lg mb-8 max-w-2xl mx-auto text-white/90 drop-shadow-lg">
+              ✅ Private skipper ✅ Hotel pickup ✅ From $30 per person ✅ Maximum 10 guests
             </p>
             <Button 
               size="lg" 
-              className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg font-semibold rounded-full transform hover:scale-105 transition-all duration-300"
+              className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 md:px-8 md:py-4 text-base md:text-lg font-semibold rounded-full transform hover:scale-105 transition-all duration-300 shadow-2xl"
               onClick={scrollToBooking}
             >
-              Book Your Long Tail Boat Now - From 1,000 THB
+              <span className="hidden md:inline">Book Your Long Tail Boat Now</span>
+              <span className="md:hidden">Book Now</span>
             </Button>
           </div>
         </div>
@@ -49,7 +52,7 @@ const Index = () => {
           <div className="max-w-4xl mx-auto text-lg leading-relaxed text-gray-700 space-y-6">
             <p>
               Experience the authentic charm of a <strong>long tail boat Koh Samui</strong> adventure with our completely private tours. 
-              Starting from just <strong>1,000 THB per person with hotel transfer included</strong>.
+              Starting from just <strong>$30 per person with hotel transfer included</strong>.
             </p>
             <p>
               Navigate aboard a traditional Thai long tail boat to the pristine beaches of Pig Island (Koh Madsum), 
@@ -69,12 +72,12 @@ const Index = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800">
             Best Long Tail Boat Koh Samui Tours - Unbeatable Value
           </h2>
-          <h3 className="text-xl text-center mb-12 text-gray-600">From 1,000 THB per person with everything included:</h3>
+          <h3 className="text-xl text-center mb-12 text-gray-600">From $30 per person with everything included:</h3>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {[
               { icon: "🛥️", title: "100% Private Long Tail Boat", desc: "Your own traditional Thai boat & skipper" },
-              { icon: "💰", title: "Best Price: From 1,000 THB/Person", desc: "Includes hotel transfer & equipment" },
+              { icon: "💰", title: "Best Price: From $30/Person", desc: "Includes hotel transfer & equipment" },
               { icon: "🐷", title: "Famous Pig Island Visit", desc: "Meet the swimming pigs of Koh Madsum" },
               { icon: "🏝️", title: "Secret Island Beaches", desc: "Pristine shores away from crowds" },
               { icon: "🚐", title: "Free Hotel Pickup Included", desc: "Chaweng, Lamai, Bophut areas" },
@@ -99,7 +102,7 @@ const Index = () => {
             Long Tail Boat Koh Samui Pricing - All Inclusive
           </h2>
           <p className="text-center text-lg text-green-600 font-semibold mb-8">
-            🎉 Special Offer: Just 1,000 THB per person with hotel transfer included!
+            🎉 Special Offer: Just $30 per person with hotel transfer included!
           </p>
           
           <div className="max-w-4xl mx-auto">
@@ -183,7 +186,7 @@ const Index = () => {
             Book Your Long Tail Boat Koh Samui Tour
           </h2>
           <p className="text-center text-lg text-green-600 font-semibold mb-8">
-            🔥 Best Price Guaranteed: From 1,000 THB/person with private skipper & hotel transfer included
+            🔥 Best Price Guaranteed: From $30/person with private skipper & hotel transfer included
           </p>
           <BookingForm />
         </div>
@@ -238,10 +241,11 @@ const Index = () => {
           </p>
           <Button 
             size="lg" 
-            className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold rounded-full transform hover:scale-105 transition-all duration-300"
+            className="bg-white text-blue-600 hover:bg-gray-100 px-6 py-3 md:px-8 md:py-4 text-base md:text-lg font-semibold rounded-full transform hover:scale-105 transition-all duration-300"
             onClick={scrollToBooking}
           >
-            👉 Book Your Long Tail Boat Now - From 1,000 THB
+            <span className="hidden md:inline">👉 Book Your Long Tail Boat Now</span>
+            <span className="md:hidden">👉 Book Now</span>
           </Button>
         </div>
       </section>
