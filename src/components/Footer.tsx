@@ -1,20 +1,13 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 const Footer = () => {
-  return (
-    <footer className="bg-gray-800 text-white py-12">
+  return <footer className="bg-gray-800 text-white py-12">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-8">
           <div>
             <div className="flex items-center mb-4">
-              <img 
-                src="/lovable-uploads/6a900ce2-9e5b-422c-b9c0-b0b9ab4195c3.png"
-                alt="Long Tail Boat Koh Samui Logo"
-                className="w-12 h-12 mr-3"
-              />
-              <h3 className="text-xl font-bold">🏝️ Long Tail Boat Koh Samui</h3>
+              <img src="/lovable-uploads/6a900ce2-9e5b-422c-b9c0-b0b9ab4195c3.png" alt="Long Tail Boat Koh Samui Logo" className="w-12 h-12 mr-3" />
+              <h3 className="text-xl font-bold">Long Tail Boat Koh Samui</h3>
             </div>
             <p className="text-gray-300 leading-relaxed">
               Experience the authentic charm of Koh Samui with our private long tail boat tours. 
@@ -50,8 +43,6 @@ const Footer = () => {
           <p>&copy; 2024 Long Tail Boat Koh Samui. All rights reserved.</p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
