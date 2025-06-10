@@ -62,35 +62,24 @@ const BookingForm = () => {
 
   const [totalPrice, setTotalPrice] = useState(0);
 
-  // Calculate total price
+  // Calculate total price - 1200 THB per person
   useEffect(() => {
-    let basePrice = 0;
-    
-    // Base price according to formula
-    if (bookingData.formula === 'half-day') {
-      basePrice = 5000;
-    } else if (bookingData.formula === 'full-day') {
-      basePrice = 6500;
-    }
+    const pricePerPerson = 1200;
+    const basePrice = pricePerPerson * bookingData.people;
 
-    // Extra people (after 5 people)
-    if (bookingData.people > 5) {
-      basePrice += (bookingData.people - 5) * 1000;
-    }
-
-    // À la carte options
+    // Premium options are kept in code but not used in calculation for now
     let optionsPrice = 0;
-    if (bookingData.options.cooler) optionsPrice += 1000;
-    if (bookingData.options.fishing) optionsPrice += 300;
-    if (bookingData.options.lunch) optionsPrice += 450 * bookingData.people;
-    if (bookingData.options.fruits) optionsPrice += 350 * bookingData.people; // Updated price
-    if (bookingData.options.champagne) optionsPrice += 1800;
-    if (bookingData.options.birthday) optionsPrice += 600;
-    if (bookingData.options.speaker) optionsPrice += 100;
-    if (bookingData.options.extraHour) optionsPrice += 1500;
+    // if (bookingData.options.cooler) optionsPrice += 1000;
+    // if (bookingData.options.fishing) optionsPrice += 300;
+    // if (bookingData.options.lunch) optionsPrice += 450 * bookingData.people;
+    // if (bookingData.options.fruits) optionsPrice += 350 * bookingData.people;
+    // if (bookingData.options.champagne) optionsPrice += 1800;
+    // if (bookingData.options.birthday) optionsPrice += 600;
+    // if (bookingData.options.speaker) optionsPrice += 100;
+    // if (bookingData.options.extraHour) optionsPrice += 1500;
 
     setTotalPrice(basePrice + optionsPrice);
-  }, [bookingData]);
+  }, [bookingData.people]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -123,6 +112,7 @@ const BookingForm = () => {
     }));
   };
 
+  // Premium options data kept for future reactivation
   const optionsData = [
     { key: 'cooler', label: 'Cooler with fresh drinks', price: 1000, type: 'fixed' },
     { key: 'fishing', label: 'Fishing equipment', price: 300, type: 'fixed' },
@@ -143,7 +133,7 @@ const BookingForm = () => {
       <Card className="shadow-2xl border-2 border-blue-100">
         <CardHeader className="bg-gradient-to-r from-blue-50 to-orange-50">
           <CardTitle className="text-2xl text-center text-gray-800">
-            🛥️ Book Your Private Long Tail Boat - From 1,000 THB per person with hotel transfer included
+            🛥️ Book Your Private Long Tail Boat - 1,200 THB per person with hotel transfer included
           </CardTitle>
           <div className="text-center space-y-2 mt-4">
             <div className="flex justify-center items-center space-x-6 text-sm">
@@ -178,13 +168,13 @@ const BookingForm = () => {
                     <SelectItem value="half-day">
                       <div className="flex flex-col">
                         <span className="font-semibold">Half Day (4 hours)</span>
-                        <span className="text-sm text-gray-600">5,000 THB for up to 5 people</span>
+                        <span className="text-sm text-gray-600">1,200 THB per person</span>
                       </div>
                     </SelectItem>
                     <SelectItem value="full-day">
                       <div className="flex flex-col">
                         <span className="font-semibold">Full Day (6-8 hours)</span>
-                        <span className="text-sm text-gray-600">6,500 THB for up to 5 people</span>
+                        <span className="text-sm text-gray-600">1,200 THB per person</span>
                       </div>
                     </SelectItem>
                   </SelectContent>
@@ -233,11 +223,6 @@ const BookingForm = () => {
                     ))}
                   </SelectContent>
                 </Select>
-                {bookingData.people > 5 && (
-                  <p className="text-sm text-blue-600 font-semibold">
-                    +{(bookingData.people - 5) * 1000} THB for {bookingData.people - 5} extra guest{bookingData.people - 5 > 1 ? 's' : ''}
-                  </p>
-                )}
               </div>
 
               {/* Name */}
@@ -331,28 +316,30 @@ const BookingForm = () => {
               />
             </div>
 
-            {/* À la carte options */}
-            <div className="space-y-6">
-              <h3 className="text-xl font-bold text-gray-800">🎒 Premium Add-ons (Optional)</h3>
-              <div className="grid md:grid-cols-2 gap-4">
-                {optionsData.map((option) => (
-                  <div key={option.key} className="flex items-center space-x-3 p-4 border-2 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-all">
-                    <Checkbox
-                      id={option.key}
-                      checked={bookingData.options[option.key as keyof BookingData['options']]}
-                      onCheckedChange={(checked) => updateOption(option.key as keyof BookingData['options'], checked as boolean)}
-                    />
-                    <Label htmlFor={option.key} className="flex-1 cursor-pointer">
-                      <span className="font-semibold text-base">{option.label}</span>
-                      <span className="block text-sm text-gray-600">
-                        {option.price} THB {option.type === 'per_person' ? '/ person' : ''}
-                        {option.type === 'per_person' && ` - Total: ${option.price * bookingData.people} THB`}
-                      </span>
-                    </Label>
-                  </div>
-                ))}
+            {/* Premium options section - HIDDEN but kept in code for future reactivation */}
+            {false && (
+              <div className="space-y-6">
+                <h3 className="text-xl font-bold text-gray-800">🎒 Premium Add-ons (Optional)</h3>
+                <div className="grid md:grid-cols-2 gap-4">
+                  {optionsData.map((option) => (
+                    <div key={option.key} className="flex items-center space-x-3 p-4 border-2 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-all">
+                      <Checkbox
+                        id={option.key}
+                        checked={bookingData.options[option.key as keyof BookingData['options']]}
+                        onCheckedChange={(checked) => updateOption(option.key as keyof BookingData['options'], checked as boolean)}
+                      />
+                      <Label htmlFor={option.key} className="flex-1 cursor-pointer">
+                        <span className="font-semibold text-base">{option.label}</span>
+                        <span className="block text-sm text-gray-600">
+                          {option.price} THB {option.type === 'per_person' ? '/ person' : ''}
+                          {option.type === 'per_person' && ` - Total: ${option.price * bookingData.people} THB`}
+                        </span>
+                      </Label>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
 
             {/* Total price with marketing elements */}
             <div className="bg-gradient-to-r from-green-50 to-blue-50 p-8 rounded-xl border-2 border-green-200">
@@ -386,16 +373,21 @@ const BookingForm = () => {
             {/* Submit button */}
             <Button 
               type="submit" 
-              className="w-full bg-orange-500 hover:bg-orange-600 text-white py-6 text-base md:text-xl font-bold rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300"
+              className="w-full bg-orange-500 hover:bg-orange-600 text-white py-6 text-lg md:text-xl font-bold rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300"
               disabled={!bookingData.formula || !bookingData.date || !bookingData.name || !bookingData.email || !bookingData.hotelName || !bookingData.hotelAddress}
             >
               <span className="break-words text-center leading-tight">
-                🛥️ Book Now - {totalPrice.toLocaleString()} THB (${dollarTotal})
+                🛥️ Secure Your Long Tail Boat Now - {totalPrice.toLocaleString()} THB (${dollarTotal})
               </span>
             </Button>
             
-            {/* Professional confirmation text */}
+            {/* Professional confirmation text with pickup info */}
             <div className="text-center space-y-3">
+              <div className="bg-blue-50 p-4 rounded-lg mb-4">
+                <p className="text-sm text-blue-800 font-semibold">
+                  📞 After payment confirmation, you will be contacted by email or phone to arrange pickup time and location for your hotel transfer.
+                </p>
+              </div>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs md:text-sm">
                 <div className="flex items-center justify-center text-green-600 space-x-1">
                   <CheckCircle className="w-4 h-4 flex-shrink-0" />
