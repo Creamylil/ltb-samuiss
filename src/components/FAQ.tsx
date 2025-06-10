@@ -5,44 +5,44 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 const FAQ = () => {
   const faqs = [
     {
-      question: "Que se passe-t-il s'il pleut ?",
-      answer: "Vous pouvez reporter ou demander un remboursement intégral, sans frais. Votre sécurité et votre plaisir sont nos priorités."
+      question: "What happens if it rains?",
+      answer: "You can reschedule or request a full refund, free of charge. Your safety and enjoyment are our priorities."
     },
     {
-      question: "Peut-on annuler ?",
-      answer: "Oui. Annulation gratuite jusqu'à 48h avant l'excursion. Après ce délai, des frais d'annulation peuvent s'appliquer selon nos conditions générales."
+      question: "Can we cancel?",
+      answer: "Yes. Free cancellation up to 48 hours before the excursion. After this period, cancellation fees may apply according to our terms and conditions."
     },
     {
-      question: "Combien de personnes max ?",
-      answer: "10 personnes par bateau maximum pour votre sécurité et votre confort. Si vous êtes plus nombreux, nous pouvons organiser un second bateau."
+      question: "Maximum number of people?",
+      answer: "10 people per boat maximum for your safety and comfort. If you are more, we can organize a second boat."
     },
     {
-      question: "Dois-je savoir nager ?",
-      answer: "Non, ce n'est pas obligatoire. Nous fournissons des gilets de sauvetage, naviguons dans des zones calmes, et notre skipper expérimenté assure votre supervision."
+      question: "Do I need to know how to swim?",
+      answer: "No, it's not mandatory. We provide life jackets, navigate in calm areas, and our experienced skipper ensures your supervision."
     },
     {
-      question: "Le transfert hôtel est-il inclus ?",
-      answer: "Oui, dans les zones principales : Chaweng, Lamai, Bophut, et Maenam. Pour les autres zones, contactez-nous pour organiser le transfert."
+      question: "Is hotel transfer included?",
+      answer: "Yes, in the main areas: Chaweng, Lamai, Bophut, and Maenam. For other areas, contact us to arrange transfer."
     },
     {
-      question: "Que dois-je apporter ?",
-      answer: "Maillot de bain, serviette, crème solaire, lunettes de soleil, et téléphone chargé pour les photos ! Nous fournissons le reste."
+      question: "What should I bring?",
+      answer: "Swimsuit, towel, sunscreen, sunglasses, and charged phone for photos! We provide the rest."
     },
     {
-      question: "Y a-t-il une limite d'âge ?",
-      answer: "Non, notre excursion convient à tous les âges. Les enfants doivent être accompagnés d'un adulte et porter un gilet de sauvetage en permanence."
+      question: "Is there an age limit?",
+      answer: "No, our excursion is suitable for all ages. Children must be accompanied by an adult and wear a life jacket at all times."
     },
     {
-      question: "Peut-on modifier la réservation ?",
-      answer: "Oui, sous réserve de disponibilité. Les modifications sont gratuites jusqu'à 24h avant le départ. Contactez-nous pour toute demande."
+      question: "Can we modify the booking?",
+      answer: "Yes, subject to availability. Modifications are free up to 24 hours before departure. Contact us for any request."
     },
     {
-      question: "Le déjeuner est-il inclus dans le prix de base ?",
-      answer: "Non, le déjeuner est une option à la carte (450 THB/personne). Vous pouvez aussi apporter votre propre nourriture ou manger sur l'une des îles visitées."
+      question: "Is lunch included in the base price?",
+      answer: "No, lunch is an à la carte option (450 THB/person). You can also bring your own food or eat on one of the visited islands."
     },
     {
-      question: "Quelle est la meilleure période pour réserver ?",
-      answer: "Toute l'année ! La saison sèche (décembre à avril) offre les meilleures conditions, mais nous naviguons aussi pendant la saison verte avec des paysages magnifiques."
+      question: "What's the best time to book?",
+      answer: "All year round! The dry season (December to April) offers the best conditions, but we also sail during the green season with magnificent landscapes."
     }
   ];
 
@@ -50,7 +50,7 @@ const FAQ = () => {
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
-          ❓ Foire aux questions (FAQ)
+          ❓ Frequently Asked Questions (FAQ)
         </h2>
         
         <div className="max-w-4xl mx-auto">
@@ -69,12 +69,12 @@ const FAQ = () => {
         </div>
         
         <div className="text-center mt-12">
-          <p className="text-gray-600 mb-4">Vous avez d'autres questions ?</p>
+          <p className="text-gray-600 mb-4">Have other questions?</p>
           <a 
             href="tel:+66123456789" 
             className="inline-flex items-center text-blue-600 hover:text-blue-800 font-semibold"
           >
-            📞 Contactez-nous directement
+            📞 Contact us directly
           </a>
         </div>
       </div>

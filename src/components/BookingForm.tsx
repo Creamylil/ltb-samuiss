@@ -10,7 +10,7 @@ import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { CalendarIcon } from "lucide-react";
 import { format } from "date-fns";
-import { fr } from "date-fns/locale";
+import { enUS } from "date-fns/locale";
 
 interface BookingData {
   formula: 'half-day' | 'full-day' | '';
@@ -53,23 +53,23 @@ const BookingForm = () => {
 
   const [totalPrice, setTotalPrice] = useState(0);
 
-  // Calcul du prix total
+  // Calculate total price
   useEffect(() => {
     let basePrice = 0;
     
-    // Prix de base selon la formule
+    // Base price according to formula
     if (bookingData.formula === 'half-day') {
       basePrice = 5000;
     } else if (bookingData.formula === 'full-day') {
       basePrice = 6500;
     }
 
-    // Personnes supplémentaires (après 5 personnes)
+    // Extra people (after 5 people)
     if (bookingData.people > 5) {
       basePrice += (bookingData.people - 5) * 1000;
     }
 
-    // Options à la carte
+    // À la carte options
     let optionsPrice = 0;
     if (bookingData.options.cooler) optionsPrice += 1000;
     if (bookingData.options.fishing) optionsPrice += 300;
@@ -87,22 +87,22 @@ const BookingForm = () => {
     e.preventDefault();
     
     if (!bookingData.formula || !bookingData.date || !bookingData.name || !bookingData.email) {
-      alert('Veuillez remplir tous les champs obligatoires');
+      alert('Please fill in all required fields');
       return;
     }
 
     if (bookingData.people > 10) {
-      alert('Maximum 10 personnes par bateau. Veuillez réserver un deuxième bateau si vous êtes plus de 10 personnes.');
+      alert('Maximum 10 people per boat. Please book a second boat if you are more than 10 people.');
       return;
     }
 
-    // Ici vous intégreriez Stripe Checkout
-    // Pour le moment, on simule le processus
-    console.log('Données de réservation:', bookingData);
-    console.log('Prix total:', totalPrice, 'THB');
+    // Here you would integrate Stripe Checkout
+    // For now, we simulate the process
+    console.log('Booking data:', bookingData);
+    console.log('Total price:', totalPrice, 'THB');
     
-    // Simulation d'ouverture de Stripe Checkout
-    alert(`Redirection vers le paiement Stripe pour ${totalPrice} THB`);
+    // Simulation of opening Stripe Checkout
+    alert(`Redirecting to Stripe payment for ${totalPrice} THB`);
   };
 
   const updateOption = (option: keyof BookingData['options'], checked: boolean) => {
@@ -116,37 +116,37 @@ const BookingForm = () => {
   };
 
   const optionsData = [
-    { key: 'cooler', label: 'Glacière avec boissons fraîches', price: 1000, type: 'fixed' },
-    { key: 'fishing', label: 'Matériel de pêche', price: 300, type: 'fixed' },
-    { key: 'lunch', label: 'Déjeuner thaï maison', price: 450, type: 'per_person' },
-    { key: 'fruits', label: 'Fruits tropicaux + boisson', price: 150, type: 'per_person' },
-    { key: 'champagne', label: 'Bouteille de champagne', price: 1800, type: 'fixed' },
-    { key: 'birthday', label: 'Pack anniversaire', price: 600, type: 'fixed' },
-    { key: 'speaker', label: 'Enceinte Bluetooth + playlist', price: 100, type: 'fixed' },
-    { key: 'extraHour', label: 'Heure supplémentaire', price: 1500, type: 'fixed' },
+    { key: 'cooler', label: 'Cooler with fresh drinks', price: 1000, type: 'fixed' },
+    { key: 'fishing', label: 'Fishing equipment', price: 300, type: 'fixed' },
+    { key: 'lunch', label: 'Thai homemade lunch', price: 450, type: 'per_person' },
+    { key: 'fruits', label: 'Tropical fruits + drink', price: 150, type: 'per_person' },
+    { key: 'champagne', label: 'Champagne bottle', price: 1800, type: 'fixed' },
+    { key: 'birthday', label: 'Birthday package', price: 600, type: 'fixed' },
+    { key: 'speaker', label: 'Bluetooth speaker + playlist', price: 100, type: 'fixed' },
+    { key: 'extraHour', label: 'Extra hour', price: 1500, type: 'fixed' },
   ];
 
   return (
     <div className="max-w-4xl mx-auto">
       <Card className="shadow-xl">
         <CardHeader>
-          <CardTitle className="text-2xl text-center">Formulaire de réservation</CardTitle>
+          <CardTitle className="text-2xl text-center">Booking Form</CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
-              {/* Formule */}
+              {/* Package */}
               <div className="space-y-2">
-                <Label htmlFor="formula">Formule *</Label>
+                <Label htmlFor="formula">Package *</Label>
                 <Select value={bookingData.formula} onValueChange={(value: 'half-day' | 'full-day') => 
                   setBookingData(prev => ({ ...prev, formula: value }))
                 }>
                   <SelectTrigger>
-                    <SelectValue placeholder="Choisissez votre formule" />
+                    <SelectValue placeholder="Choose your package" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="half-day">Demi-journée (4h) - 5 000 THB</SelectItem>
-                    <SelectItem value="full-day">Journée complète (6-8h) - 6 500 THB</SelectItem>
+                    <SelectItem value="half-day">Half Day (4h) - 5,000 THB</SelectItem>
+                    <SelectItem value="full-day">Full Day (6-8h) - 6,500 THB</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -161,7 +161,7 @@ const BookingForm = () => {
                       className="w-full justify-start text-left font-normal"
                     >
                       <CalendarIcon className="mr-2 h-4 w-4" />
-                      {bookingData.date ? format(bookingData.date, "PPP", { locale: fr }) : "Sélectionner une date"}
+                      {bookingData.date ? format(bookingData.date, "PPP", { locale: enUS }) : "Select a date"}
                     </Button>
                   </PopoverTrigger>
                   <PopoverContent className="w-auto p-0">
@@ -176,9 +176,9 @@ const BookingForm = () => {
                 </Popover>
               </div>
 
-              {/* Nombre de personnes */}
+              {/* Number of people */}
               <div className="space-y-2">
-                <Label htmlFor="people">Nombre de personnes *</Label>
+                <Label htmlFor="people">Number of people *</Label>
                 <Select value={bookingData.people.toString()} onValueChange={(value) => 
                   setBookingData(prev => ({ ...prev, people: parseInt(value) }))
                 }>
@@ -188,26 +188,26 @@ const BookingForm = () => {
                   <SelectContent>
                     {Array.from({ length: 10 }, (_, i) => i + 1).map(num => (
                       <SelectItem key={num} value={num.toString()}>
-                        {num} personne{num > 1 ? 's' : ''}
+                        {num} person{num > 1 ? 's' : ''}
                       </SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
                 {bookingData.people > 5 && (
                   <p className="text-sm text-blue-600">
-                    +{(bookingData.people - 5) * 1000} THB pour {bookingData.people - 5} personne{bookingData.people - 5 > 1 ? 's' : ''} supplémentaire{bookingData.people - 5 > 1 ? 's' : ''}
+                    +{(bookingData.people - 5) * 1000} THB for {bookingData.people - 5} extra person{bookingData.people - 5 > 1 ? 's' : ''}
                   </p>
                 )}
               </div>
 
-              {/* Nom */}
+              {/* Name */}
               <div className="space-y-2">
-                <Label htmlFor="name">Nom complet *</Label>
+                <Label htmlFor="name">Full name *</Label>
                 <Input
                   id="name"
                   value={bookingData.name}
                   onChange={(e) => setBookingData(prev => ({ ...prev, name: e.target.value }))}
-                  placeholder="Votre nom complet"
+                  placeholder="Your full name"
                 />
               </div>
 
@@ -219,25 +219,25 @@ const BookingForm = () => {
                   type="email"
                   value={bookingData.email}
                   onChange={(e) => setBookingData(prev => ({ ...prev, email: e.target.value }))}
-                  placeholder="votre@email.com"
+                  placeholder="your@email.com"
                 />
               </div>
 
-              {/* Téléphone */}
+              {/* Phone */}
               <div className="space-y-2">
-                <Label htmlFor="phone">Téléphone</Label>
+                <Label htmlFor="phone">Phone</Label>
                 <Input
                   id="phone"
                   value={bookingData.phone}
                   onChange={(e) => setBookingData(prev => ({ ...prev, phone: e.target.value }))}
-                  placeholder="+33 6 XX XX XX XX"
+                  placeholder="+1 234 567 8900"
                 />
               </div>
             </div>
 
-            {/* Options à la carte */}
+            {/* À la carte options */}
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold">Options à la carte</h3>
+              <h3 className="text-lg font-semibold">À la carte options</h3>
               <div className="grid md:grid-cols-2 gap-4">
                 {optionsData.map((option) => (
                   <div key={option.key} className="flex items-center space-x-3 p-3 border rounded-lg hover:bg-gray-50">
@@ -249,7 +249,7 @@ const BookingForm = () => {
                     <Label htmlFor={option.key} className="flex-1 cursor-pointer">
                       <span className="font-medium">{option.label}</span>
                       <span className="block text-sm text-gray-600">
-                        {option.price} THB {option.type === 'per_person' ? '/ personne' : ''}
+                        {option.price} THB {option.type === 'per_person' ? '/ person' : ''}
                         {option.type === 'per_person' && ` (${option.price * bookingData.people} THB total)`}
                       </span>
                     </Label>
@@ -258,26 +258,26 @@ const BookingForm = () => {
               </div>
             </div>
 
-            {/* Prix total */}
+            {/* Total price */}
             <div className="bg-blue-50 p-6 rounded-lg">
               <div className="flex justify-between items-center text-xl font-bold">
-                <span>Prix total :</span>
+                <span>Total price:</span>
                 <span className="text-blue-600">{totalPrice.toLocaleString()} THB</span>
               </div>
               {totalPrice > 0 && (
                 <p className="text-sm text-gray-600 mt-2">
-                  Soit environ {Math.round(totalPrice / 35)} EUR (taux indicatif)
+                  Approximately {Math.round(totalPrice / 35)} EUR (indicative rate)
                 </p>
               )}
             </div>
 
-            {/* Bouton de soumission */}
+            {/* Submit button */}
             <Button 
               type="submit" 
               className="w-full bg-orange-500 hover:bg-orange-600 text-white py-4 text-lg font-semibold rounded-lg"
               disabled={!bookingData.formula || !bookingData.date || !bookingData.name || !bookingData.email}
             >
-              Réserver maintenant et payer {totalPrice.toLocaleString()} THB
+              Book now and pay {totalPrice.toLocaleString()} THB
             </Button>
           </form>
         </CardContent>
