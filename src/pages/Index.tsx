@@ -6,6 +6,7 @@ import BookingForm from '../components/BookingForm';
 import ImageGallery from '../components/ImageGallery';
 import Testimonials from '../components/Testimonials';
 import FAQ from '../components/FAQ';
+import Footer from '../components/Footer';
 
 const Index = () => {
   const scrollToBooking = () => {
