@@ -28,11 +28,6 @@ const ImageGallery = () => {
       src: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       alt: "Famous Pig Island and swimming pigs in Koh Samui",
       title: "Pig Island and its famous inhabitants"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1544713850-6e37e8b7f0c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      alt: "Snorkeling in crystal clear waters around Koh Samui",
-      title: "Paradise snorkeling experience"
     }
   ];
 

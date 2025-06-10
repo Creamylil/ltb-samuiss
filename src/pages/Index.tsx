@@ -1,8 +1,8 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle, Star, MapPin, Clock, Users, Camera, Phone } from 'lucide-react';
+import Header from '../components/Header';
 import BookingForm from '../components/BookingForm';
 import ImageGallery from '../components/ImageGallery';
 import Testimonials from '../components/Testimonials';
@@ -18,11 +18,14 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Header */}
+      <Header />
+
       {/* Hero Section */}
       <section className="relative h-screen text-white overflow-hidden">
         <div className="absolute inset-0 bg-[url('/lovable-uploads/e60a3dd9-abf1-4543-b894-4e29e24097b5.png')] bg-cover bg-center"></div>
         <div className="absolute inset-0 bg-black/50 md:bg-black/40"></div>
-        <div className="relative z-10 flex items-center justify-center h-full">
+        <div className="relative z-10 flex items-center justify-center h-full pt-20">
           <div className="container mx-auto px-4 text-center">
             <h1 className="text-2xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 animate-fade-in text-white">
               <span className="block mb-2 md:mb-0 md:inline">Long Tail Boat</span>{" "}
