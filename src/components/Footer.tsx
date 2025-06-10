@@ -19,8 +19,6 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
             <div className="space-y-2 text-gray-300">
               <p>📧 info@longtailboatkohsamui.com</p>
-              <p>📱 +66 123 456 789</p>
-              <p>💬 WhatsApp: +66 123 456 789</p>
               <p>📍 Koh Samui, Thailand</p>
             </div>
           </div>

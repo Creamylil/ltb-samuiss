@@ -21,21 +21,40 @@ const Index = () => {
       {/* Hero Section */}
       <section className="relative h-screen text-white overflow-hidden">
         <div className="absolute inset-0 bg-[url('/lovable-uploads/e60a3dd9-abf1-4543-b894-4e29e24097b5.png')] bg-cover bg-center"></div>
-        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="absolute inset-0 bg-black/50 md:bg-black/40"></div>
         <div className="relative z-10 flex items-center justify-center h-full">
           <div className="container mx-auto px-4 text-center">
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in text-white drop-shadow-2xl">
-              Long Tail Boat Koh Samui - Private Tours
+            <h1 className="text-2xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 animate-fade-in text-white">
+              <span className="block mb-2 md:mb-0 md:inline">Long Tail Boat</span>{" "}
+              <span className="block md:inline">Koh Samui</span>
+              <span className="block text-xl md:text-4xl lg:text-5xl mt-2 md:mt-0 md:inline"> - Private Tours</span>
             </h1>
-            <p className="text-lg md:text-xl lg:text-2xl mb-4 max-w-3xl mx-auto text-white/95 drop-shadow-xl">
-              Discover Koh Samui's hidden gems aboard your private long tail boat with hotel transfer included
-            </p>
-            <p className="text-base md:text-lg mb-8 max-w-2xl mx-auto text-white/90 drop-shadow-lg">
-              ✅ Private skipper ✅ Hotel pickup ✅ From 1200 THB per person ✅ Maximum 10 guests
-            </p>
+            <div className="bg-black/60 backdrop-blur-sm rounded-lg p-4 md:p-6 mb-6 md:mb-8 mx-auto max-w-4xl">
+              <p className="text-base md:text-xl lg:text-2xl mb-3 md:mb-4 text-white font-medium">
+                Discover Koh Samui's hidden gems aboard your private long tail boat with hotel transfer included
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 text-sm md:text-base text-white/95">
+                <div className="flex items-center justify-center md:justify-start">
+                  <CheckCircle className="w-4 h-4 mr-2 text-green-400 flex-shrink-0" />
+                  <span>Private skipper</span>
+                </div>
+                <div className="flex items-center justify-center md:justify-start">
+                  <CheckCircle className="w-4 h-4 mr-2 text-green-400 flex-shrink-0" />
+                  <span>Hotel pickup</span>
+                </div>
+                <div className="flex items-center justify-center md:justify-start">
+                  <CheckCircle className="w-4 h-4 mr-2 text-green-400 flex-shrink-0" />
+                  <span>From 1200 THB per person</span>
+                </div>
+                <div className="flex items-center justify-center md:justify-start">
+                  <CheckCircle className="w-4 h-4 mr-2 text-green-400 flex-shrink-0" />
+                  <span>Maximum 10 guests</span>
+                </div>
+              </div>
+            </div>
             <Button 
               size="lg" 
-              className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-3 md:px-8 md:py-4 text-sm md:text-lg font-semibold rounded-full transform hover:scale-105 transition-all duration-300 shadow-2xl" 
+              className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 md:px-8 md:py-4 text-base md:text-lg font-semibold rounded-full transform hover:scale-105 transition-all duration-300 shadow-2xl w-full md:w-auto" 
               onClick={scrollToBooking}
             >
               <span className="hidden md:inline">Book Your Long Tail Boat Now</span>

@@ -5,9 +5,24 @@ import { Card } from "@/components/ui/card";
 const ImageGallery = () => {
   const images = [
     {
-      src: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      src: "/lovable-uploads/174d889d-e83e-410f-bb3d-35b4e4250708.png",
       alt: "Long-tail boat on turquoise water in Koh Samui",
       title: "Your private long tail boat"
+    },
+    {
+      src: "/lovable-uploads/1d994e37-b5bf-4302-8175-65eb40d3d050.png",
+      alt: "Beautiful white sand beach in Koh Samui",
+      title: "Pristine beaches awaiting you"
+    },
+    {
+      src: "/lovable-uploads/d4a947e1-58f3-4433-ae51-b7b51398f33b.png",
+      alt: "Sunset view from beautiful beach with rocks",
+      title: "Magical sunset moments"
+    },
+    {
+      src: "/lovable-uploads/1faa4fe8-e4ac-4941-b1a3-65b958c156d1.png",
+      alt: "Long tail boat sunset view from aboard",
+      title: "Unforgettable sunset from your boat"
     },
     {
       src: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
@@ -18,21 +33,6 @@ const ImageGallery = () => {
       src: "https://images.unsplash.com/photo-1544713850-6e37e8b7f0c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       alt: "Snorkeling in crystal clear waters around Koh Samui",
       title: "Paradise snorkeling experience"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1502780402662-acc01917ee64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      alt: "Beach lunch during long tail boat tour",
-      title: "Lunch with your feet in the sand"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      alt: "Family enjoying long tail boat tour in Koh Samui",
-      title: "Perfect moments with family"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1574900897077-f5b8d52b1e49?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      alt: "Magical sunset from long tail boat in Koh Samui",
-      title: "Magical sunset from your boat"
     }
   ];
 
