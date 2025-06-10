@@ -9,7 +9,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { CalendarIcon, CheckCircle, Users, MapPin } from "lucide-react";
+import { CalendarIcon, CheckCircle, Users, MapPin, Shield, Clock, CreditCard } from "lucide-react";
 import { format } from "date-fns";
 import { enUS } from "date-fns/locale";
 
@@ -386,14 +386,39 @@ const BookingForm = () => {
             {/* Submit button */}
             <Button 
               type="submit" 
-              className="w-full bg-orange-500 hover:bg-orange-600 text-white py-6 text-xl font-bold rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300"
+              className="w-full bg-orange-500 hover:bg-orange-600 text-white py-6 text-base md:text-xl font-bold rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300"
               disabled={!bookingData.formula || !bookingData.date || !bookingData.name || !bookingData.email || !bookingData.hotelName || !bookingData.hotelAddress}
             >
-              🛥️ Secure Your Long Tail Boat Now - {totalPrice.toLocaleString()} THB (${dollarTotal})
+              <span className="break-words text-center leading-tight">
+                🛥️ Book Now - {totalPrice.toLocaleString()} THB (${dollarTotal})
+              </span>
             </Button>
-            <p className="text-center text-sm text-gray-600">
-              ✅ Instant confirmation ✅ Free cancellation up to 72h ✅ Free modification up to 48h ✅ Secure payment
-            </p>
+            
+            {/* Professional confirmation text */}
+            <div className="text-center space-y-3">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs md:text-sm">
+                <div className="flex items-center justify-center text-green-600 space-x-1">
+                  <CheckCircle className="w-4 h-4 flex-shrink-0" />
+                  <span className="font-medium">Instant Booking Confirmation</span>
+                </div>
+                <div className="flex items-center justify-center text-blue-600 space-x-1">
+                  <Clock className="w-4 h-4 flex-shrink-0" />
+                  <span className="font-medium">Free Cancellation (72h)</span>
+                </div>
+                <div className="flex items-center justify-center text-purple-600 space-x-1">
+                  <Users className="w-4 h-4 flex-shrink-0" />
+                  <span className="font-medium">Free Modifications (48h)</span>
+                </div>
+                <div className="flex items-center justify-center text-orange-600 space-x-1">
+                  <Shield className="w-4 h-4 flex-shrink-0" />
+                  <span className="font-medium">Secure Payment Gateway</span>
+                </div>
+              </div>
+              <p className="text-xs text-gray-500 max-w-2xl mx-auto">
+                Your booking is protected by our comprehensive cancellation and modification policies. 
+                All payments are processed through secure, encrypted channels for your safety.
+              </p>
+            </div>
           </form>
         </CardContent>
       </Card>

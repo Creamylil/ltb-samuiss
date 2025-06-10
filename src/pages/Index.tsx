@@ -6,28 +6,36 @@ import BookingForm from '../components/BookingForm';
 import ImageGallery from '../components/ImageGallery';
 import Testimonials from '../components/Testimonials';
 import FAQ from '../components/FAQ';
-import Footer from '../components/Footer';
+
 const Index = () => {
   const scrollToBooking = () => {
     document.getElementById('booking-form')?.scrollIntoView({
       behavior: 'smooth'
     });
   };
-  return <div className="min-h-screen bg-background">
+
+  return (
+    <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative h-screen text-white overflow-hidden">
         <div className="absolute inset-0 bg-[url('/lovable-uploads/e60a3dd9-abf1-4543-b894-4e29e24097b5.png')] bg-cover bg-center"></div>
-        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="absolute inset-0 bg-black/40"></div>
         <div className="relative z-10 flex items-center justify-center h-full">
           <div className="container mx-auto px-4 text-center">
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in text-white drop-shadow-2xl">Long Tail Boat Koh Samui - Private Tours</h1>
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in text-white drop-shadow-2xl">
+              Long Tail Boat Koh Samui - Private Tours
+            </h1>
             <p className="text-lg md:text-xl lg:text-2xl mb-4 max-w-3xl mx-auto text-white/95 drop-shadow-xl">
               Discover Koh Samui's hidden gems aboard your private long tail boat with hotel transfer included
             </p>
             <p className="text-base md:text-lg mb-8 max-w-2xl mx-auto text-white/90 drop-shadow-lg">
               ✅ Private skipper ✅ Hotel pickup ✅ From $30 per person ✅ Maximum 10 guests
             </p>
-            <Button size="lg" className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 md:px-8 md:py-4 text-base md:text-lg font-semibold rounded-full transform hover:scale-105 transition-all duration-300 shadow-2xl" onClick={scrollToBooking}>
+            <Button 
+              size="lg" 
+              className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-3 md:px-8 md:py-4 text-sm md:text-lg font-semibold rounded-full transform hover:scale-105 transition-all duration-300 shadow-2xl" 
+              onClick={scrollToBooking}
+            >
               <span className="hidden md:inline">Book Your Long Tail Boat Now</span>
               <span className="md:hidden">Book Now</span>
             </Button>
@@ -48,12 +56,77 @@ const Index = () => {
             </p>
             <p>
               Navigate aboard a traditional Thai long tail boat to the pristine beaches of Pig Island (Koh Madsum), 
-              the coral reefs of Koh Tan, or the secluded paradise of Koh Rap.
+              the coral reefs of Koh Tan, or the secluded paradise of various hidden islands.
             </p>
             <p>
               Whether you're a couple seeking romance, a family creating memories, or friends on adventure - 
               enjoy an exclusive <strong>long tail boat Koh Samui</strong> experience with your dedicated private skipper.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Itinerary Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800">
+            Your Long Tail Boat Koh Samui Adventure Itinerary
+          </h2>
+          <p className="text-center text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
+            Discover the most beautiful islands around Koh Samui with our carefully planned routes
+          </p>
+          
+          <div className="max-w-5xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="space-y-6">
+                <Card className="p-6 hover:shadow-lg transition-shadow">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold">1</div>
+                    <div>
+                      <h3 className="text-xl font-semibold mb-2">Koh Madsum (Pig Island)</h3>
+                      <p className="text-gray-600">Meet the famous swimming pigs and enjoy pristine white sand beaches. Perfect for photos and relaxation.</p>
+                    </div>
+                  </div>
+                </Card>
+                
+                <Card className="p-6 hover:shadow-lg transition-shadow">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold">2</div>
+                    <div>
+                      <h3 className="text-xl font-semibold mb-2">Koh Tan (Coral Island)</h3>
+                      <p className="text-gray-600">Exceptional snorkeling with vibrant coral reefs and tropical fish. Crystal clear waters perfect for swimming.</p>
+                    </div>
+                  </div>
+                </Card>
+                
+                <Card className="p-6 hover:shadow-lg transition-shadow">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold">3</div>
+                    <div>
+                      <h3 className="text-xl font-semibold mb-2">Hidden Beach Stops</h3>
+                      <p className="text-gray-600">Secret beaches accessible only by long tail boat. Enjoy secluded spots away from the crowds.</p>
+                    </div>
+                  </div>
+                </Card>
+                
+                <div className="bg-blue-50 p-6 rounded-lg">
+                  <h4 className="font-semibold text-lg mb-3 text-blue-800">Flexible Itinerary Options:</h4>
+                  <ul className="space-y-2 text-gray-700">
+                    <li className="flex items-center"><CheckCircle className="w-4 h-4 mr-2 text-green-600" />Customizable route based on weather conditions</li>
+                    <li className="flex items-center"><CheckCircle className="w-4 h-4 mr-2 text-green-600" />Additional stops for fishing or extended snorkeling</li>
+                    <li className="flex items-center"><CheckCircle className="w-4 h-4 mr-2 text-green-600" />Sunset tours available for evening departures</li>
+                  </ul>
+                </div>
+              </div>
+              
+              <div className="lg:order-first">
+                <img 
+                  src="/lovable-uploads/28a952c5-8f7a-4d0b-98c2-f8655337bea6.png" 
+                  alt="Long tail boat itinerary map showing Koh Madsum Pig Island, Koh Tan snorkeling, and Thong Krut pier departure point"
+                  className="w-full rounded-lg shadow-xl"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -290,7 +363,11 @@ const Index = () => {
             Create unforgettable memories with your private long tail boat, dedicated skipper, and seamless hotel transfer. 
             From romantic getaways to family adventures - your perfect Koh Samui experience awaits.
           </p>
-          <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 px-6 py-3 md:px-8 md:py-4 text-base md:text-lg font-semibold rounded-full transform hover:scale-105 transition-all duration-300" onClick={scrollToBooking}>
+          <Button 
+            size="lg" 
+            className="bg-white text-blue-600 hover:bg-gray-100 px-4 py-3 md:px-8 md:py-4 text-sm md:text-lg font-semibold rounded-full transform hover:scale-105 transition-all duration-300" 
+            onClick={scrollToBooking}
+          >
             <span className="hidden md:inline">👉 Book Your Long Tail Boat Now</span>
             <span className="md:hidden">👉 Book Now</span>
           </Button>
@@ -299,17 +376,17 @@ const Index = () => {
 
       {/* Footer */}
       <Footer />
-    </div>;
+    </div>
+  );
 };
 
 // Car icon component
-const Car = ({
-  className
-}: {
-  className?: string;
-}) => <svg className={className} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+const Car = ({ className }: { className?: string }) => (
+  <svg className={className} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M7 17a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM17 17a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     <path d="M5 17H3l2-8h10l2 8h-2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     <path d="M9 9h6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>;
+  </svg>
+);
+
 export default Index;
