@@ -19,35 +19,35 @@ const PaymentSuccess = () => {
                 <CheckCircle className="w-16 h-16 text-green-600" />
               </div>
               <CardTitle className="text-3xl text-green-700">
-                🎉 Paiement confirmé !
+                🎉 Payment confirmed!
               </CardTitle>
               <p className="text-lg text-gray-700 mt-4">
-                Votre réservation de long tail boat a été confirmée avec succès.
+                Your long tail boat booking has been successfully confirmed.
               </p>
             </CardHeader>
             <CardContent className="p-8">
               <div className="space-y-6">
                 <div className="bg-green-50 p-6 rounded-lg border border-green-200">
                   <h3 className="text-xl font-semibold text-green-800 mb-4">
-                    🚁 Prochaines étapes
+                    🚁 Next steps
                   </h3>
                   <div className="space-y-3 text-gray-700">
                     <div className="flex items-start space-x-3">
                       <Mail className="w-5 h-5 text-green-600 mt-0.5" />
                       <div>
-                        <strong>Confirmation par email :</strong> Vous recevrez un email de confirmation dans les minutes qui suivent.
+                        <strong>Email confirmation:</strong> You will receive a confirmation email within minutes.
                       </div>
                     </div>
                     <div className="flex items-start space-x-3">
                       <Phone className="w-5 h-5 text-green-600 mt-0.5" />
                       <div>
-                        <strong>Contact personnalisé :</strong> Notre équipe vous contactera par email ou téléphone pour organiser l'heure exacte de récupération à votre hôtel.
+                        <strong>Personal contact:</strong> Our team will contact you by email or phone to arrange the exact pickup time at your hotel.
                       </div>
                     </div>
                     <div className="flex items-start space-x-3">
                       <MapPin className="w-5 h-5 text-green-600 mt-0.5" />
                       <div>
-                        <strong>Transfert inclus :</strong> Le transfert depuis votre hôtel est inclus dans le prix.
+                        <strong>Transfer included:</strong> Hotel transfer is included in the price.
                       </div>
                     </div>
                   </div>
@@ -55,30 +55,30 @@ const PaymentSuccess = () => {
 
                 <div className="bg-blue-50 p-6 rounded-lg border border-blue-200">
                   <h3 className="text-xl font-semibold text-blue-800 mb-4">
-                    ℹ️ Informations importantes
+                    ℹ️ Important information
                   </h3>
                   <div className="space-y-2 text-gray-700">
-                    <p>• <strong>Annulation gratuite :</strong> Jusqu'à 72h avant la date du tour</p>
-                    <p>• <strong>Modifications gratuites :</strong> Jusqu'à 48h avant la date du tour</p>
-                    <p>• <strong>Météo :</strong> En cas de mauvais temps, nous vous proposerons une date alternative ou un remboursement complet</p>
-                    <p>• <strong>Contact d'urgence :</strong> +66 XX XXX XXXX (disponible 24/7)</p>
+                    <p>• <strong>Free cancellation:</strong> Up to 72h before tour date</p>
+                    <p>• <strong>Free modifications:</strong> Up to 48h before tour date</p>
+                    <p>• <strong>Weather:</strong> In case of bad weather, we will offer an alternative date or full refund</p>
+                    <p>• <strong>Emergency contact:</strong> +66 XX XXX XXXX (available 24/7)</p>
                   </div>
                 </div>
 
                 <div className="bg-orange-50 p-6 rounded-lg border border-orange-200">
                   <h3 className="text-xl font-semibold text-orange-800 mb-4">
-                    🛥️ Votre aventure vous attend !
+                    🛥️ Your adventure awaits!
                   </h3>
                   <p className="text-gray-700">
-                    Préparez-vous à vivre une journée inoubliable à bord de votre long tail boat privé. 
-                    N'oubliez pas d'apporter votre crème solaire, votre appareil photo et votre bonne humeur !
+                    Get ready for an unforgettable day aboard your private long tail boat. 
+                    Don't forget to bring your sunscreen, camera and good mood!
                   </p>
                 </div>
 
                 {sessionId && (
                   <div className="bg-gray-50 p-4 rounded-lg border">
                     <p className="text-sm text-gray-600">
-                      <strong>Numéro de transaction :</strong> {sessionId}
+                      <strong>Transaction number:</strong> {sessionId}
                     </p>
                   </div>
                 )}
@@ -86,12 +86,12 @@ const PaymentSuccess = () => {
                 <div className="text-center space-y-4">
                   <Button asChild className="w-full bg-blue-600 hover:bg-blue-700">
                     <Link to="/">
-                      Retour à l'accueil
+                      Back to home
                     </Link>
                   </Button>
                   <Button asChild variant="outline" className="w-full">
                     <Link to="/booking">
-                      Faire une nouvelle réservation
+                      Make a new booking
                     </Link>
                   </Button>
                 </div>

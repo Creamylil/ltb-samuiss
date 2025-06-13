@@ -33,7 +33,12 @@ serve(async (req) => {
     console.log(`Calculated price: ${basePrice} THB for ${people} people on ${formula} tour`);
 
     // Initialize Stripe with secret key
-    const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY") || "", {
+    const stripeSecretKey = Deno.env.get("STRIPE_SECRET_KEY");
+    if (!stripeSecretKey) {
+      throw new Error("Stripe secret key not configured");
+    }
+
+    const stripe = new Stripe(stripeSecretKey, {
       apiVersion: "2023-10-16",
     });
 
@@ -45,8 +50,8 @@ serve(async (req) => {
           price_data: {
             currency: "thb",
             product_data: {
-              name: `Long Tail Boat Tour - ${formula === 'half-day' ? 'Demi-journée (4h)' : 'Journée complète (6-8h)'}`,
-              description: `Tour privé pour ${people} personne${people > 1 ? 's' : ''} - ${bookingData.date} à ${bookingData.pickupTime}`,
+              name: `Long Tail Boat Tour - ${formula === 'half-day' ? 'Half Day (4h)' : 'Full Day (6-8h)'}`,
+              description: `Private tour for ${people} person${people > 1 ? 's' : ''} - ${bookingData.date} at ${bookingData.pickupTime}`,
             },
             unit_amount: basePrice * 100, // Stripe expects amount in smallest currency unit (satang for THB)
           },
