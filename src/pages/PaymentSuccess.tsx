@@ -2,12 +2,15 @@
 import React, { useEffect, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, Calendar, Users, MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { CheckCircle, Calendar, Users, MapPin, Phone, Mail, Clock, MessageCircle } from 'lucide-react';
 import { useSearchParams, Link } from 'react-router-dom';
 
 const PaymentSuccess = () => {
   const [searchParams] = useSearchParams();
   const sessionId = searchParams.get('session_id');
+
+  const whatsappNumber = "+33767028161";
+  const whatsappUrl = `https://wa.me/${whatsappNumber.replace('+', '')}?text=Hello! I just completed my booking for a longtail boat tour. My transaction number is: ${sessionId}`;
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-green-50 to-blue-50 py-16">
@@ -61,7 +64,6 @@ const PaymentSuccess = () => {
                     <p>• <strong>Free cancellation:</strong> Up to 72h before tour date</p>
                     <p>• <strong>Free modifications:</strong> Up to 48h before tour date</p>
                     <p>• <strong>Weather:</strong> In case of bad weather, we will offer an alternative date or full refund</p>
-                    <p>• <strong>Emergency contact:</strong> +66 XX XXX XXXX (available 24/7)</p>
                   </div>
                 </div>
 
@@ -73,6 +75,25 @@ const PaymentSuccess = () => {
                     Get ready for an unforgettable day aboard your private long tail boat. 
                     Don't forget to bring your sunscreen, camera and good mood!
                   </p>
+                </div>
+
+                {/* WhatsApp Contact Button */}
+                <div className="bg-green-100 p-6 rounded-lg border border-green-300">
+                  <h3 className="text-xl font-semibold text-green-800 mb-4">
+                    💬 Need immediate assistance?
+                  </h3>
+                  <p className="text-gray-700 mb-4">
+                    Contact us directly on WhatsApp for any questions or special requests.
+                  </p>
+                  <Button 
+                    asChild 
+                    className="w-full bg-green-500 hover:bg-green-600 text-white"
+                  >
+                    <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+                      <MessageCircle className="w-5 h-5 mr-2" />
+                      Contact us on WhatsApp
+                    </a>
+                  </Button>
                 </div>
 
                 {sessionId && (

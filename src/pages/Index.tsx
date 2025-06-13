@@ -8,6 +8,7 @@ import ImageGallery from '../components/ImageGallery';
 import Testimonials from '../components/Testimonials';
 import FAQ from '../components/FAQ';
 import Footer from '../components/Footer';
+import WhatsAppCTA from '../components/WhatsAppCTA';
 
 const Index = () => {
   const scrollToBooking = () => {
@@ -47,7 +48,7 @@ const Index = () => {
                 </div>
                 <div className="flex items-center justify-center md:justify-start">
                   <CheckCircle className="w-4 h-4 mr-2 text-green-400 flex-shrink-0" />
-                  <span>From 1200 THB per person</span>
+                  <span>From $36 per person</span>
                 </div>
                 <div className="flex items-center justify-center md:justify-start">
                   <CheckCircle className="w-4 h-4 mr-2 text-green-400 flex-shrink-0" />
@@ -55,14 +56,22 @@ const Index = () => {
                 </div>
               </div>
             </div>
-            <Button 
-              size="lg" 
-              className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 md:px-8 md:py-4 text-base md:text-lg font-semibold rounded-full transform hover:scale-105 transition-all duration-300 shadow-2xl w-full md:w-auto" 
-              onClick={scrollToBooking}
-            >
-              <span className="hidden md:inline">Book Your Long Tail Boat Now</span>
-              <span className="md:hidden">Book Now</span>
-            </Button>
+            <div className="space-y-4 md:space-y-0 md:space-x-4 md:flex md:justify-center md:items-center">
+              <Button 
+                size="lg" 
+                className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 md:px-8 md:py-4 text-base md:text-lg font-semibold rounded-full transform hover:scale-105 transition-all duration-300 shadow-2xl w-full md:w-auto" 
+                onClick={scrollToBooking}
+              >
+                <span className="hidden md:inline">Book Your Long Tail Boat Now</span>
+                <span className="md:hidden">Book Now</span>
+              </Button>
+              <WhatsAppCTA 
+                text="💬 Ask Questions on WhatsApp"
+                className="w-full md:w-auto"
+                size="lg"
+                message="Hi! I'm interested in your longtail boat tours in Koh Samui. Can you tell me more about your packages and availability?"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -76,7 +85,7 @@ const Index = () => {
           <div className="max-w-4xl mx-auto text-lg leading-relaxed text-gray-700 space-y-6">
             <p>
               Experience the authentic charm of a <strong>long tail boat Koh Samui</strong> adventure with our completely private tours. 
-              Starting from just <strong>1200 THB per person with hotel transfer included</strong>.
+              Starting from just <strong>$36 per person with hotel transfer included</strong>.
             </p>
             <p>
               Navigate aboard a traditional Thai long tail boat to the pristine beaches of Pig Island (Koh Madsum), 
@@ -86,6 +95,13 @@ const Index = () => {
               Whether you're a couple seeking romance, a family creating memories, or friends on adventure - 
               enjoy an exclusive <strong>long tail boat Koh Samui</strong> experience with your dedicated private skipper.
             </p>
+          </div>
+          
+          <div className="text-center mt-8">
+            <WhatsAppCTA 
+              text="Get Custom Tour Recommendations"
+              message="Hello! I would like to get personalized recommendations for a longtail boat tour in Koh Samui based on my preferences."
+            />
           </div>
         </div>
       </section>
@@ -161,7 +177,7 @@ const Index = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800">
             Best Long Tail Boat Koh Samui Tours - Unbeatable Value
           </h2>
-          <h3 className="text-xl text-center mb-12 text-gray-600">From 1200 THB per person with everything included:</h3>
+          <h3 className="text-xl text-center mb-12 text-gray-600">From $36 per person with everything included:</h3>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {[{
@@ -170,7 +186,7 @@ const Index = () => {
             desc: "Your own traditional Thai boat & skipper"
           }, {
             icon: "💰",
-            title: "Best Price: From 1200 THB/Person",
+            title: "Best Price: From $36/Person",
             desc: "Includes hotel transfer & equipment"
           }, {
             icon: "🐷",
@@ -196,6 +212,13 @@ const Index = () => {
                 </CardContent>
               </Card>)}
           </div>
+          
+          <div className="text-center mt-12">
+            <WhatsAppCTA 
+              text="💬 Have Questions? Chat with Us!"
+              message="Hi! I have some questions about your longtail boat tours. Can you help me choose the best option for my group?"
+            />
+          </div>
         </div>
       </section>
 
@@ -206,7 +229,7 @@ const Index = () => {
             Long Tail Boat Koh Samui Pricing - All Inclusive
           </h2>
           <p className="text-center text-lg text-green-600 font-semibold mb-8">
-            🎉 Special Offer: Just 1200 THB per person with hotel transfer included!
+            🎉 Special Offer: Just $36 per person with hotel transfer included!
           </p>
           
           <div className="max-w-4xl mx-auto">
@@ -222,13 +245,13 @@ const Index = () => {
                 <tbody>
                   <tr className="border-b">
                     <td className="px-6 py-4 font-semibold">Half Day (4 hours)</td>
-                    <td className="px-6 py-4 text-blue-600 font-bold">6,000 THB</td>
-                    <td className="px-6 py-4">+1,200 THB / person</td>
+                    <td className="px-6 py-4 text-blue-600 font-bold">$180</td>
+                    <td className="px-6 py-4">+$36 / person</td>
                   </tr>
                   <tr>
                     <td className="px-6 py-4 font-semibold">Full Day (6-8 hours)</td>
-                    <td className="px-6 py-4 text-blue-600 font-bold">9,000 THB</td>
-                    <td className="px-6 py-4">+1,400 THB / person</td>
+                    <td className="px-6 py-4 text-blue-600 font-bold">$270</td>
+                    <td className="px-6 py-4">+$42 / person</td>
                   </tr>
                 </tbody>
               </table>
@@ -252,6 +275,11 @@ const Index = () => {
                 <CheckCircle className="mr-2" />
                 Hotel transfer, safety equipment & skipper included
               </p>
+              
+              <WhatsAppCTA 
+                text="Get a Custom Quote"
+                message="Hello! I'd like to get a personalized quote for a longtail boat tour. Can you help me with pricing for my specific group size and preferences?"
+              />
             </div>
           </div>
         </div>
@@ -264,7 +292,7 @@ const Index = () => {
             Book Your Long Tail Boat Koh Samui Tour
           </h2>
           <p className="text-center text-lg text-green-600 font-semibold mb-8">
-            🔥 Best Price Guaranteed: From 1200 THB/person with private skipper & hotel transfer included
+            🔥 Best Price Guaranteed: From $36/person with private skipper & hotel transfer included
           </p>
           <BookingForm />
         </div>
@@ -319,6 +347,13 @@ const Index = () => {
                 </div>
               </div>)}
           </div>
+          
+          <div className="text-center mt-12">
+            <WhatsAppCTA 
+              text="Need Help Planning Your Trip?"
+              message="Hi! I need help planning my longtail boat tour in Koh Samui. Can you assist me with recommendations and logistics?"
+            />
+          </div>
         </div>
       </section>
 
@@ -332,14 +367,23 @@ const Index = () => {
             Create unforgettable memories with your private long tail boat, dedicated skipper, and seamless hotel transfer. 
             From romantic getaways to family adventures - your perfect Koh Samui experience awaits.
           </p>
-          <Button 
-            size="lg" 
-            className="bg-white text-blue-600 hover:bg-gray-100 px-4 py-3 md:px-8 md:py-4 text-sm md:text-lg font-semibold rounded-full transform hover:scale-105 transition-all duration-300" 
-            onClick={scrollToBooking}
-          >
-            <span className="hidden md:inline">👉 Book Your Long Tail Boat Now</span>
-            <span className="md:hidden">👉 Book Now</span>
-          </Button>
+          <div className="space-y-4 md:space-y-0 md:space-x-4 md:flex md:justify-center md:items-center">
+            <Button 
+              size="lg" 
+              className="bg-white text-blue-600 hover:bg-gray-100 px-4 py-3 md:px-8 md:py-4 text-sm md:text-lg font-semibold rounded-full transform hover:scale-105 transition-all duration-300 w-full md:w-auto" 
+              onClick={scrollToBooking}
+            >
+              <span className="hidden md:inline">👉 Book Your Long Tail Boat Now</span>
+              <span className="md:hidden">👉 Book Now</span>
+            </Button>
+            <WhatsAppCTA 
+              text="💬 Chat Before Booking"
+              className="bg-white text-green-600 hover:bg-gray-100 w-full md:w-auto"
+              variant="secondary"
+              size="lg"
+              message="Hi! I'm considering booking a longtail boat tour but have some questions first. Can you help me?"
+            />
+          </div>
         </div>
       </section>
 

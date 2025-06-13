@@ -8,11 +8,13 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Textarea } from "@/components/ui/textarea";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { CalendarIcon, CheckCircle, Users, MapPin, Shield, Clock } from "lucide-react";
+import { Checkbox } from "@/components/ui/checkbox";
+import { CalendarIcon, CheckCircle, Users, MapPin, Shield, Clock } from 'lucide-react';
 import { format } from "date-fns";
 import { enUS } from "date-fns/locale";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
+import { Link } from "react-router-dom";
 
 interface BookingData {
   formula: 'half-day' | 'full-day' | '';
@@ -45,21 +47,22 @@ const BookingForm = () => {
 
   const [totalPrice, setTotalPrice] = useState(0);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [termsAccepted, setTermsAccepted] = useState(false);
 
   // Calculate total price
   useEffect(() => {
     let basePrice = 0;
     
-    // Base price according to formula
+    // Base price according to formula (in USD)
     if (bookingData.formula === 'half-day') {
-      basePrice = 6000;
+      basePrice = 180;
     } else if (bookingData.formula === 'full-day') {
-      basePrice = 9000;
+      basePrice = 270;
     }
 
     // Extra people (after 5 people)
     if (bookingData.people > 5) {
-      const extraPeoplePrice = bookingData.formula === 'full-day' ? 1400 : 1200;
+      const extraPeoplePrice = bookingData.formula === 'full-day' ? 42 : 36;
       basePrice += (bookingData.people - 5) * extraPeoplePrice;
     }
 
@@ -73,6 +76,15 @@ const BookingForm = () => {
       toast({
         title: "Required fields",
         description: "Please fill in all required fields",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (!termsAccepted) {
+      toast({
+        title: "Terms and conditions",
+        description: "Please accept the terms and conditions to proceed",
         variant: "destructive",
       });
       return;
@@ -133,15 +145,13 @@ const BookingForm = () => {
   };
 
   const pricePerPerson = totalPrice / bookingData.people;
-  const dollarTotal = Math.round(totalPrice / 33);
-  const dollarPerPerson = Math.round(pricePerPerson / 33);
 
   return (
     <div className="max-w-4xl mx-auto">
       <Card className="shadow-2xl border-2 border-blue-100">
         <CardHeader className="bg-gradient-to-r from-blue-50 to-orange-50">
           <CardTitle className="text-2xl text-center text-gray-800">
-            🛥️ Book your private Long Tail Boat - From 1,200 THB per person with hotel transfer included
+            🛥️ Book your private Long Tail Boat - From $36 per person with hotel transfer included
           </CardTitle>
           <div className="text-center space-y-2 mt-4">
             <div className="flex justify-center items-center space-x-6 text-sm">
@@ -177,13 +187,13 @@ const BookingForm = () => {
                     <SelectItem value="half-day">
                       <div className="flex flex-col">
                         <span className="font-semibold">Half Day (4 hours)</span>
-                        <span className="text-sm text-gray-600">6,000 THB for up to 5 people</span>
+                        <span className="text-sm text-gray-600">$180 for up to 5 people</span>
                       </div>
                     </SelectItem>
                     <SelectItem value="full-day">
                       <div className="flex flex-col">
                         <span className="font-semibold">Full Day (6-8 hours)</span>
-                        <span className="text-sm text-gray-600">9,000 THB for up to 5 people</span>
+                        <span className="text-sm text-gray-600">$270 for up to 5 people</span>
                       </div>
                     </SelectItem>
                   </SelectContent>
@@ -234,7 +244,7 @@ const BookingForm = () => {
                 </Select>
                 {bookingData.people > 5 && (
                   <p className="text-sm text-blue-600 font-semibold">
-                    +{(bookingData.people - 5) * (bookingData.formula === 'full-day' ? 1400 : 1200)} THB for {bookingData.people - 5} additional guest{bookingData.people - 5 > 1 ? 's' : ''}
+                    +${(bookingData.people - 5) * (bookingData.formula === 'full-day' ? 42 : 36)} for {bookingData.people - 5} additional guest{bookingData.people - 5 > 1 ? 's' : ''}
                   </p>
                 )}
               </div>
@@ -356,14 +366,48 @@ const BookingForm = () => {
               />
             </div>
 
+            {/* Terms and Conditions Checkbox */}
+            <div className="flex items-start space-x-3 p-4 bg-gray-50 rounded-lg border">
+              <Checkbox 
+                id="terms" 
+                checked={termsAccepted}
+                onCheckedChange={(checked) => setTermsAccepted(checked as boolean)}
+                className="mt-1"
+              />
+              <div className="flex-1">
+                <Label 
+                  htmlFor="terms" 
+                  className="text-sm font-medium leading-relaxed cursor-pointer"
+                >
+                  I accept the{" "}
+                  <Link 
+                    to="/terms-conditions" 
+                    className="text-blue-600 hover:text-blue-800 underline"
+                    target="_blank"
+                  >
+                    terms and conditions
+                  </Link>
+                  {" "}and{" "}
+                  <Link 
+                    to="/sales-conditions" 
+                    className="text-blue-600 hover:text-blue-800 underline"
+                    target="_blank"
+                  >
+                    sales conditions
+                  </Link>
+                  . *
+                </Label>
+              </div>
+            </div>
+
             {/* Total price with marketing elements */}
             <div className="bg-gradient-to-r from-green-50 to-blue-50 p-8 rounded-xl border-2 border-green-200">
               <div className="text-center space-y-4">
                 <div className="text-3xl font-bold text-green-600">
-                  Total: {totalPrice.toLocaleString()} THB (${dollarTotal})
+                  Total: ${totalPrice}
                 </div>
                 <div className="text-lg text-gray-700">
-                  <strong>Only ${dollarPerPerson}/person ({Math.round(pricePerPerson).toLocaleString()} THB)</strong> - Best price in Koh Samui!
+                  <strong>Only ${Math.round(pricePerPerson)}/person</strong> - Best price in Koh Samui!
                 </div>
                 <div className="grid grid-cols-3 gap-4 text-sm">
                   <div className="flex items-center justify-center text-green-600">
@@ -394,7 +438,7 @@ const BookingForm = () => {
             <Button 
               type="submit" 
               className="w-full bg-orange-500 hover:bg-orange-600 text-white py-6 text-base md:text-xl font-bold rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300"
-              disabled={!bookingData.formula || !bookingData.date || !bookingData.name || !bookingData.email || !bookingData.hotelName || !bookingData.hotelAddress || !bookingData.pickupTime || isProcessing}
+              disabled={!bookingData.formula || !bookingData.date || !bookingData.name || !bookingData.email || !bookingData.hotelName || !bookingData.hotelAddress || !bookingData.pickupTime || !termsAccepted || isProcessing}
             >
               <span className="break-words text-center leading-tight flex items-center justify-center">
                 {isProcessing ? (
@@ -404,7 +448,7 @@ const BookingForm = () => {
                   </>
                 ) : (
                   <>
-                    🛥️ Book now - {totalPrice.toLocaleString()} THB (${dollarTotal})
+                    🛥️ Book now - ${totalPrice}
                   </>
                 )}
               </span>
