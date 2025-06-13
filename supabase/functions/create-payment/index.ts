@@ -16,6 +16,8 @@ serve(async (req) => {
   try {
     const { formula, people, bookingData } = await req.json();
     
+    console.log(`Processing payment for: ${formula} tour with ${people} people`);
+    
     // Calculate price based on formula and number of people
     let basePrice = 0;
     if (formula === 'half-day') {
@@ -35,14 +37,17 @@ serve(async (req) => {
     // Initialize Stripe with secret key
     const stripeSecretKey = Deno.env.get("STRIPE_SECRET_KEY");
     if (!stripeSecretKey) {
-      throw new Error("Stripe secret key not configured");
+      console.error("Stripe secret key is missing from environment variables");
+      throw new Error("Payment configuration error. Please contact support.");
     }
 
+    console.log("Stripe secret key found, initializing Stripe...");
     const stripe = new Stripe(stripeSecretKey, {
       apiVersion: "2023-10-16",
     });
 
     // Create checkout session for one-time payment
+    console.log("Creating Stripe checkout session...");
     const session = await stripe.checkout.sessions.create({
       customer_email: bookingData.email,
       line_items: [
@@ -76,7 +81,8 @@ serve(async (req) => {
       }
     });
 
-    console.log(`Created Stripe session: ${session.id}`);
+    console.log(`Successfully created Stripe session: ${session.id}`);
+    console.log(`Checkout URL: ${session.url}`);
 
     return new Response(JSON.stringify({ url: session.url }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -84,7 +90,21 @@ serve(async (req) => {
     });
   } catch (error) {
     console.error('Error creating payment session:', error);
-    return new Response(JSON.stringify({ error: error.message }), {
+    
+    // Provide more specific error messages
+    let errorMessage = 'An error occurred while processing your payment request.';
+    if (error.message.includes('Invalid API Key')) {
+      errorMessage = 'Payment configuration error. Please contact support.';
+    } else if (error.message.includes('network') || error.message.includes('connection')) {
+      errorMessage = 'Network error. Please check your connection and try again.';
+    } else if (error.message.includes('amount')) {
+      errorMessage = 'Invalid payment amount. Please refresh and try again.';
+    }
+    
+    return new Response(JSON.stringify({ 
+      error: errorMessage,
+      details: error.message 
+    }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
       status: 500,
     });
