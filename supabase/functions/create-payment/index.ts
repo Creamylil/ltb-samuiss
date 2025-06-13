@@ -18,21 +18,21 @@ serve(async (req) => {
     
     console.log(`Processing payment for: ${formula} tour with ${people} people`);
     
-    // Calculate price based on formula and number of people
-    let basePrice = 0;
+    // Calculate price in USD (converted from THB at ~33 THB = 1 USD)
+    let basePriceUSD = 0;
     if (formula === 'half-day') {
-      basePrice = 6000; // 6000 THB for up to 5 people
+      basePriceUSD = 180; // $180 USD for up to 5 people
       if (people > 5) {
-        basePrice += (people - 5) * 1200; // +1200 THB per extra person
+        basePriceUSD += (people - 5) * 36; // +$36 USD per extra person
       }
     } else if (formula === 'full-day') {
-      basePrice = 9000; // 9000 THB for up to 5 people
+      basePriceUSD = 270; // $270 USD for up to 5 people
       if (people > 5) {
-        basePrice += (people - 5) * 1400; // +1400 THB per extra person
+        basePriceUSD += (people - 5) * 42; // +$42 USD per extra person
       }
     }
 
-    console.log(`Calculated price: ${basePrice} THB for ${people} people on ${formula} tour`);
+    console.log(`Calculated price: $${basePriceUSD} USD for ${people} people on ${formula} tour`);
 
     // Initialize Stripe with secret key
     const stripeSecretKey = Deno.env.get("STRIPE_SECRET_KEY");
@@ -53,12 +53,12 @@ serve(async (req) => {
       line_items: [
         {
           price_data: {
-            currency: "thb",
+            currency: "usd", // Changed to USD
             product_data: {
               name: `Long Tail Boat Tour - ${formula === 'half-day' ? 'Half Day (4h)' : 'Full Day (6-8h)'}`,
               description: `Private tour for ${people} person${people > 1 ? 's' : ''} - ${bookingData.date} at ${bookingData.pickupTime}`,
             },
-            unit_amount: basePrice * 100, // Stripe expects amount in smallest currency unit (satang for THB)
+            unit_amount: basePriceUSD * 100, // Stripe expects amount in cents for USD
           },
           quantity: 1,
         },
