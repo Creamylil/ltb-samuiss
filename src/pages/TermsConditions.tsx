@@ -1,123 +1,129 @@
 
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 const TermsConditions = () => {
   return (
-    <div className="min-h-screen bg-background py-16">
-      <div className="container mx-auto px-4 max-w-4xl">
-        <Card className="shadow-lg">
-          <CardHeader>
-            <CardTitle className="text-3xl text-center text-gray-800">
-              Terms and Conditions
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="p-8 space-y-6">
-            <section>
-              <h2 className="text-xl font-semibold mb-3">1. Introduction</h2>
-              <p className="text-gray-700 leading-relaxed">
-                Welcome to JSD Media LLP's long tail boat tour services in Koh Samui. By booking our services, 
-                you agree to comply with and be bound by the following terms and conditions. Please review 
-                these carefully before making a booking.
-              </p>
-            </section>
+    <div className="min-h-screen bg-background">
+      <Header />
+      <div className="pt-24 pb-16">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <Card className="shadow-lg">
+            <CardHeader>
+              <CardTitle className="text-3xl text-center text-gray-800">
+                Conditions Générales d'Utilisation
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="p-8 space-y-6">
+              <section>
+                <h2 className="text-xl font-semibold mb-3">1. Introduction</h2>
+                <p className="text-gray-700 leading-relaxed">
+                  Bienvenue sur les services de tours en long tail boat de JSD MEDIA LLP à Koh Samui. En réservant nos services, 
+                  vous acceptez de vous conformer et d'être lié par les conditions générales suivantes. Veuillez les examiner 
+                  attentivement avant de faire une réservation.
+                </p>
+              </section>
 
-            <section>
-              <h2 className="text-xl font-semibold mb-3">2. Booking and Payment</h2>
-              <div className="text-gray-700 leading-relaxed space-y-2">
-                <p><strong>2.1 Booking Process:</strong> All bookings must be made through our official website or authorized agents.</p>
-                <p><strong>2.2 Payment:</strong> Full payment is required at the time of booking via our secure payment gateway.</p>
-                <p><strong>2.3 Confirmation:</strong> A booking confirmation will be sent within 24 hours of payment receipt.</p>
-                <p><strong>2.4 Pricing:</strong> All prices are displayed in Thai Baht (THB) and include applicable taxes.</p>
-              </div>
-            </section>
+              <section>
+                <h2 className="text-xl font-semibold mb-3">2. Réservation et paiement</h2>
+                <div className="text-gray-700 leading-relaxed space-y-2">
+                  <p><strong>2.1 Processus de réservation :</strong> Toutes les réservations doivent être effectuées via notre site web officiel ou agents autorisés.</p>
+                  <p><strong>2.2 Paiement :</strong> Le paiement intégral est requis au moment de la réservation via notre passerelle de paiement sécurisée.</p>
+                  <p><strong>2.3 Confirmation :</strong> Une confirmation de réservation sera envoyée dans les 24 heures suivant la réception du paiement.</p>
+                  <p><strong>2.4 Tarification :</strong> Tous les prix sont affichés en Baht thaïlandais (THB) et incluent les taxes applicables.</p>
+                </div>
+              </section>
 
-            <section>
-              <h2 className="text-xl font-semibold mb-3">3. Cancellation and Refund Policy</h2>
-              <div className="text-gray-700 leading-relaxed space-y-2">
-                <p><strong>3.1 Free Cancellation:</strong> Bookings can be cancelled without charge up to 72 hours before the scheduled departure time.</p>
-                <p><strong>3.2 Late Cancellation:</strong> Cancellations made within 72 hours of departure will not be eligible for a refund.</p>
-                <p><strong>3.3 Weather Cancellation:</strong> Tours cancelled due to adverse weather conditions will receive a full refund or free rescheduling.</p>
-                <p><strong>3.4 Refund Processing:</strong> Approved refunds will be processed within 5-10 business days to the original payment method.</p>
-              </div>
-            </section>
+              <section>
+                <h2 className="text-xl font-semibold mb-3">3. Politique d'annulation et de remboursement</h2>
+                <div className="text-gray-700 leading-relaxed space-y-2">
+                  <p><strong>3.1 Annulation gratuite :</strong> Les réservations peuvent être annulées sans frais jusqu'à 72 heures avant l'heure de départ prévue.</p>
+                  <p><strong>3.2 Annulation tardive :</strong> Les annulations effectuées dans les 72 heures précédant le départ ne donneront pas droit à un remboursement.</p>
+                  <p><strong>3.3 Annulation météorologique :</strong> Les tours annulés en raison de conditions météorologiques défavorables recevront un remboursement complet ou une option de reprogrammation gratuite.</p>
+                  <p><strong>3.4 Traitement des remboursements :</strong> Les remboursements approuvés seront traités dans les 5 à 10 jours ouvrables vers le mode de paiement original.</p>
+                </div>
+              </section>
 
-            <section>
-              <h2 className="text-xl font-semibold mb-3">4. Modification Policy</h2>
-              <div className="text-gray-700 leading-relaxed space-y-2">
-                <p><strong>4.1 Free Modifications:</strong> Changes to date, time, or guest numbers can be made free of charge up to 48 hours before departure.</p>
-                <p><strong>4.2 Late Modifications:</strong> Changes requested within 48 hours may incur additional charges based on availability.</p>
-                <p><strong>4.3 Upgrade Requests:</strong> Requests for additional services or upgrades are subject to availability and additional charges.</p>
-              </div>
-            </section>
+              <section>
+                <h2 className="text-xl font-semibold mb-3">4. Politique de modification</h2>
+                <div className="text-gray-700 leading-relaxed space-y-2">
+                  <p><strong>4.1 Modifications gratuites :</strong> Les changements de date, heure ou nombre d'invités peuvent être effectués gratuitement jusqu'à 48 heures avant le départ.</p>
+                  <p><strong>4.2 Modifications tardives :</strong> Les changements demandés dans les 48 heures précédant le départ peuvent entraîner des frais supplémentaires selon la disponibilité.</p>
+                  <p><strong>4.3 Demandes de mise à niveau :</strong> Les demandes de services supplémentaires ou de mises à niveau sont soumises à disponibilité et entraîneront des frais supplémentaires.</p>
+                </div>
+              </section>
 
-            <section>
-              <h2 className="text-xl font-semibold mb-3">5. Safety and Liability</h2>
-              <div className="text-gray-700 leading-relaxed space-y-2">
-                <p><strong>5.1 Safety Equipment:</strong> All necessary safety equipment is provided and must be worn as instructed by the skipper.</p>
-                <p><strong>5.2 Swimming Ability:</strong> Guests must inform us of any swimming limitations or medical conditions that may affect their safety.</p>
-                <p><strong>5.3 Insurance:</strong> We maintain comprehensive liability insurance, but personal travel insurance is strongly recommended.</p>
-                <p><strong>5.4 Liability Limitation:</strong> Our liability is limited to the value of the tour booked. We are not responsible for personal injuries, lost belongings, or indirect damages.</p>
-              </div>
-            </section>
+              <section>
+                <h2 className="text-xl font-semibold mb-3">5. Sécurité et responsabilité</h2>
+                <div className="text-gray-700 leading-relaxed space-y-2">
+                  <p><strong>5.1 Équipement de sécurité :</strong> Tout l'équipement de sécurité nécessaire est fourni et doit être porté selon les instructions du capitaine.</p>
+                  <p><strong>5.2 Capacité de nage :</strong> Les invités doivent nous informer de toute limitation de nage ou condition médicale pouvant affecter leur sécurité.</p>
+                  <p><strong>5.3 Assurance :</strong> Nous maintenons une assurance responsabilité civile complète, mais une assurance voyage personnelle est fortement recommandée.</p>
+                  <p><strong>5.4 Limitation de responsabilité :</strong> Notre responsabilité est limitée à la valeur du tour réservé. Nous ne sommes pas responsables des blessures personnelles, objets perdus ou dommages indirects.</p>
+                </div>
+              </section>
 
-            <section>
-              <h2 className="text-xl font-semibold mb-3">6. Passenger Responsibilities</h2>
-              <div className="text-gray-700 leading-relaxed space-y-2">
-                <p><strong>6.1 Conduct:</strong> All passengers must behave respectfully towards crew members and other guests.</p>
-                <p><strong>6.2 Instructions:</strong> Passengers must follow all safety instructions provided by the skipper and crew.</p>
-                <p><strong>6.3 Alcohol:</strong> Excessive alcohol consumption that endangers safety or disrupts other guests is prohibited.</p>
-                <p><strong>6.4 Environmental Responsibility:</strong> Passengers must respect marine life and local environments.</p>
-              </div>
-            </section>
+              <section>
+                <h2 className="text-xl font-semibold mb-3">6. Responsabilités des passagers</h2>
+                <div className="text-gray-700 leading-relaxed space-y-2">
+                  <p><strong>6.1 Conduite :</strong> Tous les passagers doivent se comporter respectueusement envers les membres d'équipage et autres invités.</p>
+                  <p><strong>6.2 Instructions :</strong> Les passagers doivent suivre toutes les instructions de sécurité fournies par le capitaine et l'équipage.</p>
+                  <p><strong>6.3 Alcool :</strong> La consommation excessive d'alcool qui met en danger la sécurité ou perturbe autres invités est interdite.</p>
+                  <p><strong>6.4 Responsabilité environnementale :</strong> Les passagers doivent respecter la vie marine et les environnements locaux.</p>
+                </div>
+              </section>
 
-            <section>
-              <h2 className="text-xl font-semibold mb-3">7. Force Majeure</h2>
-              <p className="text-gray-700 leading-relaxed">
-                We are not liable for cancellations or delays caused by circumstances beyond our control, 
-                including but not limited to severe weather, natural disasters, government restrictions, 
-                strikes, or other force majeure events.
-              </p>
-            </section>
+              <section>
+                <h2 className="text-xl font-semibold mb-3">7. Force majeure</h2>
+                <p className="text-gray-700 leading-relaxed">
+                  Nous ne sommes pas responsables des annulations ou retards causés par des circonstances indépendantes de notre volonté, 
+                  y compris mais sans s'y limiter les conditions météorologiques sévères, catastrophes naturelles, restrictions gouvernementales, 
+                  grèves ou autres événements de force majeure.
+                </p>
+              </section>
 
-            <section>
-              <h2 className="text-xl font-semibold mb-3">8. Privacy and Data Protection</h2>
-              <p className="text-gray-700 leading-relaxed">
-                We collect and process personal data in accordance with UK GDPR and data protection laws. 
-                Your information is used solely for booking management, customer service, and safety purposes. 
-                We do not share your data with third parties without your consent.
-              </p>
-            </section>
+              <section>
+                <h2 className="text-xl font-semibold mb-3">8. Protection de la vie privée et des données</h2>
+                <p className="text-gray-700 leading-relaxed">
+                  Nous collectons et traitons les données personnelles conformément au RGPD UK et aux lois sur la protection des données. 
+                  Vos informations sont utilisées uniquement pour la gestion des réservations, le service client et les fins de sécurité. 
+                  Nous ne partageons pas vos données avec des tiers sans votre consentement.
+                </p>
+              </section>
 
-            <section>
-              <h2 className="text-xl font-semibold mb-3">9. Dispute Resolution</h2>
-              <p className="text-gray-700 leading-relaxed">
-                Any disputes arising from these terms or our services will be handled through direct 
-                communication first. If resolution cannot be reached, disputes will be subject to 
-                English law and the jurisdiction of English courts.
-              </p>
-            </section>
+              <section>
+                <h2 className="text-xl font-semibold mb-3">9. Résolution des conflits</h2>
+                <p className="text-gray-700 leading-relaxed">
+                  Tout litige découlant de ces conditions ou de nos services sera d'abord traité par communication directe. 
+                  Si la résolution ne peut être atteinte, les litiges seront soumis au droit anglais et à la juridiction 
+                  des tribunaux anglais.
+                </p>
+              </section>
 
-            <section>
-              <h2 className="text-xl font-semibold mb-3">10. Changes to Terms</h2>
-              <p className="text-gray-700 leading-relaxed">
-                We reserve the right to modify these terms and conditions at any time. Updated terms 
-                will be posted on our website and will apply to all future bookings.
-              </p>
-            </section>
+              <section>
+                <h2 className="text-xl font-semibold mb-3">10. Modifications des conditions</h2>
+                <p className="text-gray-700 leading-relaxed">
+                  Nous nous réservons le droit de modifier ces conditions générales à tout moment. Les conditions mises à jour 
+                  seront publiées sur notre site web et s'appliqueront à toutes les réservations futures.
+                </p>
+              </section>
 
-            <section>
-              <h2 className="text-xl font-semibold mb-3">Contact Information</h2>
-              <div className="text-gray-700 leading-relaxed space-y-2">
-                <p><strong>Company:</strong> JSD Media LLP</p>
-                <p><strong>Registration:</strong> OC455142</p>
-                <p><strong>Address:</strong> 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, United Kingdom</p>
-                <p><strong>Email:</strong> info@longtailboatkohsamui.com</p>
-              </div>
-            </section>
-          </CardContent>
-        </Card>
+              <section>
+                <h2 className="text-xl font-semibold mb-3">Informations de contact</h2>
+                <div className="text-gray-700 leading-relaxed space-y-2">
+                  <p><strong>Société :</strong> JSD MEDIA LLP</p>
+                  <p><strong>Enregistrement :</strong> OC455142</p>
+                  <p><strong>Adresse :</strong> 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, United Kingdom</p>
+                  <p><strong>Email :</strong> info@longtailboatkohsamui.com</p>
+                </div>
+              </section>
+            </CardContent>
+          </Card>
+        </div>
       </div>
+      <Footer />
     </div>
   );
 };
