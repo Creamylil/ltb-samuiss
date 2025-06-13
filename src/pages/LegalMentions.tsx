@@ -13,79 +13,79 @@ const LegalMentions = () => {
           <Card className="shadow-lg">
             <CardHeader>
               <CardTitle className="text-3xl text-center text-gray-800">
-                Mentions Légales
+                Legal Notice
               </CardTitle>
             </CardHeader>
             <CardContent className="p-8 space-y-6">
               <section>
-                <h2 className="text-xl font-semibold mb-3">Informations légales</h2>
+                <h2 className="text-xl font-semibold mb-3">Legal Information</h2>
                 <div className="text-gray-700 leading-relaxed space-y-2">
-                  <p><strong>Site web :</strong> https://longtailboat-kohsamui.com/</p>
-                  <p><strong>Propriétaire :</strong> JSD MEDIA LLP</p>
-                  <p><strong>Numéro d'entreprise :</strong> OC455142 (enregistré en Angleterre et au Pays de Galles)</p>
-                  <p><strong>Adresse du siège social :</strong> 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, United Kingdom</p>
-                  <p><strong>Email de contact :</strong> info@longtailboat-kohsamui.com</p>
+                  <p><strong>Website:</strong> https://longtailboat-kohsamui.com/</p>
+                  <p><strong>Owner:</strong> JSD MEDIA LLP</p>
+                  <p><strong>Company Number:</strong> OC455142 (registered in England and Wales)</p>
+                  <p><strong>Registered Office Address:</strong> 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, United Kingdom</p>
+                  <p><strong>Contact Email:</strong> info@longtailboat-kohsamui.com</p>
                 </div>
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold mb-3">1. Éditeur</h2>
+                <h2 className="text-xl font-semibold mb-3">1. Publisher</h2>
                 <p className="text-gray-700 leading-relaxed">
-                  Ce site web est publié par JSD MEDIA LLP, une société enregistrée au Royaume-Uni agissant comme plateforme en ligne pour la réservation de tours privés en bateau à Koh Samui, Thaïlande. Le site web appartient et est géré par JSD MEDIA LLP.
+                  This website is published by JSD MEDIA LLP, a company registered in the United Kingdom acting as an online platform for booking private boat tours in Koh Samui, Thailand. The website is owned and operated by JSD MEDIA LLP.
                 </p>
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold mb-3">2. Hébergement</h2>
+                <h2 className="text-xl font-semibold mb-3">2. Hosting</h2>
                 <div className="text-gray-700 leading-relaxed space-y-2">
-                  <p>Le site web est conçu et hébergé par :</p>
+                  <p>The website is designed and hosted by:</p>
                   <p><strong>Lovable</strong></p>
-                  <p>Constructeur de sites web et fournisseur d'hébergement</p>
+                  <p>Website builder and hosting provider</p>
                   <p>https://www.lovable.so</p>
                 </div>
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold mb-3">3. Propriété intellectuelle</h2>
+                <h2 className="text-xl font-semibold mb-3">3. Intellectual Property</h2>
                 <p className="text-gray-700 leading-relaxed">
-                  Tout le contenu de ce site (y compris les textes, photos, vidéos, logos, mise en page et graphiques) est la propriété exclusive de JSD MEDIA LLP ou utilisé sous licence. Toute reproduction, modification ou distribution sans autorisation écrite est strictement interdite.
+                  All content on this site (including texts, photos, videos, logos, layout, and graphics) is the exclusive property of JSD MEDIA LLP or used under license. Any reproduction, modification, or distribution without written authorization is strictly prohibited.
                 </p>
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold mb-3">4. Activité commerciale et responsabilité</h2>
+                <h2 className="text-xl font-semibold mb-3">4. Business Activity and Liability</h2>
                 <div className="text-gray-700 leading-relaxed space-y-2">
-                  <p>JSD MEDIA LLP opère en tant que revendeur et agent de réservation. Tous les tours sont fournis par Smile Samui Tour, un prestataire de services indépendant situé à Koh Samui, Thaïlande.</p>
-                  <p>La Plateforme gère la réservation et le paiement. Le service réel (transport, navigation, équipement, sécurité) est fourni sous la seule responsabilité de l'opérateur local.</p>
-                  <p><strong>JSD MEDIA LLP ne peut être tenu responsable de :</strong></p>
+                  <p>JSD MEDIA LLP operates as a reseller and booking agent. All tours are provided by Smile Samui Tour, an independent service provider located in Koh Samui, Thailand.</p>
+                  <p>The Platform handles booking and payment. The actual service (transport, navigation, equipment, safety) is provided under the sole responsibility of the local operator.</p>
+                  <p><strong>JSD MEDIA LLP cannot be held liable for:</strong></p>
                   <ul className="list-disc list-inside ml-4 space-y-1">
-                    <li>Retards ou annulations par le prestataire</li>
-                    <li>Accidents ou dommages pendant le tour</li>
-                    <li>La qualité ou l'exécution du service local</li>
+                    <li>Delays or cancellations by the service provider</li>
+                    <li>Accidents or damages during the tour</li>
+                    <li>The quality or execution of the local service</li>
                   </ul>
                 </div>
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold mb-3">5. Données et cookies</h2>
+                <h2 className="text-xl font-semibold mb-3">5. Data and Cookies</h2>
                 <div className="text-gray-700 leading-relaxed space-y-2">
-                  <p>Ce site web peut collecter des données (via des formulaires de réservation ou des outils d'analyse) strictement pour la prestation de services et le suivi des performances. Aucune donnée personnelle n'est partagée ou vendue.</p>
-                  <p>Vous avez le droit d'accéder, modifier ou supprimer vos informations personnelles. Pour toute demande relative aux données, veuillez nous envoyer un email à : info@longtailboat-kohsamui.com.</p>
-                  <p>Ce site utilise des cookies essentiels pour le fonctionnement et peut utiliser des cookies de performance pour améliorer l'expérience utilisateur. Vous pouvez désactiver les cookies via les paramètres de votre navigateur.</p>
+                  <p>This website may collect data (via booking forms or analytics tools) strictly for service delivery and performance tracking. No personal data is shared or sold.</p>
+                  <p>You have the right to access, modify, or delete your personal information. For any data-related requests, please email us at: info@longtailboat-kohsamui.com.</p>
+                  <p>This site uses essential cookies for functionality and may use performance cookies to improve user experience. You can disable cookies via your browser settings.</p>
                 </div>
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold mb-3">6. Droit applicable</h2>
+                <h2 className="text-xl font-semibold mb-3">6. Applicable Law</h2>
                 <p className="text-gray-700 leading-relaxed">
-                  Cette mention légale et toutes les questions connexes sont régies par les lois de l'Angleterre et du Pays de Galles. Tout litige juridique relèvera de la juridiction exclusive des tribunaux de Londres (Royaume-Uni).
+                  This legal notice and all related matters are governed by the laws of England and Wales. Any legal dispute shall be subject to the exclusive jurisdiction of the courts of London (United Kingdom).
                 </p>
               </section>
 
               <section>
                 <h2 className="text-xl font-semibold mb-3">📬 Contact</h2>
                 <p className="text-gray-700 leading-relaxed">
-                  Pour toute question ou plainte relative à ce site ou aux services fournis, veuillez contacter :
+                  For any questions or complaints related to this site or the services provided, please contact:
                   <br />
                   📧 info@longtailboat-kohsamui.com
                 </p>

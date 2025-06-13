@@ -13,107 +13,107 @@ const TermsConditions = () => {
           <Card className="shadow-lg">
             <CardHeader>
               <CardTitle className="text-3xl text-center text-gray-800">
-                Conditions Générales de Vente
+                Terms and Conditions
               </CardTitle>
             </CardHeader>
             <CardContent className="p-8 space-y-6">
               <div className="text-sm text-gray-600 mb-6">
-                Dernière mise à jour : 13 juin 2025
+                Last updated: June 13, 2025
               </div>
 
               <section>
                 <p className="text-gray-700 leading-relaxed">
-                  Ces Conditions Générales régissent la relation contractuelle entre :
+                  These Terms and Conditions govern the contractual relationship between:
                   <br />
                   <strong>JSD MEDIA LLP</strong>
                   <br />
-                  Enregistrée au Royaume-Uni sous le numéro OC455142
+                  Registered in the United Kingdom under number OC455142
                   <br />
-                  Adresse enregistrée : 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ
+                  Registered address: 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ
                   <br />
-                  Ci-après dénommée "la Plateforme",
+                  Hereinafter referred to as "the Platform",
                   <br />
-                  et tout individu effectuant une réservation via le site web, ci-après dénommé "le Client".
+                  and any individual making a booking via the website, hereinafter referred to as "the Customer".
                 </p>
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold mb-3">1. OBJET</h2>
+                <h2 className="text-xl font-semibold mb-3">1. PURPOSE</h2>
                 <p className="text-gray-700 leading-relaxed">
-                  La Plateforme vend des tours privés en bateau à Koh Samui (Thaïlande) via son site web. 
-                  Les services réels sont délivrés par un opérateur local tiers : Smile Samui Tour. 
-                  En réservant un service via le site web, le Client accepte toutes les conditions énoncées dans ce document.
+                  The Platform sells private boat tours in Koh Samui (Thailand) via its website. 
+                  The actual services are delivered by a third-party local operator: Smile Samui Tour. 
+                  By booking a service via the website, the Customer accepts all conditions outlined in this document.
                 </p>
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold mb-3">2. RÔLE DE LA PLATEFORME</h2>
+                <h2 className="text-xl font-semibold mb-3">2. PLATFORM ROLE</h2>
                 <p className="text-gray-700 leading-relaxed">
-                  La Plateforme opère en tant que revendeur indépendant de services de tours en bateau. 
-                  Elle gère la gestion des réservations, la collecte des paiements, et transfère le montant convenu au prestataire local. 
-                  L'exécution du tour est la seule responsabilité du prestataire local, Smile Samui Tour.
+                  The Platform operates as an independent reseller of boat tour services. 
+                  It handles booking management, payment collection, and transfers the agreed amount to the local service provider. 
+                  Tour execution is the sole responsibility of the local provider, Smile Samui Tour.
                 </p>
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold mb-3">3. DÉTAILS DU SERVICE</h2>
+                <h2 className="text-xl font-semibold mb-3">3. SERVICE DETAILS</h2>
                 <div className="text-gray-700 leading-relaxed space-y-2">
-                  <p>Les tours disponibles incluent :</p>
+                  <p>Available tours include:</p>
                   <ul className="list-disc list-inside ml-4">
-                    <li>Tour demi-journée : 4 heures</li>
-                    <li>Tour journée complète : 6 heures</li>
+                    <li>Half-day tour: 4 hours</li>
+                    <li>Full-day tour: 6 hours</li>
                   </ul>
-                  <p>Chaque tour inclut la location d'un bateau privé pour jusqu'à 10 personnes.</p>
-                  <p>Les horaires, points de départ et options supplémentaires sont clairement listés sur la page de réservation de chaque tour.</p>
+                  <p>Each tour includes rental of a private boat for up to 10 people.</p>
+                  <p>Schedules, departure points, and additional options are clearly listed on each tour's booking page.</p>
                 </div>
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold mb-3">4. PAIEMENT</h2>
+                <h2 className="text-xl font-semibold mb-3">4. PAYMENT</h2>
                 <p className="text-gray-700 leading-relaxed">
-                  Le paiement intégral est requis au moment de la réservation. 
-                  Une réservation est considérée comme confirmée une fois que le paiement est traité et validé. 
-                  Tous les paiements sont traités de manière sécurisée par JSD MEDIA LLP via Stripe, carte de crédit, ou autres méthodes de paiement sécurisées.
+                  Full payment is required at the time of booking. 
+                  A booking is considered confirmed once payment is processed and validated. 
+                  All payments are processed securely by JSD MEDIA LLP via Stripe, credit card, or other secure payment methods.
                 </p>
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold mb-3">5. POLITIQUE D'ANNULATION</h2>
+                <h2 className="text-xl font-semibold mb-3">5. CANCELLATION POLICY</h2>
                 <div className="text-gray-700 leading-relaxed space-y-2">
-                  <p>Les clients peuvent annuler leur réservation jusqu'à 2 jours avant le tour prévu.</p>
-                  <p>Après cette échéance, aucun remboursement ne sera garanti, sauf accord en cas exceptionnel.</p>
-                  <p>En cas de mauvais temps ou de force majeure, le client peut se voir proposer soit une reprogrammation soit un remboursement partiel, à la discrétion de la Plateforme.</p>
+                  <p>Customers can cancel their booking up to 2 days before the scheduled tour.</p>
+                  <p>After this deadline, no refund will be guaranteed, except by agreement in exceptional cases.</p>
+                  <p>In case of bad weather or force majeure, the customer may be offered either rescheduling or a partial refund, at the Platform's discretion.</p>
                 </div>
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold mb-3">6. RESPONSABILITÉ</h2>
+                <h2 className="text-xl font-semibold mb-3">6. LIABILITY</h2>
                 <div className="text-gray-700 leading-relaxed space-y-2">
-                  <p>Le service lui-même (navigation, sécurité, équipement, assistance) est opéré par le prestataire local, Smile Samui Tour, sous leurs propres licences et assurance.</p>
-                  <p><strong>La Plateforme ne peut être tenue responsable de :</strong></p>
+                  <p>The service itself (navigation, safety, equipment, assistance) is operated by the local provider, Smile Samui Tour, under their own licenses and insurance.</p>
+                  <p><strong>The Platform cannot be held liable for:</strong></p>
                   <ul className="list-disc list-inside ml-4">
-                    <li>L'exécution du service</li>
-                    <li>Tout incident, dommage ou retard pendant le tour</li>
-                    <li>La qualité du service fourni par l'opérateur local</li>
+                    <li>Service execution</li>
+                    <li>Any incident, damage, or delay during the tour</li>
+                    <li>The quality of service provided by the local operator</li>
                   </ul>
-                  <p>Toutes les plaintes liées au service doivent être adressées directement à l'opérateur local.</p>
+                  <p>All service-related complaints must be addressed directly to the local operator.</p>
                 </div>
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold mb-3">7. DONNÉES PERSONNELLES</h2>
+                <h2 className="text-xl font-semibold mb-3">7. PERSONAL DATA</h2>
                 <p className="text-gray-700 leading-relaxed">
-                  Les données du client sont collectées uniquement dans le but de traiter la réservation et faciliter la communication avec le prestataire local. 
-                  Elles ne seront pas vendues ou utilisées à des fins marketing sans consentement explicite. 
-                  Veuillez vous référer à notre Politique de Confidentialité pour plus de détails.
+                  Customer data is collected solely for the purpose of processing the booking and facilitating communication with the local service provider. 
+                  It will not be sold or used for marketing purposes without explicit consent. 
+                  Please refer to our Privacy Policy for more details.
                 </p>
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold mb-3">8. DROIT APPLICABLE</h2>
+                <h2 className="text-xl font-semibold mb-3">8. APPLICABLE LAW</h2>
                 <p className="text-gray-700 leading-relaxed">
-                  Ces Conditions Générales sont régies par les lois de l'Angleterre et du Pays de Galles. 
-                  Tout litige relèvera de la juridiction exclusive des tribunaux de Londres (Royaume-Uni), sauf résolution amiable préalable.
+                  These Terms and Conditions are governed by the laws of England and Wales. 
+                  Any dispute shall be subject to the exclusive jurisdiction of the courts of London (United Kingdom), except prior amicable resolution.
                 </p>
               </section>
             </CardContent>

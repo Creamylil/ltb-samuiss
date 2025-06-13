@@ -34,13 +34,13 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Legal</h4>
             <div className="space-y-2">
               <Link to="/terms-conditions" className="block text-gray-300 hover:text-white transition-colors">
-                Conditions Générales de Vente
+                Terms and Conditions
               </Link>
               <Link to="/sales-conditions" className="block text-gray-300 hover:text-white transition-colors">
-                Conditions d'Utilisation
+                Terms of Use
               </Link>
               <Link to="/legal-mentions" className="block text-gray-300 hover:text-white transition-colors">
-                Mentions Légales
+                Legal Notice
               </Link>
             </div>
           </div>
