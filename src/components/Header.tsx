@@ -9,7 +9,7 @@ const Header = () => {
           <img 
             src="/lovable-uploads/6a900ce2-9e5b-422c-b9c0-b0b9ab4195c3.png"
             alt="Long Tail Boat Koh Samui Logo"
-            className="w-16 h-16 md:w-20 md:h-20"
+            className="w-24 h-24 md:w-32 md:h-32 lg:w-40 lg:h-40"
           />
         </div>
       </div>

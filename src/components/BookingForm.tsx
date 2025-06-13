@@ -45,28 +45,35 @@ const BookingForm = () => {
     comment: '',
   });
 
-  const [totalPrice, setTotalPrice] = useState(0);
+  const [totalPriceTHB, setTotalPriceTHB] = useState(0);
+  const [totalPriceUSD, setTotalPriceUSD] = useState(0);
   const [isProcessing, setIsProcessing] = useState(false);
   const [termsAccepted, setTermsAccepted] = useState(false);
 
   // Calculate total price
   useEffect(() => {
-    let basePrice = 0;
+    let basePriceTHB = 0;
+    let basePriceUSD = 0;
     
-    // Base price according to formula (in USD)
+    // Base price according to formula
     if (bookingData.formula === 'half-day') {
-      basePrice = 180;
+      basePriceTHB = 6000; // ฿6,000
+      basePriceUSD = 180;   // $180
     } else if (bookingData.formula === 'full-day') {
-      basePrice = 270;
+      basePriceTHB = 9000; // ฿9,000
+      basePriceUSD = 270;   // $270
     }
 
     // Extra people (after 5 people)
     if (bookingData.people > 5) {
-      const extraPeoplePrice = bookingData.formula === 'full-day' ? 42 : 36;
-      basePrice += (bookingData.people - 5) * extraPeoplePrice;
+      const extraPeoplePriceTHB = bookingData.formula === 'full-day' ? 1400 : 1200;
+      const extraPeoplePriceUSD = bookingData.formula === 'full-day' ? 42 : 36;
+      basePriceTHB += (bookingData.people - 5) * extraPeoplePriceTHB;
+      basePriceUSD += (bookingData.people - 5) * extraPeoplePriceUSD;
     }
 
-    setTotalPrice(basePrice);
+    setTotalPriceTHB(basePriceTHB);
+    setTotalPriceUSD(basePriceUSD);
   }, [bookingData.formula, bookingData.people]);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -144,14 +151,15 @@ const BookingForm = () => {
     }
   };
 
-  const pricePerPerson = totalPrice / bookingData.people;
+  const pricePerPersonTHB = totalPriceTHB / bookingData.people;
+  const pricePerPersonUSD = totalPriceUSD / bookingData.people;
 
   return (
     <div className="max-w-4xl mx-auto">
       <Card className="shadow-2xl border-2 border-blue-100">
         <CardHeader className="bg-gradient-to-r from-blue-50 to-orange-50">
           <CardTitle className="text-2xl text-center text-gray-800">
-            🛥️ Book your private Long Tail Boat - From $36 per person with hotel transfer included
+            🛥️ Book your private Long Tail Boat - From ฿1,200 per person ($36) with hotel transfer included
           </CardTitle>
           <div className="text-center space-y-2 mt-4">
             <div className="flex justify-center items-center space-x-6 text-sm">
@@ -187,13 +195,13 @@ const BookingForm = () => {
                     <SelectItem value="half-day">
                       <div className="flex flex-col">
                         <span className="font-semibold">Half Day (4 hours)</span>
-                        <span className="text-sm text-gray-600">$180 for up to 5 people</span>
+                        <span className="text-sm text-gray-600">฿6,000 ($180) for up to 5 people</span>
                       </div>
                     </SelectItem>
                     <SelectItem value="full-day">
                       <div className="flex flex-col">
                         <span className="font-semibold">Full Day (6-8 hours)</span>
-                        <span className="text-sm text-gray-600">$270 for up to 5 people</span>
+                        <span className="text-sm text-gray-600">฿9,000 ($270) for up to 5 people</span>
                       </div>
                     </SelectItem>
                   </SelectContent>
@@ -244,7 +252,7 @@ const BookingForm = () => {
                 </Select>
                 {bookingData.people > 5 && (
                   <p className="text-sm text-blue-600 font-semibold">
-                    +${(bookingData.people - 5) * (bookingData.formula === 'full-day' ? 42 : 36)} for {bookingData.people - 5} additional guest{bookingData.people - 5 > 1 ? 's' : ''}
+                    +฿{(bookingData.people - 5) * (bookingData.formula === 'full-day' ? 1400 : 1200)} (${(bookingData.people - 5) * (bookingData.formula === 'full-day' ? 42 : 36)}) for {bookingData.people - 5} additional guest{bookingData.people - 5 > 1 ? 's' : ''}
                   </p>
                 )}
               </div>
@@ -404,10 +412,10 @@ const BookingForm = () => {
             <div className="bg-gradient-to-r from-green-50 to-blue-50 p-8 rounded-xl border-2 border-green-200">
               <div className="text-center space-y-4">
                 <div className="text-3xl font-bold text-green-600">
-                  Total: ${totalPrice}
+                  Total: ฿{totalPriceTHB.toLocaleString()} (${totalPriceUSD})
                 </div>
                 <div className="text-lg text-gray-700">
-                  <strong>Only ${Math.round(pricePerPerson)}/person</strong> - Best price in Koh Samui!
+                  <strong>Only ฿{Math.round(pricePerPersonTHB)}/person (${Math.round(pricePerPersonUSD)})</strong> - Best price in Koh Samui!
                 </div>
                 <div className="grid grid-cols-3 gap-4 text-sm">
                   <div className="flex items-center justify-center text-green-600">
@@ -448,7 +456,7 @@ const BookingForm = () => {
                   </>
                 ) : (
                   <>
-                    🛥️ Book now - ${totalPrice}
+                    🛥️ Book now - ฿{totalPriceTHB.toLocaleString()} (${totalPriceUSD})
                   </>
                 )}
               </span>

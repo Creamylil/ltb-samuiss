@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -48,7 +49,7 @@ const Index = () => {
                 </div>
                 <div className="flex items-center justify-center md:justify-start">
                   <CheckCircle className="w-4 h-4 mr-2 text-green-400 flex-shrink-0" />
-                  <span>From $36 per person</span>
+                  <span>From ฿1,200 per person ($36)</span>
                 </div>
                 <div className="flex items-center justify-center md:justify-start">
                   <CheckCircle className="w-4 h-4 mr-2 text-green-400 flex-shrink-0" />
@@ -85,7 +86,7 @@ const Index = () => {
           <div className="max-w-4xl mx-auto text-lg leading-relaxed text-gray-700 space-y-6">
             <p>
               Experience the authentic charm of a <strong>long tail boat Koh Samui</strong> adventure with our completely private tours. 
-              Starting from just <strong>$36 per person with hotel transfer included</strong>.
+              Starting from just <strong>฿1,200 per person ($36) with hotel transfer included</strong>.
             </p>
             <p>
               Navigate aboard a traditional Thai long tail boat to the pristine beaches of Pig Island (Koh Madsum), 
@@ -177,7 +178,7 @@ const Index = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800">
             Best Long Tail Boat Koh Samui Tours - Unbeatable Value
           </h2>
-          <h3 className="text-xl text-center mb-12 text-gray-600">From $36 per person with everything included:</h3>
+          <h3 className="text-xl text-center mb-12 text-gray-600">From ฿1,200 per person ($36) with everything included:</h3>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {[{
@@ -186,7 +187,7 @@ const Index = () => {
             desc: "Your own traditional Thai boat & skipper"
           }, {
             icon: "💰",
-            title: "Best Price: From $36/Person",
+            title: "Best Price: From ฿1,200/Person ($36)",
             desc: "Includes hotel transfer & equipment"
           }, {
             icon: "🐷",
@@ -229,7 +230,7 @@ const Index = () => {
             Long Tail Boat Koh Samui Pricing - All Inclusive
           </h2>
           <p className="text-center text-lg text-green-600 font-semibold mb-8">
-            🎉 Special Offer: Just $36 per person with hotel transfer included!
+            🎉 Special Offer: Just ฿1,200 per person ($36) with hotel transfer included!
           </p>
           
           <div className="max-w-4xl mx-auto">
@@ -245,13 +246,13 @@ const Index = () => {
                 <tbody>
                   <tr className="border-b">
                     <td className="px-6 py-4 font-semibold">Half Day (4 hours)</td>
-                    <td className="px-6 py-4 text-blue-600 font-bold">$180</td>
-                    <td className="px-6 py-4">+$36 / person</td>
+                    <td className="px-6 py-4 text-blue-600 font-bold">฿6,000 ($180)</td>
+                    <td className="px-6 py-4">+฿1,200 / person ($36)</td>
                   </tr>
                   <tr>
                     <td className="px-6 py-4 font-semibold">Full Day (6-8 hours)</td>
-                    <td className="px-6 py-4 text-blue-600 font-bold">$270</td>
-                    <td className="px-6 py-4">+$42 / person</td>
+                    <td className="px-6 py-4 text-blue-600 font-bold">฿9,000 ($270)</td>
+                    <td className="px-6 py-4">+฿1,400 / person ($42)</td>
                   </tr>
                 </tbody>
               </table>
@@ -292,7 +293,7 @@ const Index = () => {
             Book Your Long Tail Boat Koh Samui Tour
           </h2>
           <p className="text-center text-lg text-green-600 font-semibold mb-8">
-            🔥 Best Price Guaranteed: From $36/person with private skipper & hotel transfer included
+            🔥 Best Price Guaranteed: From ฿1,200/person ($36) with private skipper & hotel transfer included
           </p>
           <BookingForm />
         </div>
