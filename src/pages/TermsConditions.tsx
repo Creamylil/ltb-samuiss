@@ -13,111 +13,108 @@ const TermsConditions = () => {
           <Card className="shadow-lg">
             <CardHeader>
               <CardTitle className="text-3xl text-center text-gray-800">
-                Conditions Générales d'Utilisation
+                Conditions Générales de Vente
               </CardTitle>
             </CardHeader>
             <CardContent className="p-8 space-y-6">
+              <div className="text-sm text-gray-600 mb-6">
+                Dernière mise à jour : 13 juin 2025
+              </div>
+
               <section>
-                <h2 className="text-xl font-semibold mb-3">1. Introduction</h2>
                 <p className="text-gray-700 leading-relaxed">
-                  Bienvenue sur les services de tours en long tail boat de JSD MEDIA LLP à Koh Samui. En réservant nos services, 
-                  vous acceptez de vous conformer et d'être lié par les conditions générales suivantes. Veuillez les examiner 
-                  attentivement avant de faire une réservation.
+                  Ces Conditions Générales régissent la relation contractuelle entre :
+                  <br />
+                  <strong>JSD MEDIA LLP</strong>
+                  <br />
+                  Enregistrée au Royaume-Uni sous le numéro OC455142
+                  <br />
+                  Adresse enregistrée : 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ
+                  <br />
+                  Ci-après dénommée "la Plateforme",
+                  <br />
+                  et tout individu effectuant une réservation via le site web, ci-après dénommé "le Client".
                 </p>
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold mb-3">2. Réservation et paiement</h2>
-                <div className="text-gray-700 leading-relaxed space-y-2">
-                  <p><strong>2.1 Processus de réservation :</strong> Toutes les réservations doivent être effectuées via notre site web officiel ou agents autorisés.</p>
-                  <p><strong>2.2 Paiement :</strong> Le paiement intégral est requis au moment de la réservation via notre passerelle de paiement sécurisée.</p>
-                  <p><strong>2.3 Confirmation :</strong> Une confirmation de réservation sera envoyée dans les 24 heures suivant la réception du paiement.</p>
-                  <p><strong>2.4 Tarification :</strong> Tous les prix sont affichés en Baht thaïlandais (THB) et incluent les taxes applicables.</p>
-                </div>
-              </section>
-
-              <section>
-                <h2 className="text-xl font-semibold mb-3">3. Politique d'annulation et de remboursement</h2>
-                <div className="text-gray-700 leading-relaxed space-y-2">
-                  <p><strong>3.1 Annulation gratuite :</strong> Les réservations peuvent être annulées sans frais jusqu'à 72 heures avant l'heure de départ prévue.</p>
-                  <p><strong>3.2 Annulation tardive :</strong> Les annulations effectuées dans les 72 heures précédant le départ ne donneront pas droit à un remboursement.</p>
-                  <p><strong>3.3 Annulation météorologique :</strong> Les tours annulés en raison de conditions météorologiques défavorables recevront un remboursement complet ou une option de reprogrammation gratuite.</p>
-                  <p><strong>3.4 Traitement des remboursements :</strong> Les remboursements approuvés seront traités dans les 5 à 10 jours ouvrables vers le mode de paiement original.</p>
-                </div>
-              </section>
-
-              <section>
-                <h2 className="text-xl font-semibold mb-3">4. Politique de modification</h2>
-                <div className="text-gray-700 leading-relaxed space-y-2">
-                  <p><strong>4.1 Modifications gratuites :</strong> Les changements de date, heure ou nombre d'invités peuvent être effectués gratuitement jusqu'à 48 heures avant le départ.</p>
-                  <p><strong>4.2 Modifications tardives :</strong> Les changements demandés dans les 48 heures précédant le départ peuvent entraîner des frais supplémentaires selon la disponibilité.</p>
-                  <p><strong>4.3 Demandes de mise à niveau :</strong> Les demandes de services supplémentaires ou de mises à niveau sont soumises à disponibilité et entraîneront des frais supplémentaires.</p>
-                </div>
-              </section>
-
-              <section>
-                <h2 className="text-xl font-semibold mb-3">5. Sécurité et responsabilité</h2>
-                <div className="text-gray-700 leading-relaxed space-y-2">
-                  <p><strong>5.1 Équipement de sécurité :</strong> Tout l'équipement de sécurité nécessaire est fourni et doit être porté selon les instructions du capitaine.</p>
-                  <p><strong>5.2 Capacité de nage :</strong> Les invités doivent nous informer de toute limitation de nage ou condition médicale pouvant affecter leur sécurité.</p>
-                  <p><strong>5.3 Assurance :</strong> Nous maintenons une assurance responsabilité civile complète, mais une assurance voyage personnelle est fortement recommandée.</p>
-                  <p><strong>5.4 Limitation de responsabilité :</strong> Notre responsabilité est limitée à la valeur du tour réservé. Nous ne sommes pas responsables des blessures personnelles, objets perdus ou dommages indirects.</p>
-                </div>
-              </section>
-
-              <section>
-                <h2 className="text-xl font-semibold mb-3">6. Responsabilités des passagers</h2>
-                <div className="text-gray-700 leading-relaxed space-y-2">
-                  <p><strong>6.1 Conduite :</strong> Tous les passagers doivent se comporter respectueusement envers les membres d'équipage et autres invités.</p>
-                  <p><strong>6.2 Instructions :</strong> Les passagers doivent suivre toutes les instructions de sécurité fournies par le capitaine et l'équipage.</p>
-                  <p><strong>6.3 Alcool :</strong> La consommation excessive d'alcool qui met en danger la sécurité ou perturbe autres invités est interdite.</p>
-                  <p><strong>6.4 Responsabilité environnementale :</strong> Les passagers doivent respecter la vie marine et les environnements locaux.</p>
-                </div>
-              </section>
-
-              <section>
-                <h2 className="text-xl font-semibold mb-3">7. Force majeure</h2>
+                <h2 className="text-xl font-semibold mb-3">1. OBJET</h2>
                 <p className="text-gray-700 leading-relaxed">
-                  Nous ne sommes pas responsables des annulations ou retards causés par des circonstances indépendantes de notre volonté, 
-                  y compris mais sans s'y limiter les conditions météorologiques sévères, catastrophes naturelles, restrictions gouvernementales, 
-                  grèves ou autres événements de force majeure.
+                  La Plateforme vend des tours privés en bateau à Koh Samui (Thaïlande) via son site web. 
+                  Les services réels sont délivrés par un opérateur local tiers : Smile Samui Tour. 
+                  En réservant un service via le site web, le Client accepte toutes les conditions énoncées dans ce document.
                 </p>
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold mb-3">8. Protection de la vie privée et des données</h2>
+                <h2 className="text-xl font-semibold mb-3">2. RÔLE DE LA PLATEFORME</h2>
                 <p className="text-gray-700 leading-relaxed">
-                  Nous collectons et traitons les données personnelles conformément au RGPD UK et aux lois sur la protection des données. 
-                  Vos informations sont utilisées uniquement pour la gestion des réservations, le service client et les fins de sécurité. 
-                  Nous ne partageons pas vos données avec des tiers sans votre consentement.
+                  La Plateforme opère en tant que revendeur indépendant de services de tours en bateau. 
+                  Elle gère la gestion des réservations, la collecte des paiements, et transfère le montant convenu au prestataire local. 
+                  L'exécution du tour est la seule responsabilité du prestataire local, Smile Samui Tour.
                 </p>
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold mb-3">9. Résolution des conflits</h2>
-                <p className="text-gray-700 leading-relaxed">
-                  Tout litige découlant de ces conditions ou de nos services sera d'abord traité par communication directe. 
-                  Si la résolution ne peut être atteinte, les litiges seront soumis au droit anglais et à la juridiction 
-                  des tribunaux anglais.
-                </p>
-              </section>
-
-              <section>
-                <h2 className="text-xl font-semibold mb-3">10. Modifications des conditions</h2>
-                <p className="text-gray-700 leading-relaxed">
-                  Nous nous réservons le droit de modifier ces conditions générales à tout moment. Les conditions mises à jour 
-                  seront publiées sur notre site web et s'appliqueront à toutes les réservations futures.
-                </p>
-              </section>
-
-              <section>
-                <h2 className="text-xl font-semibold mb-3">Informations de contact</h2>
+                <h2 className="text-xl font-semibold mb-3">3. DÉTAILS DU SERVICE</h2>
                 <div className="text-gray-700 leading-relaxed space-y-2">
-                  <p><strong>Société :</strong> JSD MEDIA LLP</p>
-                  <p><strong>Enregistrement :</strong> OC455142</p>
-                  <p><strong>Adresse :</strong> 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, United Kingdom</p>
-                  <p><strong>Email :</strong> info@longtailboatkohsamui.com</p>
+                  <p>Les tours disponibles incluent :</p>
+                  <ul className="list-disc list-inside ml-4">
+                    <li>Tour demi-journée : 4 heures</li>
+                    <li>Tour journée complète : 6 heures</li>
+                  </ul>
+                  <p>Chaque tour inclut la location d'un bateau privé pour jusqu'à 10 personnes.</p>
+                  <p>Les horaires, points de départ et options supplémentaires sont clairement listés sur la page de réservation de chaque tour.</p>
                 </div>
+              </section>
+
+              <section>
+                <h2 className="text-xl font-semibold mb-3">4. PAIEMENT</h2>
+                <p className="text-gray-700 leading-relaxed">
+                  Le paiement intégral est requis au moment de la réservation. 
+                  Une réservation est considérée comme confirmée une fois que le paiement est traité et validé. 
+                  Tous les paiements sont traités de manière sécurisée par JSD MEDIA LLP via Stripe, carte de crédit, ou autres méthodes de paiement sécurisées.
+                </p>
+              </section>
+
+              <section>
+                <h2 className="text-xl font-semibold mb-3">5. POLITIQUE D'ANNULATION</h2>
+                <div className="text-gray-700 leading-relaxed space-y-2">
+                  <p>Les clients peuvent annuler leur réservation jusqu'à 2 jours avant le tour prévu.</p>
+                  <p>Après cette échéance, aucun remboursement ne sera garanti, sauf accord en cas exceptionnel.</p>
+                  <p>En cas de mauvais temps ou de force majeure, le client peut se voir proposer soit une reprogrammation soit un remboursement partiel, à la discrétion de la Plateforme.</p>
+                </div>
+              </section>
+
+              <section>
+                <h2 className="text-xl font-semibold mb-3">6. RESPONSABILITÉ</h2>
+                <div className="text-gray-700 leading-relaxed space-y-2">
+                  <p>Le service lui-même (navigation, sécurité, équipement, assistance) est opéré par le prestataire local, Smile Samui Tour, sous leurs propres licences et assurance.</p>
+                  <p><strong>La Plateforme ne peut être tenue responsable de :</strong></p>
+                  <ul className="list-disc list-inside ml-4">
+                    <li>L'exécution du service</li>
+                    <li>Tout incident, dommage ou retard pendant le tour</li>
+                    <li>La qualité du service fourni par l'opérateur local</li>
+                  </ul>
+                  <p>Toutes les plaintes liées au service doivent être adressées directement à l'opérateur local.</p>
+                </div>
+              </section>
+
+              <section>
+                <h2 className="text-xl font-semibold mb-3">7. DONNÉES PERSONNELLES</h2>
+                <p className="text-gray-700 leading-relaxed">
+                  Les données du client sont collectées uniquement dans le but de traiter la réservation et faciliter la communication avec le prestataire local. 
+                  Elles ne seront pas vendues ou utilisées à des fins marketing sans consentement explicite. 
+                  Veuillez vous référer à notre Politique de Confidentialité pour plus de détails.
+                </p>
+              </section>
+
+              <section>
+                <h2 className="text-xl font-semibold mb-3">8. DROIT APPLICABLE</h2>
+                <p className="text-gray-700 leading-relaxed">
+                  Ces Conditions Générales sont régies par les lois de l'Angleterre et du Pays de Galles. 
+                  Tout litige relèvera de la juridiction exclusive des tribunaux de Londres (Royaume-Uni), sauf résolution amiable préalable.
+                </p>
               </section>
             </CardContent>
           </Card>

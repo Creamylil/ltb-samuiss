@@ -18,107 +18,77 @@ const LegalMentions = () => {
             </CardHeader>
             <CardContent className="p-8 space-y-6">
               <section>
-                <h2 className="text-xl font-semibold mb-3">Informations sur la société</h2>
+                <h2 className="text-xl font-semibold mb-3">Informations légales</h2>
                 <div className="text-gray-700 leading-relaxed space-y-2">
-                  <p><strong>Nom de la société :</strong> JSD MEDIA LLP</p>
-                  <p><strong>Numéro d'entreprise :</strong> OC455142</p>
-                  <p><strong>Adresse du siège social :</strong> 71-75 Shelton Street, Covent Garden, London, United Kingdom, WC2H 9JQ</p>
-                  <p><strong>Pays d'incorporation :</strong> Royaume-Uni</p>
-                  <p><strong>Type d'entreprise :</strong> Limited Liability Partnership</p>
+                  <p><strong>Site web :</strong> https://longtailboat-kohsamui.com/</p>
+                  <p><strong>Propriétaire :</strong> JSD MEDIA LLP</p>
+                  <p><strong>Numéro d'entreprise :</strong> OC455142 (enregistré en Angleterre et au Pays de Galles)</p>
+                  <p><strong>Adresse du siège social :</strong> 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, United Kingdom</p>
+                  <p><strong>Email de contact :</strong> info@longtailboat-kohsamui.com</p>
                 </div>
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold mb-3">Coordonnées</h2>
-                <div className="text-gray-700 leading-relaxed space-y-2">
-                  <p><strong>Email :</strong> info@longtailboatkohsamui.com</p>
-                  <p><strong>Site web :</strong> www.longtailboatkohsamui.com</p>
-                  <p><strong>Horaires :</strong> 8h00 - 20h00 (Heure de Thaïlande)</p>
-                </div>
-              </section>
-
-              <section>
-                <h2 className="text-xl font-semibold mb-3">Informations sur les dirigeants</h2>
-                <div className="text-gray-700 leading-relaxed space-y-2">
-                  <p>Les informations sur les dirigeants et membres de la société sont disponibles via Companies House (UK) sous le numéro d'entreprise OC455142.</p>
-                </div>
-              </section>
-
-              <section>
-                <h2 className="text-xl font-semibold mb-3">Hébergement du site web</h2>
-                <div className="text-gray-700 leading-relaxed space-y-2">
-                  <p><strong>Fournisseur d'hébergement :</strong> Lovable</p>
-                  <p><strong>Localisation du serveur :</strong> Infrastructure Cloud</p>
-                  <p><strong>Certificat SSL :</strong> Chiffrement Secure Socket Layer activé</p>
-                </div>
-              </section>
-
-              <section>
-                <h2 className="text-xl font-semibold mb-3">Propriété intellectuelle</h2>
+                <h2 className="text-xl font-semibold mb-3">1. Éditeur</h2>
                 <p className="text-gray-700 leading-relaxed">
-                  Tout le contenu de ce site web, y compris les textes, images, logos, éléments de design et logiciels, 
-                  sont protégés par le droit d'auteur et appartiennent à JSD MEDIA LLP sauf indication contraire. 
-                  La reproduction, distribution ou utilisation non autorisée de tout contenu est strictement interdite 
-                  sans autorisation écrite du propriétaire des droits d'auteur.
+                  Ce site web est publié par JSD MEDIA LLP, une société enregistrée au Royaume-Uni agissant comme plateforme en ligne pour la réservation de tours privés en bateau à Koh Samui, Thaïlande. Le site web appartient et est géré par JSD MEDIA LLP.
                 </p>
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold mb-3">Protection des données et confidentialité</h2>
+                <h2 className="text-xl font-semibold mb-3">2. Hébergement</h2>
                 <div className="text-gray-700 leading-relaxed space-y-2">
-                  <p><strong>Responsable du traitement :</strong> JSD MEDIA LLP</p>
-                  <p><strong>Enregistrement protection des données :</strong> Enregistré auprès de l'ICO (Information Commissioner's Office) selon les exigences du RGPD UK</p>
-                  <p><strong>Traitement des données :</strong> Nous collectons et traitons les données personnelles conformément au RGPD UK et aux lois applicables sur la protection des données</p>
-                  <p><strong>Finalité des données :</strong> Les données personnelles sont utilisées uniquement pour la gestion des réservations, le service client et les opérations</p>
+                  <p>Le site web est conçu et hébergé par :</p>
+                  <p><strong>Lovable</strong></p>
+                  <p>Constructeur de sites web et fournisseur d'hébergement</p>
+                  <p>https://www.lovable.so</p>
                 </div>
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold mb-3">Cookies et suivi</h2>
-                <div className="text-gray-700 leading-relaxed space-y-2">
-                  <p><strong>Utilisation des cookies :</strong> Ce site web utilise des cookies pour améliorer l'expérience utilisateur et analyser le trafic du site</p>
-                  <p><strong>Types de cookies :</strong> Cookies essentiels pour le fonctionnement du site, cookies analytiques pour les statistiques d'utilisation</p>
-                  <p><strong>Consentement :</strong> En utilisant notre site web, vous consentez à l'utilisation des cookies conformément à notre Politique de Cookies</p>
-                </div>
-              </section>
-
-              <section>
-                <h2 className="text-xl font-semibold mb-3">Licences touristiques et d'exploitation</h2>
-                <div className="text-gray-700 leading-relaxed space-y-2">
-                  <p><strong>Licence touristique thaïlandaise :</strong> Autorisé à opérer des services touristiques en Thaïlande</p>
-                  <p><strong>Licence d'exploitation marine :</strong> Autorisé à opérer des activités de tourisme maritime autour de Koh Samui</p>
-                  <p><strong>Certifications de sécurité :</strong> Tous les navires et équipements respectent les normes de sécurité requises</p>
-                  <p><strong>Assurance :</strong> Couverture d'assurance responsabilité civile et maritime complète</p>
-                </div>
-              </section>
-
-              <section>
-                <h2 className="text-xl font-semibold mb-3">Droit applicable et juridiction</h2>
+                <h2 className="text-xl font-semibold mb-3">3. Propriété intellectuelle</h2>
                 <p className="text-gray-700 leading-relaxed">
-                  Ces mentions légales et toutes les questions connexes sont régies par le droit anglais. 
-                  Tout litige découlant de l'utilisation de ce site web ou de nos services sera 
-                  soumis à la juridiction exclusive des tribunaux anglais, sauf indication contraire 
-                  dans nos Conditions Générales.
+                  Tout le contenu de ce site (y compris les textes, photos, vidéos, logos, mise en page et graphiques) est la propriété exclusive de JSD MEDIA LLP ou utilisé sous licence. Toute reproduction, modification ou distribution sans autorisation écrite est strictement interdite.
                 </p>
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold mb-3">Clause de non-responsabilité du site web</h2>
+                <h2 className="text-xl font-semibold mb-3">4. Activité commerciale et responsabilité</h2>
+                <div className="text-gray-700 leading-relaxed space-y-2">
+                  <p>JSD MEDIA LLP opère en tant que revendeur et agent de réservation. Tous les tours sont fournis par Smile Samui Tour, un prestataire de services indépendant situé à Koh Samui, Thaïlande.</p>
+                  <p>La Plateforme gère la réservation et le paiement. Le service réel (transport, navigation, équipement, sécurité) est fourni sous la seule responsabilité de l'opérateur local.</p>
+                  <p><strong>JSD MEDIA LLP ne peut être tenu responsable de :</strong></p>
+                  <ul className="list-disc list-inside ml-4 space-y-1">
+                    <li>Retards ou annulations par le prestataire</li>
+                    <li>Accidents ou dommages pendant le tour</li>
+                    <li>La qualité ou l'exécution du service local</li>
+                  </ul>
+                </div>
+              </section>
+
+              <section>
+                <h2 className="text-xl font-semibold mb-3">5. Données et cookies</h2>
+                <div className="text-gray-700 leading-relaxed space-y-2">
+                  <p>Ce site web peut collecter des données (via des formulaires de réservation ou des outils d'analyse) strictement pour la prestation de services et le suivi des performances. Aucune donnée personnelle n'est partagée ou vendue.</p>
+                  <p>Vous avez le droit d'accéder, modifier ou supprimer vos informations personnelles. Pour toute demande relative aux données, veuillez nous envoyer un email à : info@longtailboat-kohsamui.com.</p>
+                  <p>Ce site utilise des cookies essentiels pour le fonctionnement et peut utiliser des cookies de performance pour améliorer l'expérience utilisateur. Vous pouvez désactiver les cookies via les paramètres de votre navigateur.</p>
+                </div>
+              </section>
+
+              <section>
+                <h2 className="text-xl font-semibold mb-3">6. Droit applicable</h2>
                 <p className="text-gray-700 leading-relaxed">
-                  Bien que nous nous efforcions d'assurer l'exactitude et l'exhaustivité des informations sur ce site web, 
-                  nous ne donnons aucune garantie ou représentation concernant l'exactitude, l'exhaustivité ou 
-                  l'adéquation des informations à un usage particulier. Les utilisateurs accèdent et utilisent ce 
-                  site web à leurs propres risques.
+                  Cette mention légale et toutes les questions connexes sont régies par les lois de l'Angleterre et du Pays de Galles. Tout litige juridique relèvera de la juridiction exclusive des tribunaux de Londres (Royaume-Uni).
                 </p>
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold mb-3">Contact pour les questions légales</h2>
-                <div className="text-gray-700 leading-relaxed space-y-2">
-                  <p>Pour toute question ou préoccupation légale concernant ces mentions légales :</p>
-                  <p><strong>Email :</strong> legal@longtailboatkohsamui.com</p>
-                  <p><strong>Adresse postale :</strong> JSD MEDIA LLP, 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, United Kingdom</p>
-                </div>
+                <h2 className="text-xl font-semibold mb-3">📬 Contact</h2>
+                <p className="text-gray-700 leading-relaxed">
+                  Pour toute question ou plainte relative à ce site ou aux services fournis, veuillez contacter :
+                  <br />
+                  📧 info@longtailboat-kohsamui.com
+                </p>
               </section>
             </CardContent>
           </Card>
