@@ -23,10 +23,10 @@ const Index = () => {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen text-white overflow-hidden">
+      <section className="relative min-h-[75vh] text-white overflow-hidden">
         <div className="absolute inset-0 bg-[url('/lovable-uploads/e60a3dd9-abf1-4543-b894-4e29e24097b5.png')] bg-cover bg-center scale-105 animate-[pulse_20s_ease-in-out_infinite]"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70"></div>
-        <div className="relative z-10 flex items-center justify-center min-h-screen pt-20 pb-12">
+        <div className="relative z-10 flex items-center justify-center min-h-[75vh] pt-20 pb-12">
           <div className="container mx-auto px-4 text-center">
             <div className="inline-block mb-6 px-4 py-1.5 rounded-full border border-white/30 bg-white/10 backdrop-blur-md text-sm font-medium tracking-wide uppercase">
               🌴 Private Boat Tours · Koh Samui
