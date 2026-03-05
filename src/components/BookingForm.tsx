@@ -50,7 +50,7 @@ const BookingForm = () => {
     hotelName: '',
     hotelAddress: '',
     pickupTime: '',
-    comment: '',
+    comment: ''
   });
 
   const [isProcessing, setIsProcessing] = useState(false);
@@ -63,12 +63,12 @@ const BookingForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!bookingData.date || !bookingData.name || !bookingData.email || !bookingData.hotelName || !bookingData.hotelAddress || !bookingData.pickupTime) {
       toast({
         title: "Required fields",
         description: "Please fill in all required fields",
-        variant: "destructive",
+        variant: "destructive"
       });
       return;
     }
@@ -77,7 +77,7 @@ const BookingForm = () => {
       toast({
         title: "Terms and conditions",
         description: "Please accept the terms and conditions to proceed",
-        variant: "destructive",
+        variant: "destructive"
       });
       return;
     }
@@ -86,7 +86,7 @@ const BookingForm = () => {
       toast({
         title: "Limit exceeded",
         description: "Maximum 10 people per boat. Please book a second boat if you are more than 10 people.",
-        variant: "destructive",
+        variant: "destructive"
       });
       return;
     }
@@ -102,7 +102,7 @@ const BookingForm = () => {
           captainPriceTHB: remainingToCaptain,
           bookingData: {
             ...bookingData,
-            date: bookingData.date ? format(bookingData.date, 'yyyy-MM-dd') : '',
+            date: bookingData.date ? format(bookingData.date, 'yyyy-MM-dd') : ''
           }
         }
       });
@@ -113,7 +113,7 @@ const BookingForm = () => {
         window.open(data.url, '_blank');
         toast({
           title: "Redirecting to payment",
-          description: "You are being redirected to the secure payment page for the deposit",
+          description: "You are being redirected to the secure payment page for the deposit"
         });
       } else {
         throw new Error('No checkout URL received');
@@ -123,7 +123,7 @@ const BookingForm = () => {
       toast({
         title: "Payment error",
         description: "An error occurred while creating the payment. Please try again.",
-        variant: "destructive",
+        variant: "destructive"
       });
     } finally {
       setIsProcessing(false);
@@ -134,9 +134,9 @@ const BookingForm = () => {
     <div className="max-w-4xl mx-auto">
       <Card className="shadow-2xl border-2 border-blue-100">
         <CardHeader className="bg-gradient-to-r from-blue-50 to-orange-50">
-          <CardTitle className="text-2xl text-center text-gray-800">
-            🛥️ Book Your Private Longtail Boat Tour
-          </CardTitle>
+          
+
+          
           <div className="text-center space-y-2 mt-4">
             <div className="flex justify-center items-center space-x-6 text-sm flex-wrap gap-y-2">
               <div className="flex items-center text-green-600">
@@ -161,18 +161,18 @@ const BookingForm = () => {
               {/* Number of guests */}
               <div className="space-y-2">
                 <Label htmlFor="people" className="text-lg font-semibold">Number of guests *</Label>
-                <Select value={bookingData.people.toString()} onValueChange={(value) => 
-                  setBookingData(prev => ({ ...prev, people: parseInt(value) }))
+                <Select value={bookingData.people.toString()} onValueChange={(value) =>
+                setBookingData((prev) => ({ ...prev, people: parseInt(value) }))
                 }>
                   <SelectTrigger className="h-12 text-lg">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    {Array.from({ length: 10 }, (_, i) => i + 1).map(num => (
-                      <SelectItem key={num} value={num.toString()}>
+                    {Array.from({ length: 10 }, (_, i) => i + 1).map((num) =>
+                    <SelectItem key={num} value={num.toString()}>
                         {num} guest{num > 1 ? 's' : ''}
                       </SelectItem>
-                    ))}
+                    )}
                   </SelectContent>
                 </Select>
               </div>
@@ -184,8 +184,8 @@ const BookingForm = () => {
                   <PopoverTrigger asChild>
                     <Button
                       variant="outline"
-                      className="w-full justify-start text-left font-normal h-12 text-lg"
-                    >
+                      className="w-full justify-start text-left font-normal h-12 text-lg">
+                      
                       <CalendarIcon className="mr-2 h-4 w-4" />
                       {bookingData.date ? format(bookingData.date, "PPP", { locale: enUS }) : "Choose your adventure date"}
                     </Button>
@@ -194,10 +194,10 @@ const BookingForm = () => {
                     <Calendar
                       mode="single"
                       selected={bookingData.date}
-                      onSelect={(date) => setBookingData(prev => ({ ...prev, date }))}
+                      onSelect={(date) => setBookingData((prev) => ({ ...prev, date }))}
                       disabled={(date) => date < new Date()}
-                      initialFocus
-                    />
+                      initialFocus />
+                    
                   </PopoverContent>
                 </Popover>
               </div>
@@ -205,8 +205,8 @@ const BookingForm = () => {
               {/* Pickup Time */}
               <div className="space-y-2">
                 <Label htmlFor="pickupTime" className="text-lg font-semibold">Preferred pickup time *</Label>
-                <Select value={bookingData.pickupTime} onValueChange={(value) => 
-                  setBookingData(prev => ({ ...prev, pickupTime: value }))
+                <Select value={bookingData.pickupTime} onValueChange={(value) =>
+                setBookingData((prev) => ({ ...prev, pickupTime: value }))
                 }>
                   <SelectTrigger className="h-12 text-lg">
                     <SelectValue placeholder="Select pickup time" />
@@ -234,10 +234,10 @@ const BookingForm = () => {
                 <Input
                   id="name"
                   value={bookingData.name}
-                  onChange={(e) => setBookingData(prev => ({ ...prev, name: e.target.value }))}
+                  onChange={(e) => setBookingData((prev) => ({ ...prev, name: e.target.value }))}
                   placeholder="Enter your full name"
-                  className="h-12 text-lg"
-                />
+                  className="h-12 text-lg" />
+                
               </div>
 
               {/* Email */}
@@ -247,17 +247,17 @@ const BookingForm = () => {
                   id="email"
                   type="email"
                   value={bookingData.email}
-                  onChange={(e) => setBookingData(prev => ({ ...prev, email: e.target.value }))}
+                  onChange={(e) => setBookingData((prev) => ({ ...prev, email: e.target.value }))}
                   placeholder="your@email.com"
-                  className="h-12 text-lg"
-                />
+                  className="h-12 text-lg" />
+                
               </div>
 
               {/* Phone Type */}
               <div className="space-y-2">
                 <Label htmlFor="phoneType" className="text-lg font-semibold">Phone type *</Label>
-                <Select value={bookingData.phoneType} onValueChange={(value: 'whatsapp' | 'line' | 'normal') => 
-                  setBookingData(prev => ({ ...prev, phoneType: value }))
+                <Select value={bookingData.phoneType} onValueChange={(value: 'whatsapp' | 'line' | 'normal') =>
+                setBookingData((prev) => ({ ...prev, phoneType: value }))
                 }>
                   <SelectTrigger className="h-12 text-lg">
                     <SelectValue placeholder="Select phone type" />
@@ -276,10 +276,10 @@ const BookingForm = () => {
                 <Input
                   id="phone"
                   value={bookingData.phone}
-                  onChange={(e) => setBookingData(prev => ({ ...prev, phone: e.target.value }))}
+                  onChange={(e) => setBookingData((prev) => ({ ...prev, phone: e.target.value }))}
                   placeholder="+33 1 23 45 67 89"
-                  className="h-12 text-lg"
-                />
+                  className="h-12 text-lg" />
+                
               </div>
 
               {/* Hotel Name */}
@@ -288,10 +288,10 @@ const BookingForm = () => {
                 <Input
                   id="hotelName"
                   value={bookingData.hotelName}
-                  onChange={(e) => setBookingData(prev => ({ ...prev, hotelName: e.target.value }))}
+                  onChange={(e) => setBookingData((prev) => ({ ...prev, hotelName: e.target.value }))}
                   placeholder="Enter your hotel name"
-                  className="h-12 text-lg"
-                />
+                  className="h-12 text-lg" />
+                
               </div>
 
               {/* Hotel Address */}
@@ -300,10 +300,10 @@ const BookingForm = () => {
                 <Input
                   id="hotelAddress"
                   value={bookingData.hotelAddress}
-                  onChange={(e) => setBookingData(prev => ({ ...prev, hotelAddress: e.target.value }))}
+                  onChange={(e) => setBookingData((prev) => ({ ...prev, hotelAddress: e.target.value }))}
                   placeholder="Enter your hotel address"
-                  className="h-12 text-lg"
-                />
+                  className="h-12 text-lg" />
+                
               </div>
             </div>
 
@@ -313,39 +313,39 @@ const BookingForm = () => {
               <Textarea
                 id="comment"
                 value={bookingData.comment}
-                onChange={(e) => setBookingData(prev => ({ ...prev, comment: e.target.value }))}
+                onChange={(e) => setBookingData((prev) => ({ ...prev, comment: e.target.value }))}
                 placeholder="Special requests, dietary requirements or comments..."
-                className="min-h-[100px] text-lg"
-              />
+                className="min-h-[100px] text-lg" />
+              
             </div>
 
             {/* Terms and Conditions Checkbox */}
             <div className="flex items-start space-x-3 p-4 bg-gray-50 rounded-lg border">
-              <Checkbox 
-                id="terms" 
+              <Checkbox
+                id="terms"
                 checked={termsAccepted}
                 onCheckedChange={(checked) => setTermsAccepted(checked as boolean)}
-                className="mt-1"
-              />
+                className="mt-1" />
+              
               <div className="flex-1">
-                <Label 
-                  htmlFor="terms" 
-                  className="text-sm font-medium leading-relaxed cursor-pointer"
-                >
+                <Label
+                  htmlFor="terms"
+                  className="text-sm font-medium leading-relaxed cursor-pointer">
+                  
                   I accept the{" "}
-                  <Link 
-                    to="/terms-conditions" 
+                  <Link
+                    to="/terms-conditions"
                     className="text-blue-600 hover:text-blue-800 underline"
-                    target="_blank"
-                  >
+                    target="_blank">
+                    
                     terms and conditions
                   </Link>
                   {" "}and{" "}
-                  <Link 
-                    to="/sales-conditions" 
+                  <Link
+                    to="/sales-conditions"
                     className="text-blue-600 hover:text-blue-800 underline"
-                    target="_blank"
-                  >
+                    target="_blank">
+                    
                     terms of use
                   </Link>
                   . *
@@ -404,22 +404,22 @@ const BookingForm = () => {
             <ReassuranceSection />
 
             {/* Submit button */}
-            <Button 
-              type="submit" 
+            <Button
+              type="submit"
               className="w-full bg-orange-500 hover:bg-orange-600 text-white py-6 text-base md:text-xl font-bold rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300"
-              disabled={!bookingData.date || !bookingData.name || !bookingData.email || !bookingData.hotelName || !bookingData.hotelAddress || !bookingData.pickupTime || !termsAccepted || isProcessing}
-            >
+              disabled={!bookingData.date || !bookingData.name || !bookingData.email || !bookingData.hotelName || !bookingData.hotelAddress || !bookingData.pickupTime || !termsAccepted || isProcessing}>
+              
               <span className="break-words text-center leading-tight flex items-center justify-center">
-                {isProcessing ? (
-                  <>
+                {isProcessing ?
+                <>
                     <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
                     Processing...
-                  </>
-                ) : (
-                  <>
+                  </> :
+
+                <>
                     🛥️ Pay Deposit Now - ฿{deposit.toLocaleString()} THB
                   </>
-                )}
+                }
               </span>
             </Button>
             
@@ -446,8 +446,8 @@ const BookingForm = () => {
           </form>
         </CardContent>
       </Card>
-    </div>
-  );
+    </div>);
+
 };
 
 export default BookingForm;
