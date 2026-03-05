@@ -239,7 +239,7 @@ const Index = () => {
             <Card key={index} className="text-center hover:shadow-lg transition-shadow duration-300">
                 <CardContent className="p-6">
                   <div className="text-4xl mb-4">{feature.icon}</div>
-                  <h4 className="font-semibold text-lg mb-2">{feature.title}</h4>
+                  <h3 className="font-semibold text-lg mb-2">{feature.title}</h3>
                   <p className="text-gray-600">{feature.desc}</p>
                 </CardContent>
               </Card>
