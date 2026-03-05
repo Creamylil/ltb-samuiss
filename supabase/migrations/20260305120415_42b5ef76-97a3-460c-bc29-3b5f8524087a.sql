@@ -1,0 +1,1 @@
+CREATE POLICY "Service role only" ON public.bookings FOR ALL USING (false);
