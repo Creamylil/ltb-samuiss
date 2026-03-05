@@ -195,7 +195,12 @@ const BookingForm = () => {
                       mode="single"
                       selected={bookingData.date}
                       onSelect={(date) => setBookingData((prev) => ({ ...prev, date }))}
-                      disabled={(date) => date < new Date()}
+                    disabled={(date) => {
+                      const minDate = new Date();
+                      minDate.setDate(minDate.getDate() + 2);
+                      minDate.setHours(0, 0, 0, 0);
+                      return date < minDate;
+                    }}
                       initialFocus />
                     
                   </PopoverContent>
