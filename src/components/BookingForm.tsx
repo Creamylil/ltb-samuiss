@@ -83,6 +83,7 @@ const BookingForm = () => {
     people: 2,
     name: '',
     email: '',
+    phoneCountry: '+66',
     phone: '',
     phoneType: '',
     hotelName: '',
