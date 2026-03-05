@@ -224,8 +224,8 @@ const Index = () => {
             },
             {
               icon: "🚐",
-              title: "Free Hotel Pickup Included",
-              desc: "Chaweng, Lamai, Bophut areas"
+              title: "Optional Hotel Transfer",
+              desc: "+฿1,600 THB round-trip pickup"
             },
             {
               icon: "👨‍✈️",
