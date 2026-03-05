@@ -29,13 +29,13 @@ const Index = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70"></div>
         <div className="relative z-10 flex items-center justify-center min-h-[75vh] pt-20 pb-12">
           <div className="container mx-auto px-4 text-center">
-            <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold mb-6 animate-fade-in text-white drop-shadow-lg">
+            <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold mb-3 animate-fade-in text-white drop-shadow-lg">
               <span className="block mb-2 md:mb-0 md:inline">Long Tail Boat</span>{" "}
               <span className="block md:inline">Koh Samui</span>
-              <span className="block text-xl md:text-3xl lg:text-4xl mt-3 font-medium text-white/90">
-                Private Tours
-              </span>
             </h1>
+            <h2 className="text-xl md:text-3xl lg:text-4xl font-medium text-white/90 mb-6 animate-fade-in drop-shadow-lg">
+              Private Tour with Hotel Transfer
+            </h2>
             <p className="text-lg md:text-xl lg:text-2xl mb-8 text-white/90 font-light max-w-3xl mx-auto leading-relaxed">
               Discover Koh Samui's hidden gems aboard your private long tail boat with hotel transfer included
             </p>
