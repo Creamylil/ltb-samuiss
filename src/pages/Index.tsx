@@ -16,6 +16,7 @@ import Testimonials from "../components/Testimonials";
 import FAQ from "../components/FAQ";
 import Footer from "../components/Footer";
 import WhatsAppCTA from "../components/WhatsAppCTA";
+import WhatsAppFloatingButton from "../components/WhatsAppFloatingButton";
 import StickyPriceBar from "../components/StickyPriceBar";
 
 const Index = () => {
