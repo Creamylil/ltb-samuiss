@@ -2,6 +2,13 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle, Star, MapPin, Clock, Users, Camera, Phone } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import Header from "../components/Header";
 import BookingForm from "../components/BookingForm";
 import ImageGallery from "../components/ImageGallery";
@@ -75,35 +82,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Adventure Section */}
-      <section className="py-16 bg-gradient-to-b from-blue-50 to-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
-            Long Tail Boat Koh Samui Experience
-          </h2>
-          <div className="max-w-4xl mx-auto text-lg leading-relaxed text-gray-700 space-y-6">
-            <p>
-              Experience the authentic charm of a <strong>long tail boat Koh Samui</strong> adventure with our
-              completely private tours. Starting from just <strong>฿3,200 THB</strong> for the boat, with optional hotel transfer.
-            </p>
-            <p>
-              Navigate aboard a traditional Thai long tail boat to the pristine beaches of Pig Island (Koh Madsum), the
-              coral reefs of Koh Tan, or the secluded paradise of various hidden islands.
-            </p>
-            <p>
-              Whether you're a couple seeking romance, a family creating memories, or friends on adventure - enjoy an
-              exclusive <strong>long tail boat Koh Samui</strong> experience with your dedicated private skipper.
-            </p>
-          </div>
-
-          <div className="text-center mt-8">
-            <WhatsAppCTA
-              text="Get Custom Tour Recommendations"
-              message="Hello! I would like to get personalized recommendations for a longtail boat tour in Koh Samui based on my preferences." />
-            
-          </div>
-        </div>
-      </section>
+      {/* Adventure Section - now empty, content moved below timeline */}
 
       {/* Itinerary Section */}
       <section className="bg-white py-0">
@@ -147,6 +126,55 @@ const Index = () => {
             <p className="text-center text-sm text-gray-500 mt-6 italic">
               ⏱️ Total boat trip duration: ~4 hours (hotel transfer time not included)
             </p>
+          </div>
+
+          {/* Adventure text moved here */}
+          <div className="max-w-4xl mx-auto text-lg leading-relaxed text-gray-700 space-y-6 mt-12">
+            <p>
+              Experience the authentic charm of a <strong>long tail boat Koh Samui</strong> adventure with our
+              completely private tours. Starting from just <strong>฿3,200 THB</strong> for the boat, with optional hotel transfer.
+            </p>
+            <p>
+              Navigate aboard a traditional Thai long tail boat to the pristine beaches of Pig Island (Koh Madsum), the
+              coral reefs of Koh Tan, or the secluded paradise of various hidden islands.
+            </p>
+            <p>
+              Whether you're a couple seeking romance, a family creating memories, or friends on adventure - enjoy an
+              exclusive <strong>long tail boat Koh Samui</strong> experience with your dedicated private skipper.
+            </p>
+          </div>
+
+          {/* Image Carousel */}
+          <div className="max-w-5xl mx-auto mt-10">
+            <Carousel opts={{ loop: true }} className="w-full">
+              <CarouselContent>
+                {[
+                  { src: "/lovable-uploads/koh-Madsum-island-in-thailand.jpg", alt: "Koh Madsum island in Thailand" },
+                  { src: "/lovable-uploads/koh-Madsum-island-thailand.jpg", alt: "Koh Madsum island Thailand" },
+                  { src: "/lovable-uploads/koh-samui-snorkeling.jpg", alt: "Koh Samui snorkeling" },
+                  { src: "/lovable-uploads/koh-tan-thailand.jpg", alt: "Koh Tan Thailand" },
+                  { src: "/lovable-uploads/pig-island-koh-madsum-koh-samui.jpg", alt: "Pig island Koh Madsum Koh Samui" },
+                  { src: "/lovable-uploads/pig-island-koh-samui.jpg", alt: "Pig island Koh Samui" },
+                ].map((img, i) => (
+                  <CarouselItem key={i}>
+                    <img
+                      src={img.src}
+                      alt={img.alt}
+                      className="w-full h-[300px] md:h-[500px] object-cover rounded-xl"
+                      loading="lazy"
+                    />
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="left-2" />
+              <CarouselNext className="right-2" />
+            </Carousel>
+          </div>
+
+          <div className="text-center mt-8">
+            <WhatsAppCTA
+              text="Get Custom Tour Recommendations"
+              message="Hello! I would like to get personalized recommendations for a longtail boat tour in Koh Samui based on my preferences." />
           </div>
 
           <div className="max-w-5xl mx-auto">
