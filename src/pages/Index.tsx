@@ -493,9 +493,6 @@ const Index = () => {
       {/* Footer */}
       <Footer />
 
-      {/* Floating WhatsApp Button */}
-      <WhatsAppFloatingButton />
-
       {/* Sticky Price Bar */}
       <StickyPriceBar />
     </div>);
