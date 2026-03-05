@@ -395,7 +395,7 @@ const Index = () => {
       <FAQ />
 
       {/* Image Gallery */}
-      <ImageGallery />
+      
 
       {/* Practical Information */}
       <section className="py-16 bg-white">
