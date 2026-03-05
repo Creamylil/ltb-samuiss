@@ -106,7 +106,7 @@ const Index = () => {
       </section>
 
       {/* Itinerary Section */}
-      <section className="py-16 bg-white">
+      <section className="bg-white py-0">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800">
             Your Long Tail Boat Koh Samui Itinerary
@@ -130,19 +130,19 @@ const Index = () => {
 
               {/* Stops */}
               {[
-                { name: "Pier Departure", time: "Departure", emoji: "⚓" },
-                { name: "Koh Madsum", time: "+45 min", emoji: "🐷" },
-                { name: "Koh Tan", time: "+2h", emoji: "🤿" },
-                { name: "Pier Arrival", time: "~4h", emoji: "⚓" },
-              ].map((stop, i) => (
-                <div key={i} className="relative z-10 flex flex-col items-center w-1/4">
+              { name: "Pier Departure", time: "Departure", emoji: "⚓" },
+              { name: "Koh Madsum", time: "+45 min", emoji: "🐷" },
+              { name: "Koh Tan", time: "+2h", emoji: "🤿" },
+              { name: "Pier Arrival", time: "~4h", emoji: "⚓" }].
+              map((stop, i) =>
+              <div key={i} className="relative z-10 flex flex-col items-center w-1/4">
                   <div className="w-10 h-10 rounded-full bg-white border-4 border-blue-500 flex items-center justify-center text-lg shadow-md">
                     {stop.emoji}
                   </div>
                   <span className="mt-2 text-xs md:text-sm font-bold text-gray-800 text-center leading-tight">{stop.name}</span>
                   <span className="text-xs text-blue-600 font-medium">{stop.time}</span>
                 </div>
-              ))}
+              )}
             </div>
             <p className="text-center text-sm text-gray-500 mt-6 italic">
               ⏱️ Total boat trip duration: ~4 hours (hotel transfer time not included)
