@@ -171,8 +171,8 @@ const Index = () => {
       {/* Why Choose Us Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800">
-            Best Long Tail Boat Koh Samui Tours - Unbeatable Value
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800">Best Long Tail Boat Koh Samui Tours
+
           </h2>
           <h3 className="text-xl text-center mb-12 text-gray-600">From ฿4,000 THB with everything included:</h3>
           
@@ -293,8 +293,8 @@ const Index = () => {
       {/* Booking Form Section */}
       <section id="booking-form" className="py-16 bg-gradient-to-b from-orange-50 to-blue-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800">
-            Book Your Long Tail Boat Koh Samui Tour
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800">Book Your Long Tail Boat Tour Online
+
           </h2>
           <p className="text-center text-lg text-green-600 font-semibold mb-8">
             🔥 Pay a deposit now to secure your spot — the remaining balance is paid directly to the captain on departure day!
