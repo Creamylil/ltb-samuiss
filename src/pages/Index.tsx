@@ -72,12 +72,13 @@ const Index = () => {
                 <span className="hidden md:inline">Book Your Long Tail Boat Now</span>
                 <span className="md:hidden">Book Now</span>
               </Button>
-              <WhatsAppCTA
-                text="💬 Ask Questions on WhatsApp"
-                className="w-full md:w-auto"
+              <Button
                 size="lg"
-                message="Hi! I'm interested in your longtail boat tours in Koh Samui. Can you tell me more about your packages and availability?" />
-              
+                className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border border-white/30 px-8 py-4 md:px-10 md:py-5 text-base md:text-lg font-semibold rounded-full transform hover:scale-105 transition-all duration-300 w-full md:w-auto"
+                onClick={scrollToBooking}>
+                <span className="hidden md:inline">See Prices & Options</span>
+                <span className="md:hidden">See Prices</span>
+              </Button>
             </div>
           </div>
         </div>
