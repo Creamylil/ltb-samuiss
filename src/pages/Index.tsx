@@ -49,7 +49,7 @@ const Index = () => {
                 </div>
                 <div className="flex items-center justify-center md:justify-start">
                   <CheckCircle className="w-4 h-4 mr-2 text-green-400 flex-shrink-0" />
-                  <span>From ฿1,200 per person ($36)</span>
+                  <span>From ฿4,000 THB</span>
                 </div>
                 <div className="flex items-center justify-center md:justify-start">
                   <CheckCircle className="w-4 h-4 mr-2 text-green-400 flex-shrink-0" />
