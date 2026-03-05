@@ -1,7 +1,7 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -9,7 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Checkbox } from "@/components/ui/checkbox";
-import { CalendarIcon, CheckCircle, Users, MapPin, Shield, Clock, Anchor } from 'lucide-react';
+import { CalendarIcon, CheckCircle, Users, MapPin, Shield, Clock, Anchor, Car } from 'lucide-react';
 import { format } from "date-fns";
 import { enUS } from "date-fns/locale";
 import { supabase } from "@/integrations/supabase/client";
@@ -33,10 +33,10 @@ interface BookingData {
 const TAXI_PRICE = 1600;
 
 function getPricingTier(people: number) {
-  if (people <= 3) return { captainPrice: 1800, margin: 600 };
-  if (people <= 4) return { captainPrice: 2000, margin: 1000 };
-  if (people <= 7) return { captainPrice: 2500, margin: 1500 };
-  return { captainPrice: 3000, margin: 2000 };
+  if (people <= 3) return { captainPrice: 1800, boatPrice: 3200 };
+  if (people <= 4) return { captainPrice: 2000, boatPrice: 4200 };
+  if (people <= 7) return { captainPrice: 2500, boatPrice: 5000 };
+  return { captainPrice: 3000, boatPrice: 6000 };
 }
 
 const BookingForm = () => {
@@ -53,21 +53,32 @@ const BookingForm = () => {
     comment: ''
   });
 
+  const [needsTransfer, setNeedsTransfer] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [termsAccepted, setTermsAccepted] = useState(false);
 
-  const { captainPrice, margin } = getPricingTier(bookingData.people);
-  const totalPrice = captainPrice + TAXI_PRICE + margin;
-  const deposit = TAXI_PRICE + margin;
+  const { captainPrice, boatPrice } = getPricingTier(bookingData.people);
+  const margin = boatPrice - captainPrice;
+  const totalPrice = needsTransfer ? boatPrice + TAXI_PRICE : boatPrice;
+  const deposit = needsTransfer ? margin + TAXI_PRICE : margin;
   const remainingToCaptain = captainPrice;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!bookingData.date || !bookingData.name || !bookingData.email || !bookingData.hotelName || !bookingData.hotelAddress || !bookingData.pickupTime) {
+    if (!bookingData.date || !bookingData.name || !bookingData.email || !bookingData.pickupTime) {
       toast({
         title: "Required fields",
         description: "Please fill in all required fields",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    if (needsTransfer && (!bookingData.hotelName || !bookingData.hotelAddress)) {
+      toast({
+        title: "Required fields",
+        description: "Please fill in your hotel name and address for the transfer",
         variant: "destructive"
       });
       return;
@@ -100,6 +111,7 @@ const BookingForm = () => {
           depositTHB: deposit,
           totalPriceTHB: totalPrice,
           captainPriceTHB: remainingToCaptain,
+          needsTransfer,
           bookingData: {
             ...bookingData,
             date: bookingData.date ? format(bookingData.date, 'yyyy-MM-dd') : ''
@@ -134,9 +146,6 @@ const BookingForm = () => {
     <div className="max-w-4xl mx-auto">
       <Card className="shadow-2xl border-2 border-blue-100">
         <CardHeader className="bg-gradient-to-r from-blue-50 to-orange-50">
-          
-
-          
           <div className="text-center space-y-2 mt-4">
             <div className="flex justify-center items-center space-x-6 text-sm flex-wrap gap-y-2">
               <div className="flex items-center text-green-600">
@@ -144,37 +153,40 @@ const BookingForm = () => {
                 <span className="font-semibold">Private longtail boat</span>
               </div>
               <div className="flex items-center text-green-600">
-                <MapPin className="w-4 h-4 mr-1" />
-                <span className="font-semibold">Hotel transfer included</span>
-              </div>
-              <div className="flex items-center text-green-600">
                 <Anchor className="w-4 h-4 mr-1" />
                 <span className="font-semibold">Local captain included</span>
+              </div>
+              <div className="flex items-center text-green-600">
+                <Car className="w-4 h-4 mr-1" />
+                <span className="font-semibold">Optional hotel transfer</span>
               </div>
             </div>
           </div>
         </CardHeader>
         <CardContent className="p-8">
           <form onSubmit={handleSubmit} className="space-y-8">
-            
+
             <div className="grid md:grid-cols-2 gap-6">
               {/* Number of guests */}
               <div className="space-y-2">
                 <Label htmlFor="people" className="text-lg font-semibold">Number of guests *</Label>
                 <Select value={bookingData.people.toString()} onValueChange={(value) =>
-                setBookingData((prev) => ({ ...prev, people: parseInt(value) }))
+                  setBookingData((prev) => ({ ...prev, people: parseInt(value) }))
                 }>
                   <SelectTrigger className="h-12 text-lg">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
                     {Array.from({ length: 10 }, (_, i) => i + 1).map((num) =>
-                    <SelectItem key={num} value={num.toString()}>
+                      <SelectItem key={num} value={num.toString()}>
                         {num} guest{num > 1 ? 's' : ''}
                       </SelectItem>
                     )}
                   </SelectContent>
                 </Select>
+
+                {/* Boat price display */}
+                <p className="text-sm text-gray-500">Boat price: <strong className="text-blue-600">฿{boatPrice.toLocaleString()} THB</strong></p>
               </div>
 
               {/* Date */}
@@ -185,7 +197,6 @@ const BookingForm = () => {
                     <Button
                       variant="outline"
                       className="w-full justify-start text-left font-normal h-12 text-lg">
-                      
                       <CalendarIcon className="mr-2 h-4 w-4" />
                       {bookingData.date ? format(bookingData.date, "PPP", { locale: enUS }) : "Choose your adventure date"}
                     </Button>
@@ -195,23 +206,40 @@ const BookingForm = () => {
                       mode="single"
                       selected={bookingData.date}
                       onSelect={(date) => setBookingData((prev) => ({ ...prev, date }))}
-                    disabled={(date) => {
-                      const minDate = new Date();
-                      minDate.setDate(minDate.getDate() + 2);
-                      minDate.setHours(0, 0, 0, 0);
-                      return date < minDate;
-                    }}
+                      disabled={(date) => {
+                        const minDate = new Date();
+                        minDate.setDate(minDate.getDate() + 2);
+                        minDate.setHours(0, 0, 0, 0);
+                        return date < minDate;
+                      }}
                       initialFocus />
-                    
                   </PopoverContent>
                 </Popover>
               </div>
+            </div>
 
+            {/* Transfer checkbox */}
+            <div className="flex items-center space-x-3 p-4 bg-blue-50 rounded-lg border border-blue-200">
+              <Checkbox
+                id="transfer"
+                checked={needsTransfer}
+                onCheckedChange={(checked) => setNeedsTransfer(checked as boolean)}
+              />
+              <div className="flex-1">
+                <Label htmlFor="transfer" className="text-base font-semibold cursor-pointer flex items-center gap-2">
+                  <Car className="w-4 h-4 text-blue-600" />
+                  I need hotel transfer (+฿{TAXI_PRICE.toLocaleString()} THB)
+                </Label>
+                <p className="text-sm text-gray-500 mt-0.5">Round-trip pickup from your hotel to the pier</p>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6">
               {/* Pickup Time */}
               <div className="space-y-2">
                 <Label htmlFor="pickupTime" className="text-lg font-semibold">Preferred pickup time *</Label>
                 <Select value={bookingData.pickupTime} onValueChange={(value) =>
-                setBookingData((prev) => ({ ...prev, pickupTime: value }))
+                  setBookingData((prev) => ({ ...prev, pickupTime: value }))
                 }>
                   <SelectTrigger className="h-12 text-lg">
                     <SelectValue placeholder="Select pickup time" />
@@ -242,7 +270,6 @@ const BookingForm = () => {
                   onChange={(e) => setBookingData((prev) => ({ ...prev, name: e.target.value }))}
                   placeholder="Enter your full name"
                   className="h-12 text-lg" />
-                
               </div>
 
               {/* Email */}
@@ -255,14 +282,13 @@ const BookingForm = () => {
                   onChange={(e) => setBookingData((prev) => ({ ...prev, email: e.target.value }))}
                   placeholder="your@email.com"
                   className="h-12 text-lg" />
-                
               </div>
 
               {/* Phone Type */}
               <div className="space-y-2">
                 <Label htmlFor="phoneType" className="text-lg font-semibold">Phone type *</Label>
                 <Select value={bookingData.phoneType} onValueChange={(value: 'whatsapp' | 'line' | 'normal') =>
-                setBookingData((prev) => ({ ...prev, phoneType: value }))
+                  setBookingData((prev) => ({ ...prev, phoneType: value }))
                 }>
                   <SelectTrigger className="h-12 text-lg">
                     <SelectValue placeholder="Select phone type" />
@@ -284,32 +310,32 @@ const BookingForm = () => {
                   onChange={(e) => setBookingData((prev) => ({ ...prev, phone: e.target.value }))}
                   placeholder="+33 1 23 45 67 89"
                   className="h-12 text-lg" />
-                
               </div>
 
-              {/* Hotel Name */}
-              <div className="space-y-2">
-                <Label htmlFor="hotelName" className="text-lg font-semibold">Hotel name *</Label>
-                <Input
-                  id="hotelName"
-                  value={bookingData.hotelName}
-                  onChange={(e) => setBookingData((prev) => ({ ...prev, hotelName: e.target.value }))}
-                  placeholder="Enter your hotel name"
-                  className="h-12 text-lg" />
-                
-              </div>
+              {/* Hotel fields - only shown when transfer is selected */}
+              {needsTransfer && (
+                <>
+                  <div className="space-y-2">
+                    <Label htmlFor="hotelName" className="text-lg font-semibold">Hotel name *</Label>
+                    <Input
+                      id="hotelName"
+                      value={bookingData.hotelName}
+                      onChange={(e) => setBookingData((prev) => ({ ...prev, hotelName: e.target.value }))}
+                      placeholder="Enter your hotel name"
+                      className="h-12 text-lg" />
+                  </div>
 
-              {/* Hotel Address */}
-              <div className="space-y-2">
-                <Label htmlFor="hotelAddress" className="text-lg font-semibold">Hotel address *</Label>
-                <Input
-                  id="hotelAddress"
-                  value={bookingData.hotelAddress}
-                  onChange={(e) => setBookingData((prev) => ({ ...prev, hotelAddress: e.target.value }))}
-                  placeholder="Enter your hotel address"
-                  className="h-12 text-lg" />
-                
-              </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="hotelAddress" className="text-lg font-semibold">Hotel address *</Label>
+                    <Input
+                      id="hotelAddress"
+                      value={bookingData.hotelAddress}
+                      onChange={(e) => setBookingData((prev) => ({ ...prev, hotelAddress: e.target.value }))}
+                      placeholder="Enter your hotel address"
+                      className="h-12 text-lg" />
+                  </div>
+                </>
+              )}
             </div>
 
             {/* Comment */}
@@ -321,7 +347,6 @@ const BookingForm = () => {
                 onChange={(e) => setBookingData((prev) => ({ ...prev, comment: e.target.value }))}
                 placeholder="Special requests, dietary requirements or comments..."
                 className="min-h-[100px] text-lg" />
-              
             </div>
 
             {/* Terms and Conditions Checkbox */}
@@ -331,26 +356,14 @@ const BookingForm = () => {
                 checked={termsAccepted}
                 onCheckedChange={(checked) => setTermsAccepted(checked as boolean)}
                 className="mt-1" />
-              
               <div className="flex-1">
-                <Label
-                  htmlFor="terms"
-                  className="text-sm font-medium leading-relaxed cursor-pointer">
-                  
+                <Label htmlFor="terms" className="text-sm font-medium leading-relaxed cursor-pointer">
                   I accept the{" "}
-                  <Link
-                    to="/terms-conditions"
-                    className="text-blue-600 hover:text-blue-800 underline"
-                    target="_blank">
-                    
+                  <Link to="/terms-conditions" className="text-blue-600 hover:text-blue-800 underline" target="_blank">
                     terms and conditions
                   </Link>
                   {" "}and{" "}
-                  <Link
-                    to="/sales-conditions"
-                    className="text-blue-600 hover:text-blue-800 underline"
-                    target="_blank">
-                    
+                  <Link to="/sales-conditions" className="text-blue-600 hover:text-blue-800 underline" target="_blank">
                     terms of use
                   </Link>
                   . *
@@ -365,9 +378,12 @@ const BookingForm = () => {
                   <div className="text-2xl font-bold text-gray-800 mb-1">
                     Total price: ฿{totalPrice.toLocaleString()} THB
                   </div>
-                  <div className="text-sm text-gray-500">for {bookingData.people} guest{bookingData.people > 1 ? 's' : ''}</div>
+                  <div className="text-sm text-gray-500">
+                    for {bookingData.people} guest{bookingData.people > 1 ? 's' : ''}
+                    {needsTransfer ? ' — with hotel transfer' : ' — without transfer'}
+                  </div>
                 </div>
-                
+
                 <div className="border-t border-gray-200 pt-4 space-y-3">
                   <div className="flex justify-between items-center text-lg">
                     <span className="font-semibold text-orange-700">💳 Deposit to pay today:</span>
@@ -387,7 +403,7 @@ const BookingForm = () => {
 
                 <div className="border-t border-gray-200 pt-3">
                   <p className="text-sm font-semibold text-gray-700 mb-2">Includes:</p>
-                  <div className="grid grid-cols-3 gap-2 text-sm">
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-sm">
                     <div className="flex items-center text-green-600">
                       <CheckCircle className="w-4 h-4 mr-1" />
                       <span className="font-semibold">Private longtail boat</span>
@@ -396,10 +412,12 @@ const BookingForm = () => {
                       <CheckCircle className="w-4 h-4 mr-1" />
                       <span className="font-semibold">Local captain</span>
                     </div>
-                    <div className="flex items-center text-green-600">
-                      <CheckCircle className="w-4 h-4 mr-1" />
-                      <span className="font-semibold">Hotel transfer (round trip)</span>
-                    </div>
+                    {needsTransfer && (
+                      <div className="flex items-center text-green-600">
+                        <CheckCircle className="w-4 h-4 mr-1" />
+                        <span className="font-semibold">Hotel transfer (round trip)</span>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -412,22 +430,19 @@ const BookingForm = () => {
             <Button
               type="submit"
               className="w-full bg-orange-500 hover:bg-orange-600 text-white py-6 text-base md:text-xl font-bold rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300"
-              disabled={!bookingData.date || !bookingData.name || !bookingData.email || !bookingData.hotelName || !bookingData.hotelAddress || !bookingData.pickupTime || !termsAccepted || isProcessing}>
-              
+              disabled={!bookingData.date || !bookingData.name || !bookingData.email || !bookingData.pickupTime || !termsAccepted || isProcessing || (needsTransfer && (!bookingData.hotelName || !bookingData.hotelAddress))}>
               <span className="break-words text-center leading-tight flex items-center justify-center">
-                {isProcessing ?
-                <>
+                {isProcessing ? (
+                  <>
                     <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
                     Processing...
-                  </> :
-
-                <>
-                    🛥️ Pay Deposit Now - ฿{deposit.toLocaleString()} THB
                   </>
-                }
+                ) : (
+                  <>🛥️ Pay Deposit Now - ฿{deposit.toLocaleString()} THB</>
+                )}
               </span>
             </Button>
-            
+
             <div className="text-center space-y-3">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs md:text-sm">
                 <div className="flex items-center justify-center text-green-600 space-x-1">
@@ -451,8 +466,8 @@ const BookingForm = () => {
           </form>
         </CardContent>
       </Card>
-    </div>);
-
+    </div>
+  );
 };
 
 export default BookingForm;

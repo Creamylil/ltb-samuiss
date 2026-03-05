@@ -42,8 +42,8 @@ const Index = () => {
             <div className="flex flex-wrap justify-center gap-3 md:gap-5 mb-10">
               {[
               { icon: "✓", text: "Private skipper" },
-              { icon: "✓", text: "Hotel pickup" },
-              { icon: "✓", text: "From ฿4,000 THB" },
+              { icon: "✓", text: "Transfer optional" },
+              { icon: "✓", text: "From ฿3,200 THB" },
               { icon: "✓", text: "Max 10 guests" }].
               map((item, i) =>
               <div
@@ -84,7 +84,7 @@ const Index = () => {
           <div className="max-w-4xl mx-auto text-lg leading-relaxed text-gray-700 space-y-6">
             <p>
               Experience the authentic charm of a <strong>long tail boat Koh Samui</strong> adventure with our
-              completely private tours. Starting from just <strong>฿4,000 THB with hotel transfer included</strong>.
+              completely private tours. Starting from just <strong>฿3,200 THB</strong> for the boat, with optional hotel transfer.
             </p>
             <p>
               Navigate aboard a traditional Thai long tail boat to the pristine beaches of Pig Island (Koh Madsum), the
@@ -197,7 +197,7 @@ const Index = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
-            From ฿4,000 THB with everything included
+            From ฿3,200 THB — Private boat, optional transfer
           </h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -209,8 +209,8 @@ const Index = () => {
             },
             {
               icon: "💰",
-              title: "Best Price: From ฿4,000 THB",
-              desc: "Includes hotel transfer & captain"
+              title: "Best Price: From ฿3,200 THB",
+              desc: "Private boat + captain included"
             },
             {
               icon: "🐷",
@@ -224,8 +224,8 @@ const Index = () => {
             },
             {
               icon: "🚐",
-              title: "Free Hotel Pickup Included",
-              desc: "Chaweng, Lamai, Bophut areas"
+              title: "Optional Hotel Transfer",
+              desc: "+฿1,600 THB round-trip pickup"
             },
             {
               icon: "👨‍✈️",
@@ -259,7 +259,7 @@ const Index = () => {
             Private Longtail Boat Tour - Pricing
           </h2>
           <p className="text-center text-lg text-green-600 font-semibold mb-8">
-            🎉 All-inclusive pricing with hotel transfer & private captain!
+            🎉 Private boat + captain included — add hotel transfer for ฿1,600 THB!
           </p>
 
           <div className="max-w-4xl mx-auto">
@@ -268,25 +268,30 @@ const Index = () => {
                 <thead className="bg-blue-600 text-white">
                   <tr>
                     <th className="px-6 py-4 text-left">Guests</th>
-                    <th className="px-6 py-4 text-left">Total Price</th>
+                    <th className="px-6 py-4 text-left">Boat Price</th>
+                    <th className="px-6 py-4 text-left">With Transfer</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr className="border-b">
                     <td className="px-6 py-4 font-semibold">Up to 3 guests</td>
-                    <td className="px-6 py-4 text-blue-600 font-bold">฿4,000 THB</td>
+                    <td className="px-6 py-4 text-blue-600 font-bold">฿3,200 THB</td>
+                    <td className="px-6 py-4 text-gray-500">฿4,800 THB</td>
                   </tr>
                   <tr className="border-b">
                     <td className="px-6 py-4 font-semibold">Up to 4 guests</td>
-                    <td className="px-6 py-4 text-blue-600 font-bold">฿4,600 THB</td>
+                    <td className="px-6 py-4 text-blue-600 font-bold">฿4,200 THB</td>
+                    <td className="px-6 py-4 text-gray-500">฿5,800 THB</td>
                   </tr>
                   <tr className="border-b">
                     <td className="px-6 py-4 font-semibold">Up to 7 guests</td>
-                    <td className="px-6 py-4 text-blue-600 font-bold">฿5,600 THB</td>
+                    <td className="px-6 py-4 text-blue-600 font-bold">฿5,000 THB</td>
+                    <td className="px-6 py-4 text-gray-500">฿6,600 THB</td>
                   </tr>
                   <tr>
                     <td className="px-6 py-4 font-semibold">Up to 10 guests</td>
-                    <td className="px-6 py-4 text-blue-600 font-bold">฿6,600 THB</td>
+                    <td className="px-6 py-4 text-blue-600 font-bold">฿6,000 THB</td>
+                    <td className="px-6 py-4 text-gray-500">฿7,600 THB</td>
                   </tr>
                 </tbody>
               </table>
@@ -311,7 +316,7 @@ const Index = () => {
                     <CheckCircle className="w-4 h-4 mr-1" /> Local captain
                   </div>
                   <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-1" /> Hotel transfer (round trip)
+                    <CheckCircle className="w-4 h-4 mr-1" /> Optional hotel transfer
                   </div>
                 </div>
               </div>
