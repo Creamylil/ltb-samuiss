@@ -144,6 +144,9 @@ const Index = () => {
                 </div>
               ))}
             </div>
+            <p className="text-center text-sm text-gray-500 mt-6 italic">
+              ⏱️ Total boat trip duration: ~4 hours (hotel transfer time not included)
+            </p>
           </div>
 
           <div className="max-w-5xl mx-auto">
