@@ -171,7 +171,7 @@ const Index = () => {
             </Carousel>
           </div>
 
-          <div className="text-center mt-8 py-[10px]">
+          <div className="text-center mt-8 py-[10px] pb-[20px]">
             <WhatsAppCTA
               text="Get Custom Tour Recommendations"
               message="Hello! I would like to get personalized recommendations for a longtail boat tour in Koh Samui based on my preferences." />
