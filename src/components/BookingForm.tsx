@@ -230,7 +230,7 @@ const BookingForm = () => {
                   <Car className="w-4 h-4 text-blue-600" />
                   I need hotel transfer (+฿{TAXI_PRICE.toLocaleString()} THB)
                 </Label>
-                <p className="text-sm text-gray-500 mt-0.5">Round-trip pickup from your hotel to the pier</p>
+                <p className="text-sm text-gray-500 mt-0.5">Round-trip transfer: hotel → pier → hotel</p>
               </div>
             </div>
 
