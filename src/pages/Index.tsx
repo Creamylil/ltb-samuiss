@@ -42,8 +42,8 @@ const Index = () => {
             <div className="flex flex-wrap justify-center gap-3 md:gap-5 mb-10">
               {[
               { icon: "✓", text: "Private skipper" },
-              { icon: "✓", text: "Hotel pickup" },
-              { icon: "✓", text: "From ฿4,000 THB" },
+              { icon: "✓", text: "Transfer optional" },
+              { icon: "✓", text: "From ฿3,200 THB" },
               { icon: "✓", text: "Max 10 guests" }].
               map((item, i) =>
               <div
