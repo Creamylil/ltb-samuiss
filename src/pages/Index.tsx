@@ -443,6 +443,9 @@ const Index = () => {
 
       {/* Footer */}
       <Footer />
+
+      {/* Sticky Price Bar */}
+      <StickyPriceBar />
     </div>);
 
 };
