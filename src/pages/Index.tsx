@@ -37,7 +37,7 @@ const Index = () => {
               Private Tour with Hotel Transfer
             </h2>
             <p className="text-lg md:text-xl lg:text-2xl mb-8 text-white/90 font-light max-w-3xl mx-auto leading-relaxed">
-              Your private boat, your itinerary, hotel pickup included — no hidden fees, no crowds, just paradise.
+              Your private boat, hotel pickup included
             </p>
             <div className="flex flex-wrap justify-center gap-3 md:gap-5 mb-10">
               {[
