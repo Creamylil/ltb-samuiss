@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Users, Minus, Plus, CalendarCheck } from "lucide-react";
+import { Users, Minus, Plus, CalendarCheck, MessageCircle } from "lucide-react";
 import { format } from "date-fns";
 import { enUS } from "date-fns/locale";
 
@@ -72,14 +72,25 @@ const StickyPriceBar = () => {
             <p className="text-[10px] sm:text-xs text-gray-400 leading-tight">Private boat · Transfer optional</p>
           </div>
 
-          {/* CTA */}
-          <Button
-            onClick={scrollToBooking}
-            className="bg-orange-500 hover:bg-orange-600 text-white rounded-full text-xs sm:text-sm px-4 sm:px-6 py-2 font-semibold whitespace-nowrap"
-          >
-            <span className="hidden sm:inline">Book Now →</span>
-            <span className="sm:hidden">Book →</span>
-          </Button>
+          {/* CTAs */}
+          <div className="flex items-center gap-2">
+            <a
+              href="https://wa.me/33767028161?text=Hello!%20I'm%20interested%20in%20booking%20a%20longtail%20boat%20tour."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-9 h-9 sm:w-10 sm:h-10 bg-green-500 hover:bg-green-600 text-white rounded-full flex items-center justify-center transition-colors flex-shrink-0"
+              aria-label="WhatsApp"
+            >
+              <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5" />
+            </a>
+            <Button
+              onClick={scrollToBooking}
+              className="bg-orange-500 hover:bg-orange-600 text-white rounded-full text-xs sm:text-sm px-4 sm:px-6 py-2 font-semibold whitespace-nowrap"
+            >
+              <span className="hidden sm:inline">Book Now →</span>
+              <span className="sm:hidden">Book →</span>
+            </Button>
+          </div>
         </div>
       </div>
     </div>

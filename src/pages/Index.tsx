@@ -16,7 +16,7 @@ import Testimonials from "../components/Testimonials";
 import FAQ from "../components/FAQ";
 import Footer from "../components/Footer";
 import WhatsAppCTA from "../components/WhatsAppCTA";
-import WhatsAppFloatingButton from "../components/WhatsAppFloatingButton";
+
 import StickyPriceBar from "../components/StickyPriceBar";
 
 const Index = () => {
@@ -72,13 +72,11 @@ const Index = () => {
                 <span className="hidden md:inline">Book Your Long Tail Boat Now</span>
                 <span className="md:hidden">Book Now</span>
               </Button>
-              <Button
+              <WhatsAppCTA
+                text="💬 Ask Questions on WhatsApp"
+                className="w-full md:w-auto bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border border-white/30 rounded-full transform hover:scale-105 transition-all duration-300"
                 size="lg"
-                className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border border-white/30 px-8 py-4 md:px-10 md:py-5 text-base md:text-lg font-semibold rounded-full transform hover:scale-105 transition-all duration-300 w-full md:w-auto"
-                onClick={scrollToBooking}>
-                <span className="hidden md:inline">See Prices & Options</span>
-                <span className="md:hidden">See Prices</span>
-              </Button>
+                message="Hi! I'm interested in your longtail boat tours in Koh Samui. Can you tell me more?" />
             </div>
           </div>
         </div>
@@ -494,9 +492,6 @@ const Index = () => {
 
       {/* Footer */}
       <Footer />
-
-      {/* Floating WhatsApp Button */}
-      <WhatsAppFloatingButton />
 
       {/* Sticky Price Bar */}
       <StickyPriceBar />
