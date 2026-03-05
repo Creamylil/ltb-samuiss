@@ -86,7 +86,7 @@ const Index = () => {
 
       {/* Itinerary Section */}
       <section className="bg-white py-0">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 pt-[29px]">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800">
             Your Long Tail Boat Koh Samui Itinerary
           </h2>
