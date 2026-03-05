@@ -6,20 +6,17 @@ import { Label } from "@/components/ui/label";
 import { supabase } from "@/integrations/supabase/client";
 import { useNavigate } from 'react-router-dom';
 import { toast } from "@/hooks/use-toast";
-import { Lock, Mail, UserPlus, LogIn } from 'lucide-react';
+import { Lock, Mail, LogIn } from 'lucide-react';
 
 const AdminLogin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isSignUp, setIsSignUp] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-      if (session) {
-        navigate('/admin');
-      }
+      if (session) navigate('/admin');
     });
 
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -34,21 +31,8 @@ const AdminLogin = () => {
     setLoading(true);
 
     try {
-      if (isSignUp) {
-        const { error } = await supabase.auth.signUp({
-          email,
-          password,
-          options: { emailRedirectTo: window.location.origin + '/admin' }
-        });
-        if (error) throw error;
-        toast({
-          title: "Compte créé",
-          description: "Vérifiez votre email pour confirmer votre inscription."
-        });
-      } else {
-        const { error } = await supabase.auth.signInWithPassword({ email, password });
-        if (error) throw error;
-      }
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      if (error) throw error;
     } catch (error: any) {
       toast({
         title: "Erreur",
@@ -67,9 +51,7 @@ const AdminLogin = () => {
           <div className="mx-auto w-14 h-14 rounded-full bg-blue-600/20 flex items-center justify-center">
             <Lock className="w-7 h-7 text-blue-400" />
           </div>
-          <CardTitle className="text-2xl text-white">
-            {isSignUp ? 'Créer un compte Admin' : 'Admin — Connexion'}
-          </CardTitle>
+          <CardTitle className="text-2xl text-white">Admin — Connexion</CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -105,19 +87,7 @@ const AdminLogin = () => {
               </div>
             </div>
             <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white" disabled={loading}>
-              {loading ? 'Chargement...' : isSignUp ? (
-                <><UserPlus className="w-4 h-4 mr-2" /> Créer le compte</>
-              ) : (
-                <><LogIn className="w-4 h-4 mr-2" /> Se connecter</>
-              )}
-            </Button>
-            <Button
-              type="button"
-              variant="ghost"
-              className="w-full text-slate-400 hover:text-white"
-              onClick={() => setIsSignUp(!isSignUp)}
-            >
-              {isSignUp ? 'Déjà un compte ? Se connecter' : 'Créer un compte'}
+              {loading ? 'Chargement...' : <><LogIn className="w-4 h-4 mr-2" /> Se connecter</>}
             </Button>
           </form>
         </CardContent>
