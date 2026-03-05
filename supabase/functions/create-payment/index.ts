@@ -1,6 +1,7 @@
 
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import Stripe from "https://esm.sh/stripe@14.21.0";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2.49.1";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -28,6 +29,42 @@ serve(async (req) => {
     if (!stripeSecretKey) {
       console.error("Stripe secret key is missing");
       throw new Error("Payment configuration error. Please contact support.");
+    }
+
+    // Insert booking into database using service role (bypasses RLS)
+    const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
+    const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+    const supabase = createClient(supabaseUrl, supabaseServiceKey);
+
+    const { data: booking, error: dbError } = await supabase
+      .from("bookings")
+      .insert({
+        date: bookingData.date,
+        people,
+        name: bookingData.name,
+        email: bookingData.email,
+        phone_country: bookingData.phoneCountry || '+66',
+        phone: bookingData.phone,
+        phone_type: bookingData.phoneType || 'normal',
+        needs_transfer: bookingData.needsTransfer || false,
+        hotel_name: bookingData.hotelName || null,
+        hotel_address: bookingData.hotelAddress || null,
+        pickup_time: bookingData.pickupTime,
+        comment: bookingData.comment || null,
+        boat_price_thb: totalPriceTHB,
+        deposit_thb: depositTHB,
+        captain_price_thb: captainPriceTHB,
+        transfer_price_thb: bookingData.transferPrice || 0,
+        payment_status: 'pending',
+      })
+      .select()
+      .single();
+
+    if (dbError) {
+      console.error("Error saving booking to database:", dbError);
+      // Continue with payment even if DB insert fails
+    } else {
+      console.log(`Booking saved to database: ${booking.id}`);
     }
 
     const stripe = new Stripe(stripeSecretKey, {
@@ -67,8 +104,18 @@ serve(async (req) => {
         pickupTime: bookingData.pickupTime,
         date: bookingData.date,
         comment: bookingData.comment || '',
+        bookingId: booking?.id || '',
       }
     });
+
+    // Update booking with stripe session ID
+    if (booking?.id) {
+      await supabase
+        .from("bookings")
+        .update({ stripe_session_id: session.id })
+        .eq("id", booking.id);
+      console.log(`Updated booking ${booking.id} with stripe session ${session.id}`);
+    }
 
     console.log(`Stripe session created: ${session.id}`);
 
