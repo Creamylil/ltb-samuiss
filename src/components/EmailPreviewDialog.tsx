@@ -1,11 +1,4 @@
-import React from 'react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { Eye, Mail } from 'lucide-react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-
-interface Booking {
-  id: string;
+interface BookingData {
   date: string;
   people: number;
   name: string;
@@ -24,7 +17,26 @@ interface Booking {
   transfer_price_thb: number;
 }
 
-function buildClientEmailHtml(booking: Booking): string {
+export const sampleBooking: BookingData = {
+  name: "John Smith",
+  email: "john.smith@example.com",
+  phone_country: "+44",
+  phone: "7911123456",
+  phone_type: "whatsapp",
+  date: "2026-03-15",
+  people: 4,
+  pickup_time: "09:00",
+  needs_transfer: true,
+  hotel_name: "Chaweng Beach Resort",
+  hotel_address: "123 Chaweng Beach Road",
+  comment: "We'd love to see dolphins if possible!",
+  boat_price_thb: 4500,
+  captain_price_thb: 3500,
+  transfer_price_thb: 500,
+  deposit_thb: 1500,
+};
+
+export function buildClientEmailHtml(booking: BookingData): string {
   const balanceDue = booking.boat_price_thb + booking.captain_price_thb + booking.transfer_price_thb - booking.deposit_thb;
 
   return `
@@ -64,7 +76,7 @@ function buildClientEmailHtml(booking: Booking): string {
   `;
 }
 
-function buildAdminEmailHtml(booking: Booking): string {
+export function buildAdminEmailHtml(booking: BookingData): string {
   return `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
       <h1 style="color: #7c3aed;">🚀 New Booking Received!</h1>
@@ -100,48 +112,3 @@ function buildAdminEmailHtml(booking: Booking): string {
     </div>
   `;
 }
-
-interface EmailPreviewDialogProps {
-  booking: Booking;
-}
-
-const EmailPreviewDialog: React.FC<EmailPreviewDialogProps> = ({ booking }) => {
-  return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button variant="ghost" size="sm" className="text-slate-400 hover:text-white p-1">
-          <Mail className="w-4 h-4" />
-        </Button>
-      </DialogTrigger>
-      <DialogContent className="max-w-3xl max-h-[85vh] overflow-y-auto bg-slate-800 border-slate-700 text-white">
-        <DialogHeader>
-          <DialogTitle className="flex items-center gap-2">
-            <Eye className="w-5 h-5" /> Aperçu des emails — {booking.name}
-          </DialogTitle>
-        </DialogHeader>
-        <Tabs defaultValue="client" className="mt-4">
-          <TabsList className="bg-slate-700">
-            <TabsTrigger value="client" className="data-[state=active]:bg-sky-600">📧 Email Client</TabsTrigger>
-            <TabsTrigger value="admin" className="data-[state=active]:bg-purple-600">📧 Email Admin</TabsTrigger>
-          </TabsList>
-          <TabsContent value="client" className="mt-4">
-            <div className="bg-white rounded-lg p-2">
-              <div
-                dangerouslySetInnerHTML={{ __html: buildClientEmailHtml(booking) }}
-              />
-            </div>
-          </TabsContent>
-          <TabsContent value="admin" className="mt-4">
-            <div className="bg-white rounded-lg p-2">
-              <div
-                dangerouslySetInnerHTML={{ __html: buildAdminEmailHtml(booking) }}
-              />
-            </div>
-          </TabsContent>
-        </Tabs>
-      </DialogContent>
-    </Dialog>
-  );
-};
-
-export default EmailPreviewDialog;

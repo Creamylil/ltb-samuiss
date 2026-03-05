@@ -5,9 +5,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
-import { LogOut, RefreshCw, Users, Calendar, CreditCard } from 'lucide-react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { LogOut, RefreshCw, Users, Calendar, CreditCard, Mail } from 'lucide-react';
 import { toast } from "@/hooks/use-toast";
-import EmailPreviewDialog from "@/components/EmailPreviewDialog";
+import { buildClientEmailHtml, buildAdminEmailHtml, sampleBooking } from "@/components/EmailPreviewDialog";
 
 interface Booking {
   id: string;
@@ -113,95 +114,140 @@ const AdminDashboard = () => {
       </header>
 
       <main className="container mx-auto px-4 py-8 space-y-8">
-        {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {[
-            { label: "Total réservations", value: stats.total, icon: Calendar, color: "text-blue-400" },
-            { label: "Payées", value: stats.completed, icon: CreditCard, color: "text-green-400" },
-            { label: "En attente", value: stats.pending, icon: Users, color: "text-yellow-400" },
-            { label: "Revenu total", value: `฿${stats.totalRevenue.toLocaleString()}`, icon: CreditCard, color: "text-emerald-400" },
-          ].map((stat, i) => (
-            <Card key={i} className="bg-slate-800 border-slate-700">
-              <CardContent className="p-4 flex items-center gap-3">
-                <stat.icon className={`w-8 h-8 ${stat.color}`} />
-                <div>
-                  <p className="text-sm text-slate-400">{stat.label}</p>
-                  <p className="text-2xl font-bold text-white">{stat.value}</p>
-                </div>
+        <Tabs defaultValue="bookings">
+          <TabsList className="bg-slate-800 border border-slate-700 mb-6">
+            <TabsTrigger value="bookings" className="data-[state=active]:bg-slate-600">📋 Réservations</TabsTrigger>
+            <TabsTrigger value="emails" className="data-[state=active]:bg-slate-600">📧 Templates Emails</TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="bookings" className="space-y-8">
+            {/* Stats */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[
+                { label: "Total réservations", value: stats.total, icon: Calendar, color: "text-blue-400" },
+                { label: "Payées", value: stats.completed, icon: CreditCard, color: "text-green-400" },
+                { label: "En attente", value: stats.pending, icon: Users, color: "text-yellow-400" },
+                { label: "Revenu total", value: `฿${stats.totalRevenue.toLocaleString()}`, icon: CreditCard, color: "text-emerald-400" },
+              ].map((stat, i) => (
+                <Card key={i} className="bg-slate-800 border-slate-700">
+                  <CardContent className="p-4 flex items-center gap-3">
+                    <stat.icon className={`w-8 h-8 ${stat.color}`} />
+                    <div>
+                      <p className="text-sm text-slate-400">{stat.label}</p>
+                      <p className="text-2xl font-bold text-white">{stat.value}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
+            {/* Table */}
+            <Card className="bg-slate-800 border-slate-700">
+              <CardHeader>
+                <CardTitle className="text-white">Toutes les réservations</CardTitle>
+              </CardHeader>
+              <CardContent>
+                {loading ? (
+                  <p className="text-slate-400 text-center py-8">Chargement...</p>
+                ) : bookings.length === 0 ? (
+                  <p className="text-slate-400 text-center py-8">Aucune réservation pour le moment.</p>
+                ) : (
+                  <div className="overflow-x-auto">
+                    <Table>
+                      <TableHeader>
+                        <TableRow className="border-slate-700">
+                          <TableHead className="text-slate-300">Date tour</TableHead>
+                          <TableHead className="text-slate-300">Client</TableHead>
+                          <TableHead className="text-slate-300">Téléphone</TableHead>
+                          <TableHead className="text-slate-300">Pers.</TableHead>
+                          <TableHead className="text-slate-300">Heure</TableHead>
+                          <TableHead className="text-slate-300">Transfert</TableHead>
+                          <TableHead className="text-slate-300">Prix total</TableHead>
+                          <TableHead className="text-slate-300">Acompte</TableHead>
+                          <TableHead className="text-slate-300">Capitaine</TableHead>
+                          <TableHead className="text-slate-300">Statut</TableHead>
+                          <TableHead className="text-slate-300">Créé le</TableHead>
+                        </TableRow>
+                      </TableHeader>
+                      <TableBody>
+                        {bookings.map((b) => (
+                          <TableRow key={b.id} className="border-slate-700 hover:bg-slate-700/50">
+                            <TableCell className="text-white font-medium">{b.date}</TableCell>
+                            <TableCell>
+                              <div className="text-white">{b.name}</div>
+                              <div className="text-xs text-slate-400">{b.email}</div>
+                            </TableCell>
+                            <TableCell className="text-slate-300">
+                              <div>{b.phone_country} {b.phone}</div>
+                              <div className="text-xs text-slate-400">{b.phone_type}</div>
+                            </TableCell>
+                            <TableCell className="text-white">{b.people}</TableCell>
+                            <TableCell className="text-slate-300">{b.pickup_time}</TableCell>
+                            <TableCell>
+                              {b.needs_transfer ? (
+                                <div>
+                                  <Badge className="bg-blue-600 text-xs">Oui</Badge>
+                                  {b.hotel_name && <div className="text-xs text-slate-400 mt-1">{b.hotel_name}</div>}
+                                </div>
+                              ) : (
+                                <span className="text-slate-500">Non</span>
+                              )}
+                            </TableCell>
+                            <TableCell className="text-white">฿{b.boat_price_thb.toLocaleString()}</TableCell>
+                            <TableCell className="text-emerald-400">฿{b.deposit_thb.toLocaleString()}</TableCell>
+                            <TableCell className="text-orange-400">฿{b.captain_price_thb.toLocaleString()}</TableCell>
+                            <TableCell>{statusBadge(b.payment_status)}</TableCell>
+                            <TableCell className="text-slate-400 text-xs">
+                              {new Date(b.created_at).toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: '2-digit', hour: '2-digit', minute: '2-digit' })}
+                            </TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </div>
+                )}
               </CardContent>
             </Card>
-          ))}
-        </div>
+          </TabsContent>
 
-        {/* Table */}
-        <Card className="bg-slate-800 border-slate-700">
-          <CardHeader>
-            <CardTitle className="text-white">Toutes les réservations</CardTitle>
-          </CardHeader>
-          <CardContent>
-            {loading ? (
-              <p className="text-slate-400 text-center py-8">Chargement...</p>
-            ) : bookings.length === 0 ? (
-              <p className="text-slate-400 text-center py-8">Aucune réservation pour le moment.</p>
-            ) : (
-              <div className="overflow-x-auto">
-                <Table>
-                  <TableHeader>
-                    <TableRow className="border-slate-700">
-                      <TableHead className="text-slate-300">Date tour</TableHead>
-                      <TableHead className="text-slate-300">Client</TableHead>
-                      <TableHead className="text-slate-300">Téléphone</TableHead>
-                      <TableHead className="text-slate-300">Pers.</TableHead>
-                      <TableHead className="text-slate-300">Heure</TableHead>
-                      <TableHead className="text-slate-300">Transfert</TableHead>
-                      <TableHead className="text-slate-300">Prix total</TableHead>
-                      <TableHead className="text-slate-300">Acompte</TableHead>
-                      <TableHead className="text-slate-300">Capitaine</TableHead>
-                      <TableHead className="text-slate-300">Statut</TableHead>
-                      <TableHead className="text-slate-300">Emails</TableHead>
-                      <TableHead className="text-slate-300">Créé le</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {bookings.map((b) => (
-                      <TableRow key={b.id} className="border-slate-700 hover:bg-slate-700/50">
-                        <TableCell className="text-white font-medium">{b.date}</TableCell>
-                        <TableCell>
-                          <div className="text-white">{b.name}</div>
-                          <div className="text-xs text-slate-400">{b.email}</div>
-                        </TableCell>
-                        <TableCell className="text-slate-300">
-                          <div>{b.phone_country} {b.phone}</div>
-                          <div className="text-xs text-slate-400">{b.phone_type}</div>
-                        </TableCell>
-                        <TableCell className="text-white">{b.people}</TableCell>
-                        <TableCell className="text-slate-300">{b.pickup_time}</TableCell>
-                        <TableCell>
-                          {b.needs_transfer ? (
-                            <div>
-                              <Badge className="bg-blue-600 text-xs">Oui</Badge>
-                              {b.hotel_name && <div className="text-xs text-slate-400 mt-1">{b.hotel_name}</div>}
-                            </div>
-                          ) : (
-                            <span className="text-slate-500">Non</span>
-                          )}
-                        </TableCell>
-                        <TableCell className="text-white">฿{b.boat_price_thb.toLocaleString()}</TableCell>
-                        <TableCell className="text-emerald-400">฿{b.deposit_thb.toLocaleString()}</TableCell>
-                        <TableCell className="text-orange-400">฿{b.captain_price_thb.toLocaleString()}</TableCell>
-                        <TableCell>{statusBadge(b.payment_status)}</TableCell>
-                        <TableCell><EmailPreviewDialog booking={b} /></TableCell>
-                        <TableCell className="text-slate-400 text-xs">
-                          {new Date(b.created_at).toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: '2-digit', hour: '2-digit', minute: '2-digit' })}
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </div>
-            )}
-          </CardContent>
-        </Card>
+          <TabsContent value="emails" className="space-y-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {/* Client Email */}
+              <Card className="bg-slate-800 border-slate-700">
+                <CardHeader>
+                  <CardTitle className="text-white flex items-center gap-2">
+                    <Mail className="w-5 h-5 text-sky-400" /> Email Client (confirmation)
+                  </CardTitle>
+                  <p className="text-sm text-slate-400">Envoyé au client après paiement confirmé</p>
+                </CardHeader>
+                <CardContent>
+                  <div className="bg-white rounded-lg p-2 max-h-[600px] overflow-y-auto">
+                    <div dangerouslySetInnerHTML={{ __html: buildClientEmailHtml(sampleBooking) }} />
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Admin Email */}
+              <Card className="bg-slate-800 border-slate-700">
+                <CardHeader>
+                  <CardTitle className="text-white flex items-center gap-2">
+                    <Mail className="w-5 h-5 text-purple-400" /> Email Admin (notification)
+                  </CardTitle>
+                  <p className="text-sm text-slate-400">Envoyé à toi quand une réservation est payée</p>
+                </CardHeader>
+                <CardContent>
+                  <div className="bg-white rounded-lg p-2 max-h-[600px] overflow-y-auto">
+                    <div dangerouslySetInnerHTML={{ __html: buildAdminEmailHtml(sampleBooking) }} />
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            <p className="text-slate-500 text-sm text-center">
+              ⚠️ Aperçu avec des données fictives. Les vrais emails utilisent les données de chaque réservation.
+            </p>
+          </TabsContent>
+        </Tabs>
       </main>
     </div>
   );
