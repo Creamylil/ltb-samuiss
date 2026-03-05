@@ -256,7 +256,7 @@ const Index = () => {
       <section className="py-16 bg-gradient-to-r from-blue-50 to-orange-50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800">
-            Private Longtail Boat Tour - Pricing
+            Private Boat Tour Pricing     
           </h2>
           <p className="text-center text-lg text-green-600 font-semibold mb-8">
             🎉 Private boat + captain included — add hotel transfer for ฿1,600 THB!
