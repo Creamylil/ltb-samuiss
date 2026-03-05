@@ -7,8 +7,8 @@ import {
   CarouselContent,
   CarouselItem,
   CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+  CarouselPrevious } from
+"@/components/ui/carousel";
 import Header from "../components/Header";
 import BookingForm from "../components/BookingForm";
 import ImageGallery from "../components/ImageGallery";
@@ -149,29 +149,29 @@ const Index = () => {
             <Carousel opts={{ loop: true }} className="w-full">
               <CarouselContent>
                 {[
-                  { src: "/lovable-uploads/koh-Madsum-island-in-thailand.jpg", alt: "Koh Madsum island in Thailand" },
-                  { src: "/lovable-uploads/koh-Madsum-island-thailand.jpg", alt: "Koh Madsum island Thailand" },
-                  { src: "/lovable-uploads/koh-samui-snorkeling.jpg", alt: "Koh Samui snorkeling" },
-                  { src: "/lovable-uploads/koh-tan-thailand.jpg", alt: "Koh Tan Thailand" },
-                  { src: "/lovable-uploads/pig-island-koh-madsum-koh-samui.jpg", alt: "Pig island Koh Madsum Koh Samui" },
-                  { src: "/lovable-uploads/pig-island-koh-samui.jpg", alt: "Pig island Koh Samui" },
-                ].map((img, i) => (
-                  <CarouselItem key={i}>
+                { src: "/lovable-uploads/koh-Madsum-island-in-thailand.jpg", alt: "Koh Madsum island in Thailand" },
+                { src: "/lovable-uploads/koh-Madsum-island-thailand.jpg", alt: "Koh Madsum island Thailand" },
+                { src: "/lovable-uploads/koh-samui-snorkeling.jpg", alt: "Koh Samui snorkeling" },
+                { src: "/lovable-uploads/koh-tan-thailand.jpg", alt: "Koh Tan Thailand" },
+                { src: "/lovable-uploads/pig-island-koh-madsum-koh-samui.jpg", alt: "Pig island Koh Madsum Koh Samui" },
+                { src: "/lovable-uploads/pig-island-koh-samui.jpg", alt: "Pig island Koh Samui" }].
+                map((img, i) =>
+                <CarouselItem key={i}>
                     <img
-                      src={img.src}
-                      alt={img.alt}
-                      className="w-full h-[300px] md:h-[500px] object-cover rounded-xl"
-                      loading="lazy"
-                    />
+                    src={img.src}
+                    alt={img.alt}
+                    className="w-full h-[300px] md:h-[500px] object-cover rounded-xl"
+                    loading="lazy" />
+                  
                   </CarouselItem>
-                ))}
+                )}
               </CarouselContent>
               <CarouselPrevious className="left-2" />
               <CarouselNext className="right-2" />
             </Carousel>
           </div>
 
-          <div className="text-center mt-8">
+          <div className="text-center mt-8 py-[10px]">
             <WhatsAppCTA
               text="Get Custom Tour Recommendations"
               message="Hello! I would like to get personalized recommendations for a longtail boat tour in Koh Samui based on my preferences." />
@@ -180,26 +180,26 @@ const Index = () => {
           <div className="max-w-5xl mx-auto">
             <div className="grid md:grid-cols-3 gap-8">
               {[
-                {
-                  num: 1,
-                  emoji: "🐷",
-                  title: "Koh Madsum (Pig Island)",
-                  desc: "Meet the famous swimming pigs and enjoy pristine white sand beaches. Perfect for photos and relaxation.",
-                },
-                {
-                  num: 2,
-                  emoji: "🤿",
-                  title: "Koh Tan (Coral Island)",
-                  desc: "Exceptional snorkeling with vibrant coral reefs and tropical fish. Crystal clear waters perfect for swimming.",
-                },
-                {
-                  num: 3,
-                  emoji: "🏝️",
-                  title: "Hidden Beach Stops",
-                  desc: "Secret beaches accessible only by long tail boat. Enjoy secluded spots away from the crowds.",
-                },
-              ].map((stop, i) => (
-                <Card key={i} className="text-center hover:shadow-lg transition-shadow duration-300 border-none shadow-md">
+              {
+                num: 1,
+                emoji: "🐷",
+                title: "Koh Madsum (Pig Island)",
+                desc: "Meet the famous swimming pigs and enjoy pristine white sand beaches. Perfect for photos and relaxation."
+              },
+              {
+                num: 2,
+                emoji: "🤿",
+                title: "Koh Tan (Coral Island)",
+                desc: "Exceptional snorkeling with vibrant coral reefs and tropical fish. Crystal clear waters perfect for swimming."
+              },
+              {
+                num: 3,
+                emoji: "🏝️",
+                title: "Hidden Beach Stops",
+                desc: "Secret beaches accessible only by long tail boat. Enjoy secluded spots away from the crowds."
+              }].
+              map((stop, i) =>
+              <Card key={i} className="text-center hover:shadow-lg transition-shadow duration-300 border-none shadow-md">
                   <CardContent className="p-8">
                     <div className="text-5xl mb-4">{stop.emoji}</div>
                     <div className="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold mx-auto mb-3 text-sm">
@@ -209,7 +209,7 @@ const Index = () => {
                     <p className="text-gray-600 leading-relaxed">{stop.desc}</p>
                   </CardContent>
                 </Card>
-              ))}
+              )}
             </div>
 
             <div className="bg-blue-50 p-6 rounded-xl mt-10 max-w-3xl mx-auto">
