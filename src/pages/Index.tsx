@@ -297,7 +297,7 @@ const Index = () => {
             Book Your Long Tail Boat Koh Samui Tour
           </h2>
           <p className="text-center text-lg text-green-600 font-semibold mb-8">
-            🔥 Pay a small deposit online – the rest goes directly to your captain!
+            🔥 Pay a deposit now to secure your spot — the remaining balance is paid directly to the captain on departure day!
           </p>
           <BookingForm />
         </div>
