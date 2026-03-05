@@ -12,8 +12,8 @@ const ReassuranceSection = () => {
     },
     {
       icon: Car,
-      title: "Hotel pickup included",
-      description: "Our driver will pick you up at your hotel and bring you back after the tour — round trip included.",
+      title: "Hotel pickup (if selected)",
+      description: "If you select the hotel transfer option, our driver will pick you up at your hotel and bring you back after the tour — round trip included.",
       color: "text-green-600",
     },
     {
