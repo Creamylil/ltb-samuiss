@@ -174,9 +174,11 @@ const Index = () => {
           </div>
 
           <div className="text-center mt-8 py-[10px] pb-[20px]">
-            <WhatsAppCTA
-              text="Get Custom Tour Recommendations"
-              message="Hello! I would like to get personalized recommendations for a longtail boat tour in Koh Samui based on my preferences." />
+            <Button
+              className="bg-orange-500 hover:bg-orange-600 text-white rounded-full px-8 py-3 font-semibold"
+              onClick={scrollToBooking}>
+              See Prices & Book Now →
+            </Button>
           </div>
 
           <div className="max-w-5xl mx-auto">
