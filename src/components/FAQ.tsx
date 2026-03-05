@@ -5,12 +5,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 const FAQ = () => {
   const faqs = [
   {
-    question: "What happens if it rains?",
-    answer: "You can reschedule or request a full refund, free of charge. Your safety and enjoyment are our priorities."
-  },
-  {
-    question: "Can we cancel?",
-    answer: "Yes. Free cancellation up to 48 hours before the excursion. After this period, cancellation fees may apply according to our terms and conditions."
+    question: "What is the cancellation and modification policy?",
+    answer: "Free cancellation up to 72 hours before the tour with a full deposit refund. Free modification up to 48 hours before departure. In case of unsafe weather conditions, we offer a full refund or free reschedule — no questions asked."
   },
   {
     question: "Maximum number of people?",
@@ -22,7 +18,7 @@ const FAQ = () => {
   },
   {
     question: "Is hotel transfer included?",
-    answer: "Yes, in the main areas: Chaweng, Lamai, Bophut, and Maenam. For other areas, contact us to arrange transfer."
+    answer: "Hotel transfer is an optional add-on available for ฿1,600 THB (round trip). You can select it when booking. If you prefer, you can also make your own way to the pier."
   },
   {
     question: "What should I bring?",
@@ -31,10 +27,6 @@ const FAQ = () => {
   {
     question: "Is there an age limit?",
     answer: "No, our excursion is suitable for all ages. Children must be accompanied by an adult and wear a life jacket at all times."
-  },
-  {
-    question: "Can we modify the booking?",
-    answer: "Yes, subject to availability. Modifications are free up to 24 hours before departure. Contact us for any request."
   },
   {
     question: "Is lunch included in the base price?",
@@ -46,15 +38,15 @@ const FAQ = () => {
   },
   {
     question: "What happens after I pay the deposit?",
-    answer: "Once your deposit is confirmed, we will contact you via your preferred method (WhatsApp, Line or Phone) to finalize all details. On the day of the tour, our driver will pick you up at your hotel and bring you back after the excursion. The remaining balance is paid directly to the captain."
+    answer: "Once your deposit is confirmed, we will contact you via your preferred method (WhatsApp, Line or Phone) to finalize all details. If you selected hotel transfer, our driver will pick you up at your hotel. Otherwise, head to the pier at the time you chose. The remaining balance is paid directly to the captain on departure day."
   },
   {
     question: "Should I book in advance during high season?",
     answer: "Yes! During high season (December to April), we strongly recommend booking at least 2-3 days in advance to guarantee availability. Spots fill up quickly during peak periods."
   },
   {
-    question: "What is the cancellation and refund policy?",
-    answer: "Free cancellation up to 72 hours before the tour with a full deposit refund. Free modification up to 48 hours before departure. In case of unsafe weather conditions, we offer a full refund or free reschedule — no questions asked."
+    question: "What happens if it rains?",
+    answer: "You can reschedule or request a full refund, free of charge. Your safety and enjoyment are our priorities."
   }];
 
 
