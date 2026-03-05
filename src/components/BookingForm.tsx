@@ -369,12 +369,28 @@ const BookingForm = () => {
               {/* Phone */}
               <div className="space-y-2">
                 <Label htmlFor="phone" className="text-lg font-semibold">Phone number *</Label>
-                <Input
-                  id="phone"
-                  value={bookingData.phone}
-                  onChange={(e) => setBookingData((prev) => ({ ...prev, phone: e.target.value }))}
-                  placeholder="+33 1 23 45 67 89"
-                  className="h-12 text-lg" />
+                <div className="flex gap-2">
+                  <Select value={bookingData.phoneCountry} onValueChange={(value) =>
+                    setBookingData((prev) => ({ ...prev, phoneCountry: value }))
+                  }>
+                    <SelectTrigger className="h-12 text-base w-[140px] flex-shrink-0">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {COUNTRY_CODES.map((c) => (
+                        <SelectItem key={c.code} value={c.code}>
+                          {c.country} ({c.code})
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <Input
+                    id="phone"
+                    value={bookingData.phone}
+                    onChange={(e) => setBookingData((prev) => ({ ...prev, phone: e.target.value }))}
+                    placeholder="123 456 789"
+                    className="h-12 text-lg flex-1" />
+                </div>
               </div>
 
               {/* Hotel fields - only shown when transfer is selected */}
