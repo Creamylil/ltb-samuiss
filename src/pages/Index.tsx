@@ -9,6 +9,7 @@ import Testimonials from "../components/Testimonials";
 import FAQ from "../components/FAQ";
 import Footer from "../components/Footer";
 import WhatsAppCTA from "../components/WhatsAppCTA";
+import StickyPriceBar from "../components/StickyPriceBar";
 
 const Index = () => {
   const scrollToBooking = () => {
