@@ -22,6 +22,7 @@ interface BookingData {
   people: number;
   name: string;
   email: string;
+  phoneCountry: string;
   phone: string;
   phoneType: 'whatsapp' | 'line' | 'normal' | '';
   hotelName: string;
@@ -29,6 +30,43 @@ interface BookingData {
   pickupTime: string;
   comment: string;
 }
+
+const COUNTRY_CODES = [
+  { code: "+66", country: "🇹🇭 Thailand", short: "TH" },
+  { code: "+33", country: "🇫🇷 France", short: "FR" },
+  { code: "+44", country: "🇬🇧 UK", short: "GB" },
+  { code: "+1", country: "🇺🇸 USA / Canada", short: "US" },
+  { code: "+49", country: "🇩🇪 Germany", short: "DE" },
+  { code: "+61", country: "🇦🇺 Australia", short: "AU" },
+  { code: "+65", country: "🇸🇬 Singapore", short: "SG" },
+  { code: "+81", country: "🇯🇵 Japan", short: "JP" },
+  { code: "+82", country: "🇰🇷 South Korea", short: "KR" },
+  { code: "+86", country: "🇨🇳 China", short: "CN" },
+  { code: "+91", country: "🇮🇳 India", short: "IN" },
+  { code: "+7", country: "🇷🇺 Russia", short: "RU" },
+  { code: "+39", country: "🇮🇹 Italy", short: "IT" },
+  { code: "+34", country: "🇪🇸 Spain", short: "ES" },
+  { code: "+31", country: "🇳🇱 Netherlands", short: "NL" },
+  { code: "+46", country: "🇸🇪 Sweden", short: "SE" },
+  { code: "+47", country: "🇳🇴 Norway", short: "NO" },
+  { code: "+45", country: "🇩🇰 Denmark", short: "DK" },
+  { code: "+41", country: "🇨🇭 Switzerland", short: "CH" },
+  { code: "+32", country: "🇧🇪 Belgium", short: "BE" },
+  { code: "+351", country: "🇵🇹 Portugal", short: "PT" },
+  { code: "+48", country: "🇵🇱 Poland", short: "PL" },
+  { code: "+43", country: "🇦🇹 Austria", short: "AT" },
+  { code: "+852", country: "🇭🇰 Hong Kong", short: "HK" },
+  { code: "+60", country: "🇲🇾 Malaysia", short: "MY" },
+  { code: "+62", country: "🇮🇩 Indonesia", short: "ID" },
+  { code: "+63", country: "🇵🇭 Philippines", short: "PH" },
+  { code: "+84", country: "🇻🇳 Vietnam", short: "VN" },
+  { code: "+971", country: "🇦🇪 UAE", short: "AE" },
+  { code: "+972", country: "🇮🇱 Israel", short: "IL" },
+  { code: "+55", country: "🇧🇷 Brazil", short: "BR" },
+  { code: "+52", country: "🇲🇽 Mexico", short: "MX" },
+  { code: "+27", country: "🇿🇦 South Africa", short: "ZA" },
+  { code: "+64", country: "🇳🇿 New Zealand", short: "NZ" },
+];
 
 const TAXI_PRICE = 1600;
 
