@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, Calendar, Users, MapPin, Phone, Mail, Clock, MessageCircle } from 'lucide-react';
+import { CheckCircle, Calendar, Users, MapPin, Phone, Mail, Clock, MessageCircle, Car, Anchor, CreditCard } from 'lucide-react';
 import { useSearchParams, Link } from 'react-router-dom';
 
 const PaymentSuccess = () => {

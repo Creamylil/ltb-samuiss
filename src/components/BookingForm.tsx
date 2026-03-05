@@ -15,6 +15,7 @@ import { enUS } from "date-fns/locale";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
 import { Link } from "react-router-dom";
+import ReassuranceSection from './ReassuranceSection';
 
 interface BookingData {
   date: Date | undefined;

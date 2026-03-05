@@ -43,6 +43,18 @@ const FAQ = () => {
     {
       question: "What's the best time to book?",
       answer: "All year round! The dry season (December to April) offers the best conditions, but we also sail during the green season with magnificent landscapes."
+    },
+    {
+      question: "What happens after I pay the deposit?",
+      answer: "Once your deposit is confirmed, we will contact you via your preferred method (WhatsApp, Line or Phone) to finalize all details. On the day of the tour, our driver will pick you up at your hotel and bring you back after the excursion. The remaining balance is paid directly to the captain."
+    },
+    {
+      question: "Should I book in advance during high season?",
+      answer: "Yes! During high season (December to April), we strongly recommend booking at least 2-3 days in advance to guarantee availability. Spots fill up quickly during peak periods."
+    },
+    {
+      question: "What is the cancellation and refund policy?",
+      answer: "Free cancellation up to 72 hours before the tour with a full deposit refund. Free modification up to 48 hours before departure. In case of unsafe weather conditions, we offer a full refund or free reschedule — no questions asked."
     }
   ];
 
