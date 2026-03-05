@@ -422,8 +422,8 @@ const Index = () => {
             },
             {
               icon: <Car className="text-blue-600" />,
-              title: "Hotel Transfer Included",
-              desc: "Free pickup from main areas"
+              title: "Optional Hotel Transfer",
+              desc: "+฿1,600 THB round-trip pickup"
             },
             {
               icon: <Users className="text-blue-600" />,
