@@ -101,3 +101,11 @@
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes boatMove {
+  0%, 5% { left: 0%; }
+  20%, 35% { left: 28%; }
+  50%, 65% { left: 58%; }
+  80%, 95% { left: 88%; }
+  100% { left: 0%; }
+}
