@@ -213,7 +213,7 @@ const Index = () => {
             </div>
 
             <div className="bg-blue-50 p-6 rounded-xl mt-10 max-w-3xl mx-auto">
-              <h3 className="font-semibold text-lg mb-3 text-blue-800 text-center">✨ Flexible Itinerary Options</h3>
+              <h3 className="font-semibold text-lg mb-3 text-blue-800 text-center">Flexible Itinerary Options</h3>
               <div className="grid sm:grid-cols-3 gap-4 text-gray-700">
                 <div className="flex items-center gap-2">
                   <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0" />
