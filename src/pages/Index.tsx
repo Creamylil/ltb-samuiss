@@ -288,10 +288,11 @@ const Index = () => {
           </div>
 
           <div className="text-center mt-12">
-            <WhatsAppCTA
-              text="💬 Have Questions? Chat with Us!"
-              message="Hi! I have some questions about your longtail boat tours. Can you help me choose the best option for my group?" />
-            
+            <Button
+              className="bg-orange-500 hover:bg-orange-600 text-white rounded-full px-8 py-3 font-semibold"
+              onClick={scrollToBooking}>
+              See Prices & Book Now →
+            </Button>
           </div>
         </div>
       </section>
