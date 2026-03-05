@@ -191,7 +191,6 @@ const AdminDashboard = () => {
                         <TableCell className="text-orange-400">฿{b.captain_price_thb.toLocaleString()}</TableCell>
                         <TableCell>{statusBadge(b.payment_status)}</TableCell>
                         <TableCell className="text-slate-400 text-xs">
-                        <TableCell className="text-slate-400 text-xs">
                           {new Date(b.created_at).toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: '2-digit', hour: '2-digit', minute: '2-digit' })}
                         </TableCell>
                       </TableRow>
