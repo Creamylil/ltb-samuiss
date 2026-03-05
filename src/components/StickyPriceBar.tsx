@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Users, Minus, Plus } from "lucide-react";
+import { Users, Minus, Plus, CalendarCheck } from "lucide-react";
+import { format } from "date-fns";
+import { enUS } from "date-fns/locale";
 
 const PRICING_TIERS = [
   { max: 3, price: 4000 },
