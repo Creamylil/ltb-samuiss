@@ -91,7 +91,7 @@ const BookingPage = () => {
       <section className="py-16 bg-gradient-to-r from-blue-50 to-orange-50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
-            💰 Tarifs clairs et transparents
+            💰 Clear & Transparent Pricing
           </h2>
           
           <div className="max-w-4xl mx-auto">
@@ -99,37 +99,47 @@ const BookingPage = () => {
               <table className="w-full bg-white rounded-lg shadow-lg overflow-hidden">
                 <thead className="bg-blue-600 text-white">
                   <tr>
-                    <th className="px-6 py-4 text-left">Formule</th>
-                    <th className="px-6 py-4 text-left">Prix de base (1 à 5 pers.)</th>
-                    <th className="px-6 py-4 text-left">Personne supplémentaire (max 10)</th>
+                    <th className="px-6 py-4 text-left">Guests</th>
+                    <th className="px-6 py-4 text-left">Total Price</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr className="border-b">
-                    <td className="px-6 py-4 font-semibold">Demi-journée (4h)</td>
-                    <td className="px-6 py-4 text-blue-600 font-bold">5 000 THB</td>
-                    <td className="px-6 py-4">+1 000 THB / pers.</td>
+                    <td className="px-6 py-4 font-semibold">Up to 3 guests</td>
+                    <td className="px-6 py-4 text-blue-600 font-bold">฿4,000 THB</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="px-6 py-4 font-semibold">Up to 4 guests</td>
+                    <td className="px-6 py-4 text-blue-600 font-bold">฿4,600 THB</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="px-6 py-4 font-semibold">Up to 7 guests</td>
+                    <td className="px-6 py-4 text-blue-600 font-bold">฿5,600 THB</td>
                   </tr>
                   <tr>
-                    <td className="px-6 py-4 font-semibold">Journée complète (6–8h)</td>
-                    <td className="px-6 py-4 text-blue-600 font-bold">6 500 THB</td>
-                    <td className="px-6 py-4">+1 000 THB / pers.</td>
+                    <td className="px-6 py-4 font-semibold">Up to 10 guests</td>
+                    <td className="px-6 py-4 text-blue-600 font-bold">฿6,600 THB</td>
                   </tr>
                 </tbody>
               </table>
             </div>
             
             <div className="mt-8 text-center space-y-4">
+              <div className="bg-white p-6 rounded-lg shadow-md border border-blue-200">
+                <p className="text-base text-gray-700 font-medium mb-2">
+                  💡 <strong>How it works:</strong> Pay a deposit online to confirm your booking.
+                </p>
+                <p className="text-sm text-gray-600">
+                  The remaining balance is paid directly to the captain on the day of the tour.
+                </p>
+              </div>
               <p className="flex items-center justify-center text-lg">
                 <Users className="mr-2 text-blue-600" />
-                Maximum 10 personnes par bateau
-              </p>
-              <p className="flex items-center justify-center text-lg text-red-600">
-                🚫 Si vous êtes plus de 10, merci de réserver un deuxième bateau
+                Maximum 10 guests per boat
               </p>
               <p className="flex items-center justify-center text-lg text-green-600">
                 <CheckCircle className="mr-2" />
-                Pas de frais cachés – tout est clair et inclus
+                Private boat, local captain & hotel transfer included
               </p>
             </div>
           </div>
