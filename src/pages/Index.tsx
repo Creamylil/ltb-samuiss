@@ -316,7 +316,7 @@ const Index = () => {
                     <CheckCircle className="w-4 h-4 mr-1" /> Local captain
                   </div>
                   <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-1" /> Hotel transfer (round trip)
+                    <CheckCircle className="w-4 h-4 mr-1" /> Optional hotel transfer
                   </div>
                 </div>
               </div>

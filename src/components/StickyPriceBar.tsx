@@ -5,10 +5,10 @@ import { format } from "date-fns";
 import { enUS } from "date-fns/locale";
 
 const PRICING_TIERS = [
-  { max: 3, price: 4000 },
-  { max: 4, price: 4600 },
-  { max: 7, price: 5600 },
-  { max: 10, price: 6600 },
+  { max: 3, price: 3200 },
+  { max: 4, price: 4200 },
+  { max: 7, price: 5000 },
+  { max: 10, price: 6000 },
 ];
 
 function getPrice(guests: number): number {
@@ -67,9 +67,9 @@ const StickyPriceBar = () => {
           {/* Price display */}
           <div className="text-center">
             <div className="text-lg sm:text-xl font-bold text-blue-600">
-              ฿{price.toLocaleString()} <span className="text-xs font-normal text-gray-500">THB</span>
+              from ฿{price.toLocaleString()} <span className="text-xs font-normal text-gray-500">THB</span>
             </div>
-            <p className="text-[10px] sm:text-xs text-gray-400 leading-tight">Private boat + transfer</p>
+            <p className="text-[10px] sm:text-xs text-gray-400 leading-tight">Private boat · Transfer optional</p>
           </div>
 
           {/* CTA */}
