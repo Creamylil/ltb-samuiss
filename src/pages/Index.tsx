@@ -201,7 +201,7 @@ const Index = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800">
             Best Long Tail Boat Koh Samui Tours
           </h2>
-          <h3 className="text-xl text-center mb-12 text-gray-600">From ฿4,000 THB with everything included:</h3>
+          <h2 className="text-xl text-center mb-12 text-gray-600">From ฿4,000 THB with everything included:</h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {[
@@ -239,7 +239,7 @@ const Index = () => {
             <Card key={index} className="text-center hover:shadow-lg transition-shadow duration-300">
                 <CardContent className="p-6">
                   <div className="text-4xl mb-4">{feature.icon}</div>
-                  <h4 className="font-semibold text-lg mb-2">{feature.title}</h4>
+                  <h3 className="font-semibold text-lg mb-2">{feature.title}</h3>
                   <p className="text-gray-600">{feature.desc}</p>
                 </CardContent>
               </Card>
