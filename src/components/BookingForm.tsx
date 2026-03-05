@@ -9,7 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Checkbox } from "@/components/ui/checkbox";
-import { CalendarIcon, CheckCircle, Users, MapPin, Shield, Clock } from 'lucide-react';
+import { CalendarIcon, CheckCircle, Users, MapPin, Shield, Clock, Anchor } from 'lucide-react';
 import { format } from "date-fns";
 import { enUS } from "date-fns/locale";
 import { supabase } from "@/integrations/supabase/client";
@@ -17,7 +17,6 @@ import { toast } from "@/hooks/use-toast";
 import { Link } from "react-router-dom";
 
 interface BookingData {
-  formula: 'half-day' | 'full-day' | '';
   date: Date | undefined;
   people: number;
   name: string;
@@ -30,9 +29,17 @@ interface BookingData {
   comment: string;
 }
 
+const TAXI_PRICE = 1600;
+
+function getPricingTier(people: number) {
+  if (people <= 3) return { captainPrice: 1800, margin: 600 };
+  if (people <= 4) return { captainPrice: 2000, margin: 1000 };
+  if (people <= 7) return { captainPrice: 2500, margin: 1500 };
+  return { captainPrice: 3000, margin: 2000 };
+}
+
 const BookingForm = () => {
   const [bookingData, setBookingData] = useState<BookingData>({
-    formula: '',
     date: undefined,
     people: 2,
     name: '',
@@ -45,41 +52,18 @@ const BookingForm = () => {
     comment: '',
   });
 
-  const [totalPriceTHB, setTotalPriceTHB] = useState(0);
-  const [totalPriceUSD, setTotalPriceUSD] = useState(0);
   const [isProcessing, setIsProcessing] = useState(false);
   const [termsAccepted, setTermsAccepted] = useState(false);
 
-  // Calculate total price
-  useEffect(() => {
-    let basePriceTHB = 0;
-    let basePriceUSD = 0;
-    
-    // Base price according to formula
-    if (bookingData.formula === 'half-day') {
-      basePriceTHB = 6000; // ฿6,000
-      basePriceUSD = 180;   // $180
-    } else if (bookingData.formula === 'full-day') {
-      basePriceTHB = 9000; // ฿9,000
-      basePriceUSD = 270;   // $270
-    }
-
-    // Extra people (after 5 people)
-    if (bookingData.people > 5) {
-      const extraPeoplePriceTHB = bookingData.formula === 'full-day' ? 1400 : 1200;
-      const extraPeoplePriceUSD = bookingData.formula === 'full-day' ? 42 : 36;
-      basePriceTHB += (bookingData.people - 5) * extraPeoplePriceTHB;
-      basePriceUSD += (bookingData.people - 5) * extraPeoplePriceUSD;
-    }
-
-    setTotalPriceTHB(basePriceTHB);
-    setTotalPriceUSD(basePriceUSD);
-  }, [bookingData.formula, bookingData.people]);
+  const { captainPrice, margin } = getPricingTier(bookingData.people);
+  const totalPrice = captainPrice + TAXI_PRICE + margin;
+  const deposit = TAXI_PRICE + margin;
+  const remainingToCaptain = captainPrice;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!bookingData.formula || !bookingData.date || !bookingData.name || !bookingData.email || !bookingData.hotelName || !bookingData.hotelAddress || !bookingData.pickupTime) {
+    if (!bookingData.date || !bookingData.name || !bookingData.email || !bookingData.hotelName || !bookingData.hotelAddress || !bookingData.pickupTime) {
       toast({
         title: "Required fields",
         description: "Please fill in all required fields",
@@ -109,12 +93,12 @@ const BookingForm = () => {
     setIsProcessing(true);
 
     try {
-      console.log('Creating payment session...');
-      
       const { data, error } = await supabase.functions.invoke('create-payment', {
         body: {
-          formula: bookingData.formula,
           people: bookingData.people,
+          depositTHB: deposit,
+          totalPriceTHB: totalPrice,
+          captainPriceTHB: remainingToCaptain,
           bookingData: {
             ...bookingData,
             date: bookingData.date ? format(bookingData.date, 'yyyy-MM-dd') : '',
@@ -122,19 +106,13 @@ const BookingForm = () => {
         }
       });
 
-      if (error) {
-        console.error('Error calling payment function:', error);
-        throw error;
-      }
+      if (error) throw error;
 
       if (data?.url) {
-        console.log('Redirecting to Stripe checkout:', data.url);
-        // Open Stripe checkout in a new tab
         window.open(data.url, '_blank');
-        
         toast({
           title: "Redirecting to payment",
-          description: "You are being redirected to the secure Stripe payment page",
+          description: "You are being redirected to the secure payment page for the deposit",
         });
       } else {
         throw new Error('No checkout URL received');
@@ -151,29 +129,26 @@ const BookingForm = () => {
     }
   };
 
-  const pricePerPersonTHB = totalPriceTHB / bookingData.people;
-  const pricePerPersonUSD = totalPriceUSD / bookingData.people;
-
   return (
     <div className="max-w-4xl mx-auto">
       <Card className="shadow-2xl border-2 border-blue-100">
         <CardHeader className="bg-gradient-to-r from-blue-50 to-orange-50">
           <CardTitle className="text-2xl text-center text-gray-800">
-            🛥️ Book your private Long Tail Boat - From ฿1,200 per person with hotel transfer included
+            🛥️ Book Your Private Longtail Boat Tour
           </CardTitle>
           <div className="text-center space-y-2 mt-4">
-            <div className="flex justify-center items-center space-x-6 text-sm">
+            <div className="flex justify-center items-center space-x-6 text-sm flex-wrap gap-y-2">
               <div className="flex items-center text-green-600">
                 <CheckCircle className="w-4 h-4 mr-1" />
-                <span className="font-semibold">Private skipper included</span>
+                <span className="font-semibold">Private longtail boat</span>
               </div>
               <div className="flex items-center text-green-600">
                 <MapPin className="w-4 h-4 mr-1" />
                 <span className="font-semibold">Hotel transfer included</span>
               </div>
               <div className="flex items-center text-green-600">
-                <Users className="w-4 h-4 mr-1" />
-                <span className="font-semibold">100% private boat</span>
+                <Anchor className="w-4 h-4 mr-1" />
+                <span className="font-semibold">Local captain included</span>
               </div>
             </div>
           </div>
@@ -182,28 +157,21 @@ const BookingForm = () => {
           <form onSubmit={handleSubmit} className="space-y-8">
             
             <div className="grid md:grid-cols-2 gap-6">
-              {/* Package */}
+              {/* Number of guests */}
               <div className="space-y-2">
-                <Label htmlFor="formula" className="text-lg font-semibold">Choose your package *</Label>
-                <Select value={bookingData.formula} onValueChange={(value: 'half-day' | 'full-day') => 
-                  setBookingData(prev => ({ ...prev, formula: value }))
+                <Label htmlFor="people" className="text-lg font-semibold">Number of guests *</Label>
+                <Select value={bookingData.people.toString()} onValueChange={(value) => 
+                  setBookingData(prev => ({ ...prev, people: parseInt(value) }))
                 }>
                   <SelectTrigger className="h-12 text-lg">
-                    <SelectValue placeholder="Select your long tail boat package" />
+                    <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="half-day">
-                      <div className="flex flex-col">
-                        <span className="font-semibold">Half Day (4 hours)</span>
-                        <span className="text-sm text-gray-600">฿6,000 for up to 5 people</span>
-                      </div>
-                    </SelectItem>
-                    <SelectItem value="full-day">
-                      <div className="flex flex-col">
-                        <span className="font-semibold">Full Day (6-8 hours)</span>
-                        <span className="text-sm text-gray-600">฿9,000 for up to 5 people</span>
-                      </div>
-                    </SelectItem>
+                    {Array.from({ length: 10 }, (_, i) => i + 1).map(num => (
+                      <SelectItem key={num} value={num.toString()}>
+                        {num} guest{num > 1 ? 's' : ''}
+                      </SelectItem>
+                    ))}
                   </SelectContent>
                 </Select>
               </div>
@@ -231,30 +199,6 @@ const BookingForm = () => {
                     />
                   </PopoverContent>
                 </Popover>
-              </div>
-
-              {/* Number of people */}
-              <div className="space-y-2">
-                <Label htmlFor="people" className="text-lg font-semibold">Number of guests (total) *</Label>
-                <Select value={bookingData.people.toString()} onValueChange={(value) => 
-                  setBookingData(prev => ({ ...prev, people: parseInt(value) }))
-                }>
-                  <SelectTrigger className="h-12 text-lg">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {Array.from({ length: 10 }, (_, i) => i + 1).map(num => (
-                      <SelectItem key={num} value={num.toString()}>
-                        {num} guest{num > 1 ? 's' : ''}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-                {bookingData.people > 5 && (
-                  <p className="text-sm text-blue-600 font-semibold">
-                    +฿{(bookingData.people - 5) * (bookingData.formula === 'full-day' ? 1400 : 1200)} for {bookingData.people - 5} additional guest{bookingData.people - 5 > 1 ? 's' : ''}
-                  </p>
-                )}
               </div>
 
               {/* Pickup Time */}
@@ -408,37 +352,50 @@ const BookingForm = () => {
               </div>
             </div>
 
-            {/* Total price with marketing elements */}
+            {/* Price Summary */}
             <div className="bg-gradient-to-r from-green-50 to-blue-50 p-8 rounded-xl border-2 border-green-200">
-              <div className="text-center space-y-4">
-                <div className="text-3xl font-bold text-green-600">
-                  Total: ฿{totalPriceTHB.toLocaleString()} (${totalPriceUSD})
-                </div>
-                <div className="text-lg text-gray-700">
-                  <strong>Only ฿{Math.round(pricePerPersonTHB)}/person (${Math.round(pricePerPersonUSD)})</strong> - Best price in Koh Samui!
-                </div>
-                <div className="grid grid-cols-3 gap-4 text-sm">
-                  <div className="flex items-center justify-center text-green-600">
-                    <CheckCircle className="w-4 h-4 mr-1" />
-                    <span className="font-semibold">Private boat & Skipper</span>
+              <div className="space-y-4">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-gray-800 mb-1">
+                    Total price: ฿{totalPrice.toLocaleString()} THB
                   </div>
-                  <div className="flex items-center justify-center text-green-600">
-                    <CheckCircle className="w-4 h-4 mr-1" />
-                    <span className="font-semibold">Hotel transfer included</span>
+                  <div className="text-sm text-gray-500">for {bookingData.people} guest{bookingData.people > 1 ? 's' : ''}</div>
+                </div>
+                
+                <div className="border-t border-gray-200 pt-4 space-y-3">
+                  <div className="flex justify-between items-center text-lg">
+                    <span className="font-semibold text-orange-700">💳 Deposit to pay today:</span>
+                    <span className="font-bold text-orange-700 text-xl">฿{deposit.toLocaleString()} THB</span>
                   </div>
-                  <div className="flex items-center justify-center text-green-600">
-                    <CheckCircle className="w-4 h-4 mr-1" />
-                    <span className="font-semibold">Safety equipment</span>
+                  <div className="flex justify-between items-center text-lg">
+                    <span className="font-semibold text-blue-700">🛥️ Pay to captain on the day:</span>
+                    <span className="font-bold text-blue-700 text-xl">฿{remainingToCaptain.toLocaleString()} THB</span>
                   </div>
                 </div>
-                <div className="bg-white p-4 rounded-lg border border-blue-200">
-                  <p className="text-sm text-gray-700 font-medium">
-                    ℹ️ After payment, you will be contacted by email or phone to arrange the exact pickup time and location at your hotel.
+
+                <div className="bg-white p-4 rounded-lg border border-orange-200 text-sm text-gray-700">
+                  <p className="font-medium">
+                    ⚠️ The remaining balance of <strong>฿{remainingToCaptain.toLocaleString()} THB</strong> must be paid directly to the captain on the day of the tour.
                   </p>
                 </div>
-                <p className="text-sm text-gray-600 italic">
-                  🔥 Limited availability - Book now to secure your date!
-                </p>
+
+                <div className="border-t border-gray-200 pt-3">
+                  <p className="text-sm font-semibold text-gray-700 mb-2">Includes:</p>
+                  <div className="grid grid-cols-3 gap-2 text-sm">
+                    <div className="flex items-center text-green-600">
+                      <CheckCircle className="w-4 h-4 mr-1" />
+                      <span className="font-semibold">Private longtail boat</span>
+                    </div>
+                    <div className="flex items-center text-green-600">
+                      <CheckCircle className="w-4 h-4 mr-1" />
+                      <span className="font-semibold">Local captain</span>
+                    </div>
+                    <div className="flex items-center text-green-600">
+                      <CheckCircle className="w-4 h-4 mr-1" />
+                      <span className="font-semibold">Hotel transfer (round trip)</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -446,7 +403,7 @@ const BookingForm = () => {
             <Button 
               type="submit" 
               className="w-full bg-orange-500 hover:bg-orange-600 text-white py-6 text-base md:text-xl font-bold rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300"
-              disabled={!bookingData.formula || !bookingData.date || !bookingData.name || !bookingData.email || !bookingData.hotelName || !bookingData.hotelAddress || !bookingData.pickupTime || !termsAccepted || isProcessing}
+              disabled={!bookingData.date || !bookingData.name || !bookingData.email || !bookingData.hotelName || !bookingData.hotelAddress || !bookingData.pickupTime || !termsAccepted || isProcessing}
             >
               <span className="break-words text-center leading-tight flex items-center justify-center">
                 {isProcessing ? (
@@ -456,7 +413,7 @@ const BookingForm = () => {
                   </>
                 ) : (
                   <>
-                    🛥️ Book now - ฿{totalPriceTHB.toLocaleString()} (${totalPriceUSD})
+                    🛥️ Pay Deposit Now - ฿{deposit.toLocaleString()} THB
                   </>
                 )}
               </span>
@@ -466,7 +423,7 @@ const BookingForm = () => {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs md:text-sm">
                 <div className="flex items-center justify-center text-green-600 space-x-1">
                   <CheckCircle className="w-4 h-4 flex-shrink-0" />
-                  <span className="font-medium">Instant booking confirmation</span>
+                  <span className="font-medium">Instant confirmation</span>
                 </div>
                 <div className="flex items-center justify-center text-blue-600 space-x-1">
                   <Clock className="w-4 h-4 flex-shrink-0" />
@@ -478,13 +435,9 @@ const BookingForm = () => {
                 </div>
                 <div className="flex items-center justify-center text-orange-600 space-x-1">
                   <Shield className="w-4 h-4 flex-shrink-0" />
-                  <span className="font-medium">Secure payment gateway</span>
+                  <span className="font-medium">Secure payment</span>
                 </div>
               </div>
-              <p className="text-xs text-gray-500 max-w-2xl mx-auto">
-                Your booking is protected by our comprehensive cancellation and modification policies. 
-                All payments are processed through secure and encrypted channels for your safety.
-              </p>
             </div>
           </form>
         </CardContent>

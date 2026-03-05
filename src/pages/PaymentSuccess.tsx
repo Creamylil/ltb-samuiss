@@ -71,9 +71,12 @@ const PaymentSuccess = () => {
                   <h3 className="text-xl font-semibold text-orange-800 mb-4">
                     🛥️ Your adventure awaits!
                   </h3>
-                  <p className="text-gray-700">
+                  <p className="text-gray-700 mb-3">
                     Get ready for an unforgettable day aboard your private long tail boat. 
                     Don't forget to bring your sunscreen, camera and good mood!
+                  </p>
+                  <p className="text-orange-800 font-semibold">
+                    ⚠️ Remember: The remaining balance must be paid directly to the captain on the day of the tour.
                   </p>
                 </div>
 

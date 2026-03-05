@@ -301,7 +301,7 @@ const Index = () => {
             Book Your Long Tail Boat Koh Samui Tour
           </h2>
           <p className="text-center text-lg text-green-600 font-semibold mb-8">
-            🔥 Best Price Guaranteed: From ฿1,200/person ($36) with private skipper & hotel transfer included
+            🔥 Pay a small deposit online – the rest goes directly to your captain!
           </p>
           <BookingForm />
         </div>
