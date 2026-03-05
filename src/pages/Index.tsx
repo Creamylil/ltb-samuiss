@@ -111,9 +111,40 @@ const Index = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800">
             Your Long Tail Boat Koh Samui Itinerary
           </h2>
-          <p className="text-center text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
+          <p className="text-center text-lg text-gray-600 mb-8 max-w-3xl mx-auto">
             Discover the most beautiful islands around Koh Samui with our carefully planned routes
           </p>
+
+          {/* Journey Timeline */}
+          <div className="max-w-3xl mx-auto mb-12 px-4">
+            <div className="relative flex items-center justify-between">
+              {/* Line connecting all stops */}
+              <div className="absolute top-5 left-[10%] right-[10%] h-1 bg-gradient-to-r from-blue-300 via-blue-400 to-blue-300 rounded-full"></div>
+              
+              {/* Animated boat */}
+              <div className="absolute top-2 left-[10%] right-[10%]">
+                <div className="animate-[boatMove_8s_ease-in-out_infinite] relative">
+                  <span className="text-2xl drop-shadow-md">🛥️</span>
+                </div>
+              </div>
+
+              {/* Stops */}
+              {[
+                { name: "Thong Krut Pier", time: "Departure", emoji: "⚓" },
+                { name: "Koh Madsum", time: "+45 min", emoji: "🐷" },
+                { name: "Koh Tan", time: "+2h", emoji: "🤿" },
+                { name: "Thong Krut Pier", time: "~4h", emoji: "⚓" },
+              ].map((stop, i) => (
+                <div key={i} className="relative z-10 flex flex-col items-center w-1/4">
+                  <div className="w-10 h-10 rounded-full bg-white border-4 border-blue-500 flex items-center justify-center text-lg shadow-md">
+                    {stop.emoji}
+                  </div>
+                  <span className="mt-2 text-xs md:text-sm font-bold text-gray-800 text-center leading-tight">{stop.name}</span>
+                  <span className="text-xs text-blue-600 font-medium">{stop.time}</span>
+                </div>
+              ))}
+            </div>
+          </div>
 
           <div className="max-w-5xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
