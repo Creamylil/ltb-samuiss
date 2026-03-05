@@ -454,10 +454,11 @@ const Index = () => {
           </div>
 
           <div className="text-center mt-12">
-            <WhatsAppCTA
-              text="Need Help Planning Your Trip?"
-              message="Hi! I need help planning my longtail boat tour in Koh Samui. Can you assist me with recommendations and logistics?" />
-            
+            <Button
+              className="bg-orange-500 hover:bg-orange-600 text-white rounded-full px-8 py-3 font-semibold"
+              onClick={scrollToBooking}>
+              See Prices & Book Now →
+            </Button>
           </div>
         </div>
       </section>
