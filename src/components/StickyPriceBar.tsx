@@ -23,6 +23,10 @@ const StickyPriceBar = () => {
 
   const price = getPrice(guests);
 
+  const earliestDate = new Date();
+  earliestDate.setDate(earliestDate.getDate() + 2);
+  const formattedDate = format(earliestDate, "EEEE, MMMM d", { locale: enUS });
+
   const scrollToBooking = () => {
     document.getElementById("booking-form")?.scrollIntoView({ behavior: "smooth" });
   };
