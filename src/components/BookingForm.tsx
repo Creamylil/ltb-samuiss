@@ -153,6 +153,7 @@ const BookingForm = () => {
           needsTransfer,
           bookingData: {
             ...bookingData,
+            phone: `${bookingData.phoneCountry} ${bookingData.phone}`,
             date: bookingData.date ? format(bookingData.date, 'yyyy-MM-dd') : ''
           }
         }
