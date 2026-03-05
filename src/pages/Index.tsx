@@ -370,10 +370,11 @@ const Index = () => {
                 Maximum 10 guests per boat
               </p>
 
-              <WhatsAppCTA
-                text="Get a Custom Quote"
-                message="Hello! I'd like to get a personalized quote for a longtail boat tour. Can you help me with pricing for my specific group size and preferences?" />
-              
+              <Button
+                className="bg-orange-500 hover:bg-orange-600 text-white rounded-full px-8 py-3 font-semibold"
+                onClick={scrollToBooking}>
+                Book Now →
+              </Button>
             </div>
           </div>
         </div>
