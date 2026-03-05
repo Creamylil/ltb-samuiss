@@ -158,7 +158,7 @@ const AdminDashboard = () => {
                       <TableHead className="text-slate-300">Acompte</TableHead>
                       <TableHead className="text-slate-300">Capitaine</TableHead>
                       <TableHead className="text-slate-300">Statut</TableHead>
-                      <TableHead className="text-slate-300">Emails</TableHead>
+                      <TableHead className="text-slate-300">Créé le</TableHead>
                       <TableHead className="text-slate-300">Créé le</TableHead>
                     </TableRow>
                   </TableHeader>
