@@ -30,7 +30,7 @@ const FAQ = () => {
   },
   {
     question: "Is lunch included in the base price?",
-    answer: "No, lunch is an à la carte option (450 THB/person). You can also bring your own food or eat on one of the visited islands."
+    answer: "No, but you can bring your own food or eat on one of the visited islands."
   },
   {
     question: "What's the best time to book?",
