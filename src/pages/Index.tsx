@@ -178,77 +178,55 @@ const Index = () => {
           </div>
 
           <div className="max-w-5xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
-                <Card className="p-6 hover:shadow-lg transition-shadow">
-                  <div className="flex items-start space-x-4">
-                    <div className="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold">
-                      1
+            <div className="grid md:grid-cols-3 gap-8">
+              {[
+                {
+                  num: 1,
+                  emoji: "🐷",
+                  title: "Koh Madsum (Pig Island)",
+                  desc: "Meet the famous swimming pigs and enjoy pristine white sand beaches. Perfect for photos and relaxation.",
+                },
+                {
+                  num: 2,
+                  emoji: "🤿",
+                  title: "Koh Tan (Coral Island)",
+                  desc: "Exceptional snorkeling with vibrant coral reefs and tropical fish. Crystal clear waters perfect for swimming.",
+                },
+                {
+                  num: 3,
+                  emoji: "🏝️",
+                  title: "Hidden Beach Stops",
+                  desc: "Secret beaches accessible only by long tail boat. Enjoy secluded spots away from the crowds.",
+                },
+              ].map((stop, i) => (
+                <Card key={i} className="text-center hover:shadow-lg transition-shadow duration-300 border-none shadow-md">
+                  <CardContent className="p-8">
+                    <div className="text-5xl mb-4">{stop.emoji}</div>
+                    <div className="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold mx-auto mb-3 text-sm">
+                      {stop.num}
                     </div>
-                    <div>
-                      <h3 className="text-xl font-semibold mb-2">Koh Madsum (Pig Island)</h3>
-                      <p className="text-gray-600">
-                        Meet the famous swimming pigs and enjoy pristine white sand beaches. Perfect for photos and
-                        relaxation.
-                      </p>
-                    </div>
-                  </div>
+                    <h3 className="text-xl font-semibold mb-3">{stop.title}</h3>
+                    <p className="text-gray-600 leading-relaxed">{stop.desc}</p>
+                  </CardContent>
                 </Card>
+              ))}
+            </div>
 
-                <Card className="p-6 hover:shadow-lg transition-shadow">
-                  <div className="flex items-start space-x-4">
-                    <div className="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold">
-                      2
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold mb-2">Koh Tan (Coral Island)</h3>
-                      <p className="text-gray-600">
-                        Exceptional snorkeling with vibrant coral reefs and tropical fish. Crystal clear waters perfect
-                        for swimming.
-                      </p>
-                    </div>
-                  </div>
-                </Card>
-
-                <Card className="p-6 hover:shadow-lg transition-shadow">
-                  <div className="flex items-start space-x-4">
-                    <div className="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold">
-                      3
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold mb-2">Hidden Beach Stops</h3>
-                      <p className="text-gray-600">
-                        Secret beaches accessible only by long tail boat. Enjoy secluded spots away from the crowds.
-                      </p>
-                    </div>
-                  </div>
-                </Card>
-
-                <div className="bg-blue-50 p-6 rounded-lg">
-                  <h3 className="font-semibold text-lg mb-3 text-blue-800">Flexible Itinerary Options</h3>
-                  <ul className="space-y-2 text-gray-700">
-                    <li className="flex items-center">
-                      <CheckCircle className="w-4 h-4 mr-2 text-green-600" />
-                      Customizable route based on weather conditions
-                    </li>
-                    <li className="flex items-center">
-                      <CheckCircle className="w-4 h-4 mr-2 text-green-600" />
-                      Additional stops for fishing or extended snorkeling
-                    </li>
-                    <li className="flex items-center">
-                      <CheckCircle className="w-4 h-4 mr-2 text-green-600" />
-                      Sunset tours available for evening departures
-                    </li>
-                  </ul>
+            <div className="bg-blue-50 p-6 rounded-xl mt-10 max-w-3xl mx-auto">
+              <h3 className="font-semibold text-lg mb-3 text-blue-800 text-center">✨ Flexible Itinerary Options</h3>
+              <div className="grid sm:grid-cols-3 gap-4 text-gray-700">
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0" />
+                  <span className="text-sm">Customizable route based on weather</span>
                 </div>
-              </div>
-
-              <div className="lg:order-first">
-                <img
-                  src="/lovable-uploads/0b294876-d661-419c-8182-094c604cfdce.png"
-                  alt="Long tail boat itinerary map showing Koh Madsum Pig Island, Koh Tan snorkeling, and Thong Krut pier departure point"
-                  className="w-full rounded-lg shadow-xl" />
-                
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0" />
+                  <span className="text-sm">Extra stops for fishing or snorkeling</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0" />
+                  <span className="text-sm">Sunset tours for evening departures</span>
+                </div>
               </div>
             </div>
           </div>
