@@ -483,12 +483,11 @@ const Index = () => {
               <span className="md:hidden">👉 Book Now</span>
             </Button>
             <WhatsAppCTA
-              text="💬 Chat Before Booking"
+              text="💬 Questions? Chat with Us"
               className="bg-white text-green-600 hover:bg-gray-100 w-full md:w-auto"
               variant="secondary"
               size="lg"
-              message="Hi! I'm considering booking a longtail boat tour but have some questions first. Can you help me?" />
-            
+              message="Hi! I have some questions before booking my longtail boat tour. Can you help?" />
           </div>
         </div>
       </section>
