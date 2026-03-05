@@ -1,0 +1,1 @@
+CREATE POLICY "Authenticated users can read bookings" ON public.bookings FOR SELECT TO authenticated USING (true);
