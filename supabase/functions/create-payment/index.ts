@@ -8,57 +8,43 @@ const corsHeaders = {
 };
 
 serve(async (req) => {
-  // Handle CORS preflight requests
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
-    const { formula, people, bookingData } = await req.json();
+    const { people, depositTHB, totalPriceTHB, captainPriceTHB, bookingData } = await req.json();
     
-    console.log(`Processing payment for: ${formula} tour with ${people} people`);
+    console.log(`Processing deposit payment for ${people} guests`);
+    console.log(`Total: ${totalPriceTHB} THB, Deposit: ${depositTHB} THB, Captain: ${captainPriceTHB} THB`);
     
-    // Calculate price in USD (converted from THB at ~33 THB = 1 USD)
-    let basePriceUSD = 0;
-    if (formula === 'half-day') {
-      basePriceUSD = 180; // $180 USD for up to 5 people
-      if (people > 5) {
-        basePriceUSD += (people - 5) * 36; // +$36 USD per extra person
-      }
-    } else if (formula === 'full-day') {
-      basePriceUSD = 270; // $270 USD for up to 5 people
-      if (people > 5) {
-        basePriceUSD += (people - 5) * 42; // +$42 USD per extra person
-      }
-    }
+    // Convert deposit from THB to USD (approximate rate: 35 THB = 1 USD)
+    const THB_TO_USD_RATE = 35;
+    const depositUSD = Math.ceil(depositTHB / THB_TO_USD_RATE);
 
-    console.log(`Calculated price: $${basePriceUSD} USD for ${people} people on ${formula} tour`);
+    console.log(`Deposit in USD: $${depositUSD}`);
 
-    // Initialize Stripe with secret key
     const stripeSecretKey = Deno.env.get("STRIPE_SECRET_KEY");
     if (!stripeSecretKey) {
-      console.error("Stripe secret key is missing from environment variables");
+      console.error("Stripe secret key is missing");
       throw new Error("Payment configuration error. Please contact support.");
     }
 
-    console.log("Stripe secret key found, initializing Stripe...");
     const stripe = new Stripe(stripeSecretKey, {
       apiVersion: "2023-10-16",
     });
 
-    // Create checkout session for one-time payment
-    console.log("Creating Stripe checkout session...");
     const session = await stripe.checkout.sessions.create({
       customer_email: bookingData.email,
       line_items: [
         {
           price_data: {
-            currency: "usd", // Changed to USD
+            currency: "usd",
             product_data: {
-              name: `Long Tail Boat Tour - ${formula === 'half-day' ? 'Half Day (4h)' : 'Full Day (6-8h)'}`,
-              description: `Private tour for ${people} person${people > 1 ? 's' : ''} - ${bookingData.date} at ${bookingData.pickupTime}`,
+              name: `Private Longtail Boat Tour - Deposit`,
+              description: `Deposit for ${people} guest${people > 1 ? 's' : ''} - ${bookingData.date} at ${bookingData.pickupTime}. Remaining ฿${captainPriceTHB.toLocaleString()} THB to pay to captain on the day.`,
             },
-            unit_amount: basePriceUSD * 100, // Stripe expects amount in cents for USD
+            unit_amount: depositUSD * 100,
           },
           quantity: 1,
         },
@@ -67,8 +53,11 @@ serve(async (req) => {
       success_url: `${req.headers.get("origin")}/payment-success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${req.headers.get("origin")}/booking`,
       metadata: {
-        formula: formula,
         people: people.toString(),
+        totalPriceTHB: totalPriceTHB.toString(),
+        depositTHB: depositTHB.toString(),
+        captainPriceTHB: captainPriceTHB.toString(),
+        depositUSD: depositUSD.toString(),
         name: bookingData.name,
         email: bookingData.email,
         phone: bookingData.phone,
@@ -81,8 +70,7 @@ serve(async (req) => {
       }
     });
 
-    console.log(`Successfully created Stripe session: ${session.id}`);
-    console.log(`Checkout URL: ${session.url}`);
+    console.log(`Stripe session created: ${session.id}`);
 
     return new Response(JSON.stringify({ url: session.url }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -91,14 +79,11 @@ serve(async (req) => {
   } catch (error) {
     console.error('Error creating payment session:', error);
     
-    // Provide more specific error messages
     let errorMessage = 'An error occurred while processing your payment request.';
     if (error.message.includes('Invalid API Key')) {
       errorMessage = 'Payment configuration error. Please contact support.';
     } else if (error.message.includes('network') || error.message.includes('connection')) {
       errorMessage = 'Network error. Please check your connection and try again.';
-    } else if (error.message.includes('amount')) {
-      errorMessage = 'Invalid payment amount. Please refresh and try again.';
     }
     
     return new Response(JSON.stringify({ 
