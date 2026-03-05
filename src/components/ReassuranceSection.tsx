@@ -45,9 +45,9 @@ const ReassuranceSection = () => {
   return (
     <div className="space-y-6">
       <div className="bg-white border border-gray-200 rounded-xl p-6 space-y-5">
-        <h3 className="text-lg font-bold text-gray-800 text-center">
+        <h2 className="text-lg font-bold text-gray-800 text-center">
           ✅ Why book with confidence?
-        </h3>
+        </h2>
         <div className="grid md:grid-cols-2 gap-4">
           {items.map((item, index) => (
             <div key={index} className="flex items-start space-x-3">
