@@ -130,10 +130,10 @@ const Index = () => {
 
               {/* Stops */}
               {[
-                { name: "Thong Krut Pier", time: "Departure", emoji: "⚓" },
+                { name: "Pier Departure", time: "Departure", emoji: "⚓" },
                 { name: "Koh Madsum", time: "+45 min", emoji: "🐷" },
                 { name: "Koh Tan", time: "+2h", emoji: "🤿" },
-                { name: "Thong Krut Pier", time: "~4h", emoji: "⚓" },
+                { name: "Pier Arrival", time: "~4h", emoji: "⚓" },
               ].map((stop, i) => (
                 <div key={i} className="relative z-10 flex flex-col items-center w-1/4">
                   <div className="w-10 h-10 rounded-full bg-white border-4 border-blue-500 flex items-center justify-center text-lg shadow-md">
