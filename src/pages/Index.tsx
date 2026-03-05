@@ -187,8 +187,8 @@ const Index = () => {
             desc: "Your own traditional Thai boat & skipper"
           }, {
             icon: "💰",
-            title: "Best Price: From ฿1,200/Person ($36)",
-            desc: "Includes hotel transfer & equipment"
+            title: "Best Price: From ฿4,000 THB",
+            desc: "Includes hotel transfer & captain"
           }, {
             icon: "🐷",
             title: "Famous Pig Island Visit",
