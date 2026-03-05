@@ -154,7 +154,9 @@ const BookingForm = () => {
           bookingData: {
             ...bookingData,
             phone: `${bookingData.phoneCountry} ${bookingData.phone}`,
-            date: bookingData.date ? format(bookingData.date, 'yyyy-MM-dd') : ''
+            date: bookingData.date ? format(bookingData.date, 'yyyy-MM-dd') : '',
+            needsTransfer,
+            transferPrice: needsTransfer ? TAXI_PRICE : 0
           }
         }
       });
