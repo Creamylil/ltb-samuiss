@@ -400,6 +400,9 @@ const BookingForm = () => {
               </div>
             </div>
 
+            {/* Reassurance Section */}
+            <ReassuranceSection />
+
             {/* Submit button */}
             <Button 
               type="submit" 

@@ -56,6 +56,33 @@ const PaymentSuccess = () => {
                   </div>
                 </div>
 
+                {/* What happens next timeline */}
+                <div className="bg-blue-50 p-6 rounded-lg border border-blue-200">
+                  <h3 className="text-xl font-semibold text-blue-800 mb-6">
+                    📋 What happens next?
+                  </h3>
+                  <div className="space-y-4">
+                    {[
+                      { icon: CreditCard, label: "Deposit confirmed", detail: "Your payment has been received", color: "bg-green-500", done: true },
+                      { icon: MessageCircle, label: "We contact you", detail: "We'll reach out via WhatsApp, Line or Phone to confirm details", color: "bg-blue-500", done: false },
+                      { icon: Car, label: "Driver picks you up", detail: "Round-trip hotel transfer on the day of your tour", color: "bg-purple-500", done: false },
+                      { icon: Anchor, label: "Enjoy your tour!", detail: "Pay the remaining balance directly to your captain", color: "bg-orange-500", done: false },
+                    ].map((step, index) => (
+                      <div key={index} className="flex items-start space-x-4">
+                        <div className={`w-10 h-10 rounded-full ${step.done ? 'bg-green-500' : 'bg-gray-300'} flex items-center justify-center flex-shrink-0`}>
+                          <step.icon className="w-5 h-5 text-white" />
+                        </div>
+                        <div className="flex-1 pb-4 border-b border-blue-100 last:border-0">
+                          <p className={`font-semibold ${step.done ? 'text-green-700' : 'text-gray-800'}`}>
+                            {step.done && '✓ '}{step.label}
+                          </p>
+                          <p className="text-sm text-gray-600">{step.detail}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
                 <div className="bg-blue-50 p-6 rounded-lg border border-blue-200">
                   <h3 className="text-xl font-semibold text-blue-800 mb-4">
                     ℹ️ Important information
