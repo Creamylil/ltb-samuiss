@@ -4,10 +4,22 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Calendar, Users, MapPin, Phone, Mail, Clock, MessageCircle, Car, Anchor, CreditCard } from 'lucide-react';
 import { useSearchParams, Link } from 'react-router-dom';
+import { supabase } from "@/integrations/supabase/client";
 
 const PaymentSuccess = () => {
   const [searchParams] = useSearchParams();
   const sessionId = searchParams.get('session_id');
+
+  useEffect(() => {
+    if (sessionId) {
+      supabase.functions.invoke('update-booking-status', {
+        body: { sessionId }
+      }).then(({ error }) => {
+        if (error) console.error('Failed to update booking status:', error);
+        else console.log('Booking status updated to completed');
+      });
+    }
+  }, [sessionId]);
 
   const whatsappNumber = "+33767028161";
   const whatsappUrl = `https://wa.me/${whatsappNumber.replace('+', '')}?text=Hello! I just completed my booking for a longtail boat tour. My transaction number is: ${sessionId}`;
