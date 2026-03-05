@@ -209,8 +209,8 @@ const Index = () => {
             },
             {
               icon: "💰",
-              title: "Best Price: From ฿4,000 THB",
-              desc: "Includes hotel transfer & captain"
+              title: "Best Price: From ฿3,200 THB",
+              desc: "Private boat + captain included"
             },
             {
               icon: "🐷",
