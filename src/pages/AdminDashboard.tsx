@@ -7,6 +7,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Badge } from "@/components/ui/badge";
 import { LogOut, RefreshCw, Users, Calendar, CreditCard } from 'lucide-react';
 import { toast } from "@/hooks/use-toast";
+import EmailPreviewDialog from "@/components/EmailPreviewDialog";
 
 interface Booking {
   id: string;
@@ -157,6 +158,7 @@ const AdminDashboard = () => {
                       <TableHead className="text-slate-300">Acompte</TableHead>
                       <TableHead className="text-slate-300">Capitaine</TableHead>
                       <TableHead className="text-slate-300">Statut</TableHead>
+                      <TableHead className="text-slate-300">Emails</TableHead>
                       <TableHead className="text-slate-300">Créé le</TableHead>
                     </TableRow>
                   </TableHeader>
@@ -188,6 +190,7 @@ const AdminDashboard = () => {
                         <TableCell className="text-emerald-400">฿{b.deposit_thb.toLocaleString()}</TableCell>
                         <TableCell className="text-orange-400">฿{b.captain_price_thb.toLocaleString()}</TableCell>
                         <TableCell>{statusBadge(b.payment_status)}</TableCell>
+                        <TableCell><EmailPreviewDialog booking={b} /></TableCell>
                         <TableCell className="text-slate-400 text-xs">
                           {new Date(b.created_at).toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: '2-digit', hour: '2-digit', minute: '2-digit' })}
                         </TableCell>
