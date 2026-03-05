@@ -7,6 +7,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Badge } from "@/components/ui/badge";
 import { LogOut, RefreshCw, Users, Calendar, CreditCard } from 'lucide-react';
 import { toast } from "@/hooks/use-toast";
+import EmailPreviewDialog from "@/components/EmailPreviewDialog";
 
 interface Booking {
   id: string;
