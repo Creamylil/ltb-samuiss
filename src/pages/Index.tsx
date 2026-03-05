@@ -42,7 +42,7 @@ const Index = () => {
             <div className="flex flex-wrap justify-center gap-3 md:gap-5 mb-10">
               {[
               { icon: "✓", text: "Private skipper" },
-              { icon: "✓", text: "Transfer optional" },
+              { icon: "✓", text: "Hotel Transfer" },
               { icon: "✓", text: "From ฿3,200 THB" },
               { icon: "✓", text: "Max 10 guests" }].
               map((item, i) =>

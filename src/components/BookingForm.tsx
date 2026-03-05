@@ -235,31 +235,57 @@ const BookingForm = () => {
             </div>
 
             <div className="grid md:grid-cols-2 gap-6">
-              {/* Pickup Time */}
-              <div className="space-y-2">
-                <Label htmlFor="pickupTime" className="text-lg font-semibold">Preferred pickup time *</Label>
-                <Select value={bookingData.pickupTime} onValueChange={(value) =>
-                  setBookingData((prev) => ({ ...prev, pickupTime: value }))
-                }>
-                  <SelectTrigger className="h-12 text-lg">
-                    <SelectValue placeholder="Select pickup time" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="08:00">08:00</SelectItem>
-                    <SelectItem value="08:30">08:30</SelectItem>
-                    <SelectItem value="09:00">09:00</SelectItem>
-                    <SelectItem value="09:30">09:30</SelectItem>
-                    <SelectItem value="10:00">10:00</SelectItem>
-                    <SelectItem value="10:30">10:30</SelectItem>
-                    <SelectItem value="11:00">11:00</SelectItem>
-                    <SelectItem value="13:00">13:00</SelectItem>
-                    <SelectItem value="13:30">13:30</SelectItem>
-                    <SelectItem value="14:00">14:00</SelectItem>
-                    <SelectItem value="14:30">14:30</SelectItem>
-                    <SelectItem value="15:00">15:00</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+              {/* Pickup Time - conditional based on transfer */}
+              {needsTransfer ? (
+                <div className="space-y-2">
+                  <Label htmlFor="pickupTime" className="text-lg font-semibold">Preferred pickup time *</Label>
+                  <Select value={bookingData.pickupTime} onValueChange={(value) =>
+                    setBookingData((prev) => ({ ...prev, pickupTime: value }))
+                  }>
+                    <SelectTrigger className="h-12 text-lg">
+                      <SelectValue placeholder="Select pickup time" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="08:00">08:00</SelectItem>
+                      <SelectItem value="08:30">08:30</SelectItem>
+                      <SelectItem value="09:00">09:00</SelectItem>
+                      <SelectItem value="09:30">09:30</SelectItem>
+                      <SelectItem value="10:00">10:00</SelectItem>
+                      <SelectItem value="10:30">10:30</SelectItem>
+                      <SelectItem value="11:00">11:00</SelectItem>
+                      <SelectItem value="13:00">13:00</SelectItem>
+                      <SelectItem value="13:30">13:30</SelectItem>
+                      <SelectItem value="14:00">14:00</SelectItem>
+                      <SelectItem value="14:30">14:30</SelectItem>
+                      <SelectItem value="15:00">15:00</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              ) : (
+                <div className="space-y-2">
+                  <Label htmlFor="pickupTime" className="text-lg font-semibold">Arrival time at pier *</Label>
+                  <Select value={bookingData.pickupTime} onValueChange={(value) =>
+                    setBookingData((prev) => ({ ...prev, pickupTime: value }))
+                  }>
+                    <SelectTrigger className="h-12 text-lg">
+                      <SelectValue placeholder="Select arrival time" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="08:00">08:00</SelectItem>
+                      <SelectItem value="08:30">08:30</SelectItem>
+                      <SelectItem value="09:00">09:00</SelectItem>
+                      <SelectItem value="09:30">09:30</SelectItem>
+                      <SelectItem value="10:00">10:00</SelectItem>
+                      <SelectItem value="10:30">10:30</SelectItem>
+                      <SelectItem value="11:00">11:00</SelectItem>
+                      <SelectItem value="13:00">13:00</SelectItem>
+                      <SelectItem value="13:30">13:30</SelectItem>
+                      <SelectItem value="14:00">14:00</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <p className="text-sm text-amber-600 font-medium">⚠️ Last departure from the pier is at 2:00 PM</p>
+                </div>
+              )}
 
               {/* Name */}
               <div className="space-y-2">
