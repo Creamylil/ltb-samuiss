@@ -14,7 +14,75 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      bookings: {
+        Row: {
+          boat_price_thb: number
+          captain_price_thb: number
+          comment: string | null
+          created_at: string | null
+          date: string
+          deposit_thb: number
+          email: string
+          hotel_address: string | null
+          hotel_name: string | null
+          id: string
+          name: string
+          needs_transfer: boolean
+          payment_status: string
+          people: number
+          phone: string
+          phone_country: string
+          phone_type: string
+          pickup_time: string
+          stripe_session_id: string | null
+          transfer_price_thb: number
+        }
+        Insert: {
+          boat_price_thb: number
+          captain_price_thb: number
+          comment?: string | null
+          created_at?: string | null
+          date: string
+          deposit_thb: number
+          email: string
+          hotel_address?: string | null
+          hotel_name?: string | null
+          id?: string
+          name: string
+          needs_transfer?: boolean
+          payment_status?: string
+          people: number
+          phone: string
+          phone_country: string
+          phone_type?: string
+          pickup_time: string
+          stripe_session_id?: string | null
+          transfer_price_thb?: number
+        }
+        Update: {
+          boat_price_thb?: number
+          captain_price_thb?: number
+          comment?: string | null
+          created_at?: string | null
+          date?: string
+          deposit_thb?: number
+          email?: string
+          hotel_address?: string | null
+          hotel_name?: string | null
+          id?: string
+          name?: string
+          needs_transfer?: boolean
+          payment_status?: string
+          people?: number
+          phone?: string
+          phone_country?: string
+          phone_type?: string
+          pickup_time?: string
+          stripe_session_id?: string | null
+          transfer_price_thb?: number
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
