@@ -16,6 +16,7 @@ import Testimonials from "../components/Testimonials";
 import FAQ from "../components/FAQ";
 import Footer from "../components/Footer";
 import WhatsAppCTA from "../components/WhatsAppCTA";
+import WhatsAppFloatingButton from "../components/WhatsAppFloatingButton";
 import StickyPriceBar from "../components/StickyPriceBar";
 
 const Index = () => {
@@ -71,12 +72,13 @@ const Index = () => {
                 <span className="hidden md:inline">Book Your Long Tail Boat Now</span>
                 <span className="md:hidden">Book Now</span>
               </Button>
-              <WhatsAppCTA
-                text="💬 Ask Questions on WhatsApp"
-                className="w-full md:w-auto"
+              <Button
                 size="lg"
-                message="Hi! I'm interested in your longtail boat tours in Koh Samui. Can you tell me more about your packages and availability?" />
-              
+                className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border border-white/30 px-8 py-4 md:px-10 md:py-5 text-base md:text-lg font-semibold rounded-full transform hover:scale-105 transition-all duration-300 w-full md:w-auto"
+                onClick={scrollToBooking}>
+                <span className="hidden md:inline">See Prices & Options</span>
+                <span className="md:hidden">See Prices</span>
+              </Button>
             </div>
           </div>
         </div>
@@ -172,9 +174,11 @@ const Index = () => {
           </div>
 
           <div className="text-center mt-8 py-[10px] pb-[20px]">
-            <WhatsAppCTA
-              text="Get Custom Tour Recommendations"
-              message="Hello! I would like to get personalized recommendations for a longtail boat tour in Koh Samui based on my preferences." />
+            <Button
+              className="bg-orange-500 hover:bg-orange-600 text-white rounded-full px-8 py-3 font-semibold"
+              onClick={scrollToBooking}>
+              See Prices & Book Now →
+            </Button>
           </div>
 
           <div className="max-w-5xl mx-auto">
@@ -284,10 +288,11 @@ const Index = () => {
           </div>
 
           <div className="text-center mt-12">
-            <WhatsAppCTA
-              text="💬 Have Questions? Chat with Us!"
-              message="Hi! I have some questions about your longtail boat tours. Can you help me choose the best option for my group?" />
-            
+            <Button
+              className="bg-orange-500 hover:bg-orange-600 text-white rounded-full px-8 py-3 font-semibold"
+              onClick={scrollToBooking}>
+              See Prices & Book Now →
+            </Button>
           </div>
         </div>
       </section>
@@ -365,10 +370,11 @@ const Index = () => {
                 Maximum 10 guests per boat
               </p>
 
-              <WhatsAppCTA
-                text="Get a Custom Quote"
-                message="Hello! I'd like to get a personalized quote for a longtail boat tour. Can you help me with pricing for my specific group size and preferences?" />
-              
+              <Button
+                className="bg-orange-500 hover:bg-orange-600 text-white rounded-full px-8 py-3 font-semibold"
+                onClick={scrollToBooking}>
+                Book Now →
+              </Button>
             </div>
           </div>
         </div>
@@ -448,10 +454,11 @@ const Index = () => {
           </div>
 
           <div className="text-center mt-12">
-            <WhatsAppCTA
-              text="Need Help Planning Your Trip?"
-              message="Hi! I need help planning my longtail boat tour in Koh Samui. Can you assist me with recommendations and logistics?" />
-            
+            <Button
+              className="bg-orange-500 hover:bg-orange-600 text-white rounded-full px-8 py-3 font-semibold"
+              onClick={scrollToBooking}>
+              See Prices & Book Now →
+            </Button>
           </div>
         </div>
       </section>
@@ -476,18 +483,20 @@ const Index = () => {
               <span className="md:hidden">👉 Book Now</span>
             </Button>
             <WhatsAppCTA
-              text="💬 Chat Before Booking"
+              text="💬 Questions? Chat with Us"
               className="bg-white text-green-600 hover:bg-gray-100 w-full md:w-auto"
               variant="secondary"
               size="lg"
-              message="Hi! I'm considering booking a longtail boat tour but have some questions first. Can you help me?" />
-            
+              message="Hi! I have some questions before booking my longtail boat tour. Can you help?" />
           </div>
         </div>
       </section>
 
       {/* Footer */}
       <Footer />
+
+      {/* Floating WhatsApp Button */}
+      <WhatsAppFloatingButton />
 
       {/* Sticky Price Bar */}
       <StickyPriceBar />
