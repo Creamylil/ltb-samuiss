@@ -2,6 +2,13 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle, Star, MapPin, Clock, Users, Camera, Phone } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import Header from "../components/Header";
 import BookingForm from "../components/BookingForm";
 import ImageGallery from "../components/ImageGallery";
