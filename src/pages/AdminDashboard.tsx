@@ -5,9 +5,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
-import { LogOut, RefreshCw, Users, Calendar, CreditCard } from 'lucide-react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { LogOut, RefreshCw, Users, Calendar, CreditCard, Mail } from 'lucide-react';
 import { toast } from "@/hooks/use-toast";
-import EmailPreviewDialog from "@/components/EmailPreviewDialog";
+import { buildClientEmailHtml, buildAdminEmailHtml, sampleBooking } from "@/components/EmailPreviewDialog";
 
 interface Booking {
   id: string;
