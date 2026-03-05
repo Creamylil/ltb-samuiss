@@ -76,8 +76,8 @@ const Index = () => {
       {/* Adventure Section */}
       <section className="py-16 bg-gradient-to-b from-blue-50 to-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
-            Why Choose Our Long Tail Boat Koh Samui Experience?
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">Long Tail Boat Koh Samui Experience
+
           </h2>
           <div className="max-w-4xl mx-auto text-lg leading-relaxed text-gray-700 space-y-6">
             <p>
@@ -106,8 +106,8 @@ const Index = () => {
       {/* Itinerary Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800">
-            Your Long Tail Boat Koh Samui Adventure Itinerary
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800">Your Long Tail Boat Koh Samui Itinerary
+
           </h2>
           <p className="text-center text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
             Discover the most beautiful islands around Koh Samui with our carefully planned routes
