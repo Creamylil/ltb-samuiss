@@ -259,7 +259,7 @@ const Index = () => {
             Private Longtail Boat Tour - Pricing
           </h2>
           <p className="text-center text-lg text-green-600 font-semibold mb-8">
-            🎉 All-inclusive pricing with hotel transfer & private captain!
+            🎉 Private boat + captain included — add hotel transfer for ฿1,600 THB!
           </p>
 
           <div className="max-w-4xl mx-auto">
@@ -268,25 +268,30 @@ const Index = () => {
                 <thead className="bg-blue-600 text-white">
                   <tr>
                     <th className="px-6 py-4 text-left">Guests</th>
-                    <th className="px-6 py-4 text-left">Total Price</th>
+                    <th className="px-6 py-4 text-left">Boat Price</th>
+                    <th className="px-6 py-4 text-left">With Transfer</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr className="border-b">
                     <td className="px-6 py-4 font-semibold">Up to 3 guests</td>
-                    <td className="px-6 py-4 text-blue-600 font-bold">฿4,000 THB</td>
+                    <td className="px-6 py-4 text-blue-600 font-bold">฿3,200 THB</td>
+                    <td className="px-6 py-4 text-gray-500">฿4,800 THB</td>
                   </tr>
                   <tr className="border-b">
                     <td className="px-6 py-4 font-semibold">Up to 4 guests</td>
-                    <td className="px-6 py-4 text-blue-600 font-bold">฿4,600 THB</td>
+                    <td className="px-6 py-4 text-blue-600 font-bold">฿4,200 THB</td>
+                    <td className="px-6 py-4 text-gray-500">฿5,800 THB</td>
                   </tr>
                   <tr className="border-b">
                     <td className="px-6 py-4 font-semibold">Up to 7 guests</td>
-                    <td className="px-6 py-4 text-blue-600 font-bold">฿5,600 THB</td>
+                    <td className="px-6 py-4 text-blue-600 font-bold">฿5,000 THB</td>
+                    <td className="px-6 py-4 text-gray-500">฿6,600 THB</td>
                   </tr>
                   <tr>
                     <td className="px-6 py-4 font-semibold">Up to 10 guests</td>
-                    <td className="px-6 py-4 text-blue-600 font-bold">฿6,600 THB</td>
+                    <td className="px-6 py-4 text-blue-600 font-bold">฿6,000 THB</td>
+                    <td className="px-6 py-4 text-gray-500">฿7,600 THB</td>
                   </tr>
                 </tbody>
               </table>
