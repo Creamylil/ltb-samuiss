@@ -28,9 +28,6 @@ const Index = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70"></div>
         <div className="relative z-10 flex items-center justify-center min-h-[75vh] pt-20 pb-12">
           <div className="container mx-auto px-4 text-center">
-            <div className="inline-block mb-6 px-4 py-1.5 rounded-full border border-white/30 bg-white/10 backdrop-blur-md text-sm font-medium tracking-wide uppercase">
-              🌴 Private Boat Tours · Koh Samui
-            </div>
             <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold mb-6 animate-fade-in text-white drop-shadow-lg">
               <span className="block mb-2 md:mb-0 md:inline">Long Tail Boat</span>{" "}
               <span className="block md:inline">Koh Samui</span>
