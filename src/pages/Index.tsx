@@ -24,43 +24,39 @@ const Index = () => {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative h-screen text-white overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/lovable-uploads/e60a3dd9-abf1-4543-b894-4e29e24097b5.png')] bg-cover bg-center"></div>
-        <div className="absolute inset-0 bg-black/50 md:bg-black/40"></div>
-        <div className="relative z-10 flex items-center justify-center h-full pt-20">
+      <section className="relative min-h-screen text-white overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/lovable-uploads/e60a3dd9-abf1-4543-b894-4e29e24097b5.png')] bg-cover bg-center scale-105 animate-[pulse_20s_ease-in-out_infinite]"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70"></div>
+        <div className="relative z-10 flex items-center justify-center min-h-screen pt-20 pb-12">
           <div className="container mx-auto px-4 text-center">
-            <h1 className="text-2xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 animate-fade-in text-white">
+            <div className="inline-block mb-6 px-4 py-1.5 rounded-full border border-white/30 bg-white/10 backdrop-blur-md text-sm font-medium tracking-wide uppercase">
+              🌴 Private Boat Tours · Koh Samui
+            </div>
+            <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold mb-6 animate-fade-in text-white drop-shadow-lg">
               <span className="block mb-2 md:mb-0 md:inline">Long Tail Boat</span>{" "}
               <span className="block md:inline">Koh Samui</span>
-              <span className="block text-xl md:text-4xl lg:text-5xl mt-2 md:mt-0 md:inline"> - Private Tours</span>
+              <span className="block text-xl md:text-3xl lg:text-4xl mt-3 font-medium text-white/90"> — Private Tours</span>
             </h1>
-            <div className="bg-black/60 backdrop-blur-sm rounded-lg p-4 md:p-6 mb-6 md:mb-8 mx-auto max-w-4xl">
-              <p className="text-base md:text-xl lg:text-2xl mb-3 md:mb-4 text-white font-medium">
-                Discover Koh Samui's hidden gems aboard your private long tail boat with hotel transfer included
-              </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 text-sm md:text-base text-white/95">
-                <div className="flex items-center justify-center md:justify-start">
-                  <CheckCircle className="w-4 h-4 mr-2 text-green-400 flex-shrink-0" />
-                  <span>Private skipper</span>
+            <p className="text-lg md:text-xl lg:text-2xl mb-8 text-white/90 font-light max-w-3xl mx-auto leading-relaxed">
+              Discover Koh Samui's hidden gems aboard your private long tail boat with hotel transfer included
+            </p>
+            <div className="flex flex-wrap justify-center gap-3 md:gap-5 mb-10">
+              {[
+                { icon: "✓", text: "Private skipper" },
+                { icon: "✓", text: "Hotel pickup" },
+                { icon: "✓", text: "From ฿4,000 THB" },
+                { icon: "✓", text: "Max 10 guests" },
+              ].map((item, i) => (
+                <div key={i} className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 text-sm md:text-base">
+                  <span className="text-green-400 font-bold">{item.icon}</span>
+                  <span>{item.text}</span>
                 </div>
-                <div className="flex items-center justify-center md:justify-start">
-                  <CheckCircle className="w-4 h-4 mr-2 text-green-400 flex-shrink-0" />
-                  <span>Hotel pickup</span>
-                </div>
-                <div className="flex items-center justify-center md:justify-start">
-                  <CheckCircle className="w-4 h-4 mr-2 text-green-400 flex-shrink-0" />
-                  <span>From ฿4,000 THB</span>
-                </div>
-                <div className="flex items-center justify-center md:justify-start">
-                  <CheckCircle className="w-4 h-4 mr-2 text-green-400 flex-shrink-0" />
-                  <span>Maximum 10 guests</span>
-                </div>
-              </div>
+              ))}
             </div>
             <div className="space-y-4 md:space-y-0 md:space-x-4 md:flex md:justify-center md:items-center">
               <Button 
                 size="lg" 
-                className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 md:px-8 md:py-4 text-base md:text-lg font-semibold rounded-full transform hover:scale-105 transition-all duration-300 shadow-2xl w-full md:w-auto" 
+                className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 md:px-10 md:py-5 text-base md:text-lg font-semibold rounded-full transform hover:scale-105 transition-all duration-300 shadow-[0_0_30px_rgba(249,115,22,0.4)] w-full md:w-auto" 
                 onClick={scrollToBooking}
               >
                 <span className="hidden md:inline">Book Your Long Tail Boat Now</span>
