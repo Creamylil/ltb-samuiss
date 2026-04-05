@@ -541,7 +541,7 @@ const BookingForm = () => {
                     Processing...
                   </>
                 ) : (
-                  <>🛥️ Pay Deposit Now - ฿{deposit.toLocaleString()} THB</>
+                  <>🛥️ Confirm Booking</>
                 )}
               </span>
             </Button>
