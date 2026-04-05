@@ -144,39 +144,58 @@ const BookingForm = () => {
     setIsProcessing(true);
 
     try {
-      const { data, error } = await supabase.functions.invoke('create-payment', {
-        body: {
+      const { data, error } = await supabase
+        .from("bookings")
+        .insert({
+          date: bookingData.date ? format(bookingData.date, 'yyyy-MM-dd') : '',
           people: bookingData.people,
-          depositTHB: deposit,
-          totalPriceTHB: totalPrice,
-          captainPriceTHB: remainingToCaptain,
-          needsTransfer,
-          bookingData: {
-            ...bookingData,
-            phone: `${bookingData.phoneCountry} ${bookingData.phone}`,
-            date: bookingData.date ? format(bookingData.date, 'yyyy-MM-dd') : '',
-            needsTransfer,
-            transferPrice: needsTransfer ? TAXI_PRICE : 0
-          }
-        }
-      });
+          name: bookingData.name,
+          email: bookingData.email,
+          phone_country: bookingData.phoneCountry,
+          phone: bookingData.phone,
+          phone_type: bookingData.phoneType || 'normal',
+          needs_transfer: needsTransfer,
+          hotel_name: bookingData.hotelName || null,
+          hotel_address: bookingData.hotelAddress || null,
+          pickup_time: bookingData.pickupTime,
+          comment: bookingData.comment || null,
+          boat_price_thb: totalPrice,
+          deposit_thb: deposit,
+          captain_price_thb: remainingToCaptain,
+          transfer_price_thb: needsTransfer ? TAXI_PRICE : 0,
+          payment_status: 'confirmed',
+        })
+        .select()
+        .single();
 
       if (error) throw error;
 
-      if (data?.url) {
-        window.open(data.url, '_blank');
-        toast({
-          title: "Redirecting to payment",
-          description: "You are being redirected to the secure payment page for the deposit"
-        });
-      } else {
-        throw new Error('No checkout URL received');
-      }
-    } catch (error) {
-      console.error('Payment error:', error);
       toast({
-        title: "Payment error",
-        description: "An error occurred while creating the payment. Please try again.",
+        title: "Booking confirmed! 🎉",
+        description: "Your longtail boat tour has been booked. We will contact you shortly to confirm the details."
+      });
+
+      // Reset form
+      setBookingData({
+        date: undefined,
+        people: 2,
+        name: '',
+        email: '',
+        phoneCountry: '+66',
+        phone: '',
+        phoneType: '',
+        hotelName: '',
+        hotelAddress: '',
+        pickupTime: '',
+        comment: ''
+      });
+      setNeedsTransfer(false);
+      setTermsAccepted(false);
+    } catch (error) {
+      console.error('Booking error:', error);
+      toast({
+        title: "Booking error",
+        description: "An error occurred while submitting your booking. Please try again.",
         variant: "destructive"
       });
     } finally {
