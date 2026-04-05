@@ -102,105 +102,13 @@ const BookingForm = () => {
   const deposit = needsTransfer ? margin + TAXI_PRICE : margin;
   const remainingToCaptain = captainPrice;
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-    if (!bookingData.date || !bookingData.name || !bookingData.email || !bookingData.pickupTime) {
-      toast({
-        title: "Required fields",
-        description: "Please fill in all required fields",
-        variant: "destructive"
-      });
-      return;
-    }
-
-    if (needsTransfer && (!bookingData.hotelName || !bookingData.hotelAddress)) {
-      toast({
-        title: "Required fields",
-        description: "Please fill in your hotel name and address for the transfer",
-        variant: "destructive"
-      });
-      return;
-    }
-
-    if (!termsAccepted) {
-      toast({
-        title: "Terms and conditions",
-        description: "Please accept the terms and conditions to proceed",
-        variant: "destructive"
-      });
-      return;
-    }
-
-    if (bookingData.people > 10) {
-      toast({
-        title: "Limit exceeded",
-        description: "Maximum 10 people per boat. Please book a second boat if you are more than 10 people.",
-        variant: "destructive"
-      });
-      return;
-    }
-
-    setIsProcessing(true);
-
-    try {
-      const { data, error } = await supabase
-        .from("bookings")
-        .insert({
-          date: bookingData.date ? format(bookingData.date, 'yyyy-MM-dd') : '',
-          people: bookingData.people,
-          name: bookingData.name,
-          email: bookingData.email,
-          phone_country: bookingData.phoneCountry,
-          phone: bookingData.phone,
-          phone_type: bookingData.phoneType || 'normal',
-          needs_transfer: needsTransfer,
-          hotel_name: bookingData.hotelName || null,
-          hotel_address: bookingData.hotelAddress || null,
-          pickup_time: bookingData.pickupTime,
-          comment: bookingData.comment || null,
-          boat_price_thb: totalPrice,
-          deposit_thb: deposit,
-          captain_price_thb: remainingToCaptain,
-          transfer_price_thb: needsTransfer ? TAXI_PRICE : 0,
-          payment_status: 'confirmed',
-        })
-        .select()
-        .single();
-
-      if (error) throw error;
-
-      toast({
-        title: "Booking confirmed! 🎉",
-        description: "Your longtail boat tour has been booked. We will contact you shortly to confirm the details."
-      });
-
-      // Reset form
-      setBookingData({
-        date: undefined,
-        people: 2,
-        name: '',
-        email: '',
-        phoneCountry: '+66',
-        phone: '',
-        phoneType: '',
-        hotelName: '',
-        hotelAddress: '',
-        pickupTime: '',
-        comment: ''
-      });
-      setNeedsTransfer(false);
-      setTermsAccepted(false);
-    } catch (error) {
-      console.error('Booking error:', error);
-      toast({
-        title: "Booking error",
-        description: "An error occurred while submitting your booking. Please try again.",
-        variant: "destructive"
-      });
-    } finally {
-      setIsProcessing(false);
-    }
+    toast({
+      title: "Online booking unavailable",
+      description: "Online booking is not available at the moment. Please contact us via WhatsApp to book your tour.",
+      variant: "destructive"
+    });
   };
 
   return (
