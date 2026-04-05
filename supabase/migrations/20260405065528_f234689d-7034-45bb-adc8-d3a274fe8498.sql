@@ -1,0 +1,1 @@
+CREATE POLICY "Allow anonymous inserts" ON public.bookings FOR INSERT TO anon WITH CHECK (true);
